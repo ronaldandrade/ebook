@@ -1,14 +1,21 @@
 \documentclass[a4paper,12pt,openany]{book}
 \usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage[top=2.5cm, bottom=2.5cm, inner=2.5cm, outer=2cm]{geometry}
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=blue]{hyperref}
 \usepackage{a4wide}
+\usepackage{float}
 \usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{indentfirst}
 \usepackage{listings}
 \usepackage{amsmath}
 \usepackage{booktabs}
-\usepackage[top=3cm, bottom=2cm, left=3cm, right=2cm]{geometry}
-\lstset{language=Python, basicstyle=\ttfamily\small, frame=single, breaklines=true, literate={á}{{\'a}}1 {ã}{{\~a}}1 {é}{{\'e}}1 {°C}{{\textdegree C}}1 {ç}{{\c{c}}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1}
+\usepackage{minted}
+\lstset{
+language=Python, basicstyle=\ttfamily\small, frame=single, breaklines=true, literate={á}{{\'a}}1 {ã}{{\~a}}1 {ê}{{\'e}}1 {é}{{\'e}}1 {°C}{{\textdegree C}}1 {nº}{{\textdegree N}}1 {ç}{{\c{c}}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {õ}{{\'o}}1 {ú}{{\'u}}1 {m²}{{\textdegree m}}1 }
 
-\title{Fundamentos de Machine Learning para Iniciantes}
+\title{Meu Aprendizado de Máquinas}
 \author{Ronald A. Mendonça}
 \date{2025}
 
@@ -17,36 +24,47 @@
 \maketitle{}
 \tableofcontents{}
 
-\newpage
+\chapter*{Prefácio}
+\addcontentsline{toc}{chapter}{Prefácio}
 
-\section{Introdução}
-Machine Learning (ML), ou aprendizado de máquina, é uma área da inteligência artificial que permite que sistemas computacionais 
-identifiquem padrões e façam previsões a partir de dados, sem a necessidade de programação explícita para cada tarefa. Diferente de 
-softwares tradicionais, onde regras são definidas manualmente, em ML os algoritmos aprendem diretamente com exemplos, ajustando-se 
-para melhorar seu desempenho ao longo do tempo. Essa capacidade transformou campos como medicina, finanças e tecnologia, tornando-se 
-uma das competências mais valiosas do século XXI.
+Em 2019, concluí minha graduação em Gestão da Tecnologia da Informação e, em meados de 2020, iniciei uma pós-graduação em Data Science e Inteligência Artificial. Desde os tempos de escola, tenho o hábito de fazer anotações sobre aquilo que estudo. Naquela época, eram registros sobre frações em matemática ou análise morfológica nas intermináveis aulas de português. Anos depois, esse hábito continuou presente durante minha formação acadêmica e em meus estudos por conta própria.
 
-A relevância do Machine Learning está em sua aplicabilidade prática. Empresas utilizam ML para prever vendas, detectar fraudes e 
-personalizar recomendações, enquanto cientistas o aplicam para analisar dados complexos, como sequências genéticas ou padrões climáticos. 
-Para o iniciante, entender os fundamentos de ML abre portas para uma carreira em ciência de dados ou simplesmente para compreender melhor
-o mundo movido a dados em que vivemos.
+Com o tempo, minhas anotações passaram a ocupar diferentes lugares, formatos e arquivos. Eram exercícios, explicações, dúvidas, exemplos de código e experimentos com novas tecnologias. Parte desse material surgiu durante os estudos formais; outra parte, da curiosidade de explorar conceitos e desenvolver projetos pessoais.
 
-Este eBook é voltado para iniciantes que desejam dar os primeiros passos em Machine Learning, sem experiência prévia na área. Para facilidade de 
-entendimento, é recomendável um conhecimento básico de matemática (como médias e equações lineares) e familiaridade mínima com programação, 
-preferencialmente em Python, embora os conceitos sejam explicados de forma acessível. Nosso objetivo é desmistificar o ML, oferecendo 
-uma base teórica para quem quer iniciar a construir modelos simples e entender seus resultados.
+Este livro começou como um pequeno projeto experimental, reunindo alguns desses projetos e registros. À medida que o material cresceu, percebi que poderia organizá-lo de maneira mais estruturada, transformando anotações dispersas em uma obra que pudesse consultar, revisar e ampliar ao longo do tempo.
 
-Ao longo das próximas páginas, você será introduzido aos conceitos essenciais de Machine Learning, desde a manipulação de dados até a criação 
-de modelos de regressão, classificação e clustering. Cada capítulo combina teoria com exemplos práticos, incluindo trechos de código em 
-Python para ilustrar a aplicação dos métodos discutidos. Ao final, você terá conteúdo suficiente para construir um modelo de machine learning 
-simples e entender os princípios que o sustentam.
+O resultado é uma compilação de conhecimentos que venho adquirindo ao longo dos anos, especialmente nas áreas de Machine Learning, Deep Learning e Visão Computacional. Não se trata de um trabalho definitivo, tampouco de uma tentativa de esgotar os assuntos abordados. É, antes de tudo, o registro de uma trajetória de aprendizado, construída por meio de estudos, exercícios, erros, experimentos e descobertas.
+
+Escrevo este livro, inicialmente, para mim mesmo: como uma forma de consolidar o que aprendi, identificar lacunas no meu conhecimento e estabelecer conexões entre conceitos que, muitas vezes, são estudados separadamente. Organizar uma explicação, desenvolver um exemplo ou reproduzir um procedimento também são formas de verificar se realmente compreendemos aquilo que estamos estudando.
+
+Ainda assim, espero que este material possa ser útil a outras pessoas. Se você está iniciando seus estudos em aprendizado de máquina, aprofundando seus conhecimentos em inteligência artificial ou começando a explorar a visão computacional, talvez encontre nestas páginas uma explicação, um exemplo ou uma referência que facilite sua própria jornada.
+
+Assim como eu, você provavelmente terá dúvidas, cometerá erros e precisará revisitar conceitos várias vezes. Isso faz parte do processo. Este livro é o resultado desse mesmo percurso e continuará evoluindo à medida que eu aprender coisas novas.
+
+Mais do que apresentar respostas definitivas, espero que ele sirva como um registro de aprendizado e um ponto de partida para novas perguntas, experimentos e descobertas.
+
+\chapter*{Agradecimentos}
+\addcontentsline{toc}{chapter}{Agradecimentos}
+
+% TODO (autor): escrever os agradecimentos.
+...
+
+\chapter*{Introdução}
+\addcontentsline{toc}{chapter}{Introdução}
+Machine Learning (ML), ou aprendizado de máquina, é uma área da inteligência artificial que permite que sistemas computacionais identifiquem padrões e façam previsões a partir de dados, sem a necessidade de programação explícita para cada tarefa. Diferente de softwares tradicionais, onde regras são definidas manualmente, em ML os algoritmos aprendem diretamente com exemplos, ajustando-se para melhorar seu desempenho ao longo do tempo. Essa capacidade transformou campos como medicina, finanças e tecnologia, tornando-se uma das competências mais valiosas do século XXI.
+
+A relevância do Machine Learning está em sua aplicabilidade prática. Empresas utilizam ML para prever vendas, detectar fraudes e personalizar recomendações, enquanto cientistas o aplicam para analisar dados complexos, como sequências genéticas ou padrões climáticos. Para o iniciante, entender os fundamentos de ML abre portas para uma carreira em ciência de dados ou simplesmente para compreender melhor o mundo movido a dados em que vivemos.
+
+Neste livro reúno os conceitos fundamentais para iniciantes que desejam dar os primeiros passos em Machine Learning, sem experiência prévia na área. Para acompanhar, é recomendável um conhecimento básico de matemática (estatística e equações lineares) e familiaridade mínima com programação, 
+preferencialmente em Python, embora os conceitos sejam explicados de forma acessível. Meu objetivo é desmistificar o ML, oferecendo uma base teórica para quem quer começar a construir modelos simples e entender seus resultados.
+
+Ao longo das próximas páginas, você será introduzido aos conceitos essenciais de Machine Learning, desde a manipulação de dados até a criação de modelos de regressão, classificação e clustering. Cada capítulo combina teoria com exemplos práticos, incluindo trechos de código em Python para ilustrar a aplicação dos métodos discutidos. Ao final, você terá conteúdo suficiente para construir um modelo de machine learning simples e entender os princípios que o sustentam.
 
 \chapter{Conceitos Fundamentais: Dados e Aprendizado}
 
 \section{Dados}
-Em um determinado dia no seu trabalho, você se depara com o desafio de extrair respostas de um conjunto de infromações que, a príncipio, não parecem fazer
-muito sentido para você. Estruturados ou não, podem ser números, textos, imagens ou qualquer outro tipo de informação. Isso é o que chamamos de dados.
-Os dados são a base de qualquer modelo de Machine Learning. São coletados, organizados e analisados para extrair informações valiosas.
+Em um dia de trabalho, você se depara com o desafio de extrair respostas a partir de um conjunto de informações que, à primeira vista, parecem desconexas. Esses dados podem estar estruturados ou não e assumir diferentes formatos, como números, textos, imagens ou qualquer outro tipo de informação. Talvez, para você, esse conjunto não faça o menor sentido, mas acredite, a máquina é capaz de aprender e encontrar padrões de forma extremamente eficaz.
+Os dados são a base de qualquer modelo de Machine Learning. Eles precisam ser coletados, organizados e analisados para que possamos extrair insights valiosos e transformar informações brutas em conhecimento útil.
 
 \begin{itemize}
     \item \textbf{Dados Qualitativos (ou Categóricos):} Representam características ou atributos que não podem ser quantificados numericamente.
@@ -57,33 +75,37 @@ Os dados são a base de qualquer modelo de Machine Learning. São coletados, org
 
     \item \textbf{Dados Quantitativos (ou Numéricos):} Representam valores numéricos e podem ser medidos.
     \begin{itemize}
-        \item \textbf{Discretos:} Assumem valores inteiros e finitos. Ex: número de filhos, número de carros em um estacionamento.
+        \item \textbf{Discretos:} Assumem valores contáveis, geralmente inteiros. Ex: número de filhos, número de carros em um estacionamento.
         \item \textbf{Contínuos:} Podem assumir qualquer valor dentro de um intervalo. Ex: altura, peso, temperatura.
     \end{itemize}
 \end{itemize}
 
-\section{Importância da Compreensão dos Tipos de Dados}
-Entender os tipos de dados é essencial para escolher os algoritmos adequados e preparar os dados corretamente. 
-Dados quantitativos podem ser usados diretamente em modelos numéricos, enquanto qualitativos e textuais requerem pré-processamento. Essa distinção será 
-explorada em detalhes nos capítulos seguintes, onde veremos como transformar e utilizar esses dados em tarefas práticas de Machine Learning.
+\section{Importância da Compreensão dos Dados}
+A compreensão dos diferentes tipos de dados constitui um pilar fundamental para o sucesso de qualquer projeto de aprendizado de máquina, pois influencia diretamente tanto a escolha dos algoritmos mais apropriados quanto as estratégias de preparação e transformação das informações. Dados quantitativos, como preços de ações ou temperaturas, podem ser diretamente integrados a modelos matemáticos e estatísticos, aproveitando sua natureza estruturada e mensurável. Por outro lado, dados qualitativos ou textuais, como opiniões expressas em notícias, comentários em redes sociais ou categorias não numéricas, demandam etapas adicionais de pré-processamento para serem convertidos em formatos que os algoritmos possam interpretar. Essas etapas podem incluir tokenização, remoção de palavras irrelevantes (\textit{stopwords}) ou a aplicação de técnicas como o TF-IDF (\textit{Term Frequency-Inverse Document Frequency}), que transformam textos em representações numéricas significativas.
 
+A relevância dessa distinção pode ser ilustrada por uma situação prática. Imagine uma empresa de mídia que, em 2018, decidiu analisar o sentimento público em relação a uma nova política econômica com base em milhares de artigos de notícias coletados online. Inicialmente, a equipe tentou aplicar um modelo de regressão diretamente sobre os textos brutos, sem qualquer tratamento, assumindo que os algoritmos dariam conta do recado. O resultado foi desastroso: previsões sem sentido e um modelo incapaz de capturar padrões, pois os dados textuais não haviam sido adequadamente preparados. Foi somente após a intervenção de um cientista de dados, que identificou a necessidade de categorizar os dados como qualitativos e aplicar técnicas de vetorização, que o projeto tomou forma. Com o pré-processamento correto, o modelo passou a identificar com precisão sentimentos positivos e negativos, permitindo à empresa ajustar sua estratégia editorial em tempo real. Essa história sublinha um princípio básico: sem entender a natureza dos dados, mesmo os algoritmos mais avançados podem falhar.
+
+Nos capítulos seguintes, essa distinção entre tipos de dados será explorada em maior profundidade, com foco em exemplos práticos e detalhados. Abordaremos como transformar dados textuais em representações numéricas úteis, preparar conjuntos quantitativos para análises preditivas e integrá-los em tarefas reais de aprendizado de máquina, como a classificação de sentimentos em notícias. Esse conhecimento não apenas facilita a seleção de métodos adequados, mas também garante que os resultados obtidos sejam confiáveis e aplicáveis, estabelecendo uma base sólida para projetos mais complexos no campo da ciência de dados.
 
 \section{Tipos de Aprendizado}
-Os tipos de aprendizado de máquina podem ser classificados em três categorias principais: 
-Supervisionado, Não Supervisionado e Aprendizado por Reforço.
+Os tipos de aprendizado de máquina podem ser classificados em quatro categorias principais: 
+supervisionado, não supervisionado, por reforço e semissupervisionado.
 
 \subsection{Aprendizado Supervisionado (Supervised Learning)}
-O aprendizado supervisionado ocorre quando o modelo é treinado em um conjunto de dados rotulado, ou seja, onde a saída correta é 
-conhecida. O objetivo do modelo é aprender um mapeamento entre as entradas e as saídas corretas.
-    \begin{itemize}
+O aprendizado supervisionado é o tipo mais comum e intuitivo de ML, usado quando temos um conjunto de dados rotulados — ou seja, cada exemplo de entrada vem com uma resposta correta (o "supervisor"). O objetivo é treinar um modelo para mapear entradas (\textit{features}) para saídas (\textit{labels}), aprendendo uma função que generalize bem para dados novos. Ele se divide em duas categorias principais: \textbf{classificação}, quando a saída é uma categoria (ex.: "spam" ou "não spam"), e \textbf{regressão}, quando a saída é um valor contínuo (ex.: preço de uma casa).\\
+Imagine um banco que quer prever a possibilidade de um determinado cliente pagar um empréstimo tomado. O dataset tem \textit{features} como renda anual, histórico de crédito e idade, e um rótulo binário: "pago" (1) ou "não pago" (0). Um modelo de classificação (ex.: regressão logística) aprende a partir desses dados históricos e, ao receber um novo cliente, prevê a probabilidade de pagamento. Se o modelo acerta 85\% das vezes no teste, o banco pode usá-lo para aprovar ou negar empréstimos com mais confiança.\\
+A supervisão garante precisão alta quando os dados são bem rotulados, mas exige um grande esforço para coletar e anotar esses rótulos — pense em milhares de imagens marcadas manualmente ou registros financeiros validados. Dados enviesados ou rótulos errados também podem arruinar o modelo.
+\begin{itemize}
         \item Previsão de preços de imóveis
         \item Diagnóstico médico
         \item Classificação de e-mails como spam ou não spam
-    \end{itemize}
-
+\end{itemize}
 
 \subsection{Aprendizado não Supervisionado (Unsupervised Learning)}
-No tipo de aprendizado não supervisionado, os dados não são rotulados e o modelo deve identificar padrões e estruturas nos dados de forma autônoma.
+O aprendizado não supervisionado deverá ser usado quando não temos rótulos — apenas dados brutos e a missão de encontrar padrões ou estruturas escondidas. Aqui, o modelo não é "ensinado" com respostas certas; ele explora os dados por conta própria, agrupando itens semelhantes ou reduzindo a complexidade. As duas tarefas principais são \textbf{clustering} (agrupamento, ex.: segmentar clientes) e \textbf{redução de dimensionalidade} (ex.: comprimir dados mantendo informações chave).\\
+O processo consiste numa investigação de pistas: algoritmos como K-Means ou PCA (Análise de Componentes Principais) analisam as \textit{features}, calculam distâncias ou variâncias, e organizam os dados em grupos ou representações simplificadas. Não há um "certo" ou "errado" explícito — a qualidade depende do quão útil é o padrão descoberto. \\
+Uma loja online tem dados de compras dos clientes (ex.: itens comprados, frequência, valor gasto), mas sem categorias definidas. Usando K-Means, o modelo agrupa os clientes em clusters: "compradores casuais", "fanáticos por tecnologia", "caçadores de promoções". A loja usa isso pra personalizar campanhas de marketing, sem precisar rotular cada cliente manualmente.\\
+A ausência de rótulos economiza tempo e esforço, abrindo portas pra explorar dados novos ou caóticos. Mas avaliar o resultado é mais subjetivo — como saber se os clusters fazem sentido? — e exige ajustes manuais (ex.: escolher o número de grupos no K-Means).
     \begin{itemize}
         \item Segmentação de clientes
         \item Compressão de dados
@@ -91,44 +113,44 @@ No tipo de aprendizado não supervisionado, os dados não são rotulados e o mod
     \end{itemize}
 
 \subsection{Aprendizado por Reforço (Reinforcement Learning)}
-O aprendizado por reforço se baseia em um agente que aprende interagindo com um ambiente e recebendo recompensas ou penalidades com base em suas ações.
+O aprendizado por reforço é o tipo mais "jogo" do ML, inspirado em como humanos aprendem por tentativa e erro. Aqui, não há um dataset fixo com entradas e saídas; em vez disso, um agente interage com um ambiente, tomando ações e recebendo recompensas (ou punições) com base nos resultados. O objetivo é maximizar a recompensa total ao longo do tempo, aprendendo uma política — um plano de ação — que guia as decisões.\\
+Funciona assim: o agente observa o estado do ambiente (ex.: posição num jogo), escolhe uma ação (ex.: mover pra direita), recebe uma recompensa (ex.: +10 pontos) e ajusta sua estratégia usando algoritmos como Q-Learning ou Deep Reinforcement Learning (DRL). É um ciclo contínuo de exploração e aprendizado. \\
+Pense num robô aspirador navegando numa casa. O ambiente é o mapa da casa, as ações são "virar à esquerda", "avançar", "parar", e a recompensa vem por limpar sujeira (+5), enquanto bater na parede gera uma punição (-2). Após várias tentativas, o robô aprende a trajetória ideal pra limpar tudo sem travar. A DeepMind usou essa abordagem pra treinar agentes que jogam videogames do Atari e, com o AlphaGo, o jogo de tabuleiro Go.
+É perfeito pra problemas dinâmicos e interativos (ex.: robótica, jogos), mas exige tempo e poder computacional proporcional para treinar — o agente pode demorar pra aperfeiçoar o treinamento. Definir as recompensas também é um desafio: se mal calibradas, o modelo pode aprender coisas inúteis.
 \begin{itemize}
-    \item Jogos e Inteligência Artificial (xAI, OpenAI, DeepSeek)
+    \item Jogos (Atari, xadrez, Go)
     \item Controle de robôs
 \end{itemize}
 
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{p{4cm} p{6cm} p{4cm}}
-    \toprule
-    \textbf{Aprendizado} & \textbf{Descrição} & \textbf{Tipo de Dados} \\ 
-    \midrule
-    Supervisionado & Dados rotulados & Qualitativos e Quantitativos\\
-    Não Supervisionado & Usa dados não rotulados para encontrar padrões & Quantitativos \\
-    Por Reforço & Aprendizado por tentativa e erro, com recompensas & Qualitativos e Quantitativos \\ 
-    \bottomrule
-    \end{tabular}
-    \caption{Comparação entre os tipos de aprendizado de máquina e os tipos de dados utilizados.}
-    \label{tab:tipos_aprendizado}
-    \end{table}
+\subsection{Aprendizado Semissupervisionado (Semi-Supervised Learning)}
+O aprendizado semissupervisionado é o meio-termo entre o supervisionado e o não supervisionado, usado quando temos poucos dados rotulados e muitos sem rótulos. A ideia é combinar o poder dos rótulos pra guiar o aprendizado com a quantidade dos dados não rotulados pra enriquecer o modelo. Ele mistura técnicas dos dois mundos: primeiro, usa os dados rotulados pra treinar um modelo básico, depois "propaga" esse conhecimento pros dados sem rótulos, refinando as previsões.\\
+O processo pode envolver \textbf{pseudo-rotulação} (o modelo prevê rótulos pros dados não rotulados e os inclui no treino) ou \textbf{co-treinamento} (dois modelos colaboram, cada um rotulando dados pro outro). É uma solução prática pra cenários reais, onde rotular tudo é caro ou impossível.\\
+Uma empresa de saúde tem 100 imagens médicas rotuladas como "normal" ou "tumor" e 10.000 imagens sem rótulos. Um modelo supervisionado treina nos 100 exemplos, prevê rótulos pras 10.000, e depois retreina com o conjunto expandido. Isso melhora a detecção de tumores em exames futuros, aproveitando os dados não rotulados que seriam ignorados num aprendizado puramente supervisionado.\\
+Economiza esforço de rotulação e aumenta a robustez com mais dados, mas depende da qualidade dos rótulos iniciais — se tiverem erros, a propagação pode amplificar o problema. Também exige algoritmos mais complexos pra balancear as duas fontes de informação.
+\begin{itemize}
+    \item Análise de documentos jurídicos (grande volume de textos sem rótulo).
+    \item Sistemas de recomendação (mistura de interações explícitas e implícitas).
+\end{itemize}
 
+\newpage
 
-
-\chapter{Estatística Essencial para Machine Learning}  
+\chapter{Estatística Essencial para Machine Learning}\label{cap:estatistica}
 
 \section{Estatística Descritiva}
 A estatística descritiva é uma parte fundamental da análise de dados, pois fornece uma visão geral das características principais de um conjunto de dados.
 Ela envolve o resumo e a descrição dos dados por meio de medidas numéricas, gráficos e tabelas. As principais medidas incluem:
 \begin{itemize}
-    \item \textbf{Média:} A média aritmética é a soma de todos os valores dividida pelo número total de valores.
-    \item \textbf{Mediana:} O valor que separa os dados em duas metades, onde 50\% dos dados estão abaixo e 50\% estão acima.
-    \item \textbf{Moda:} O valor que aparece com mais frequência em um conjunto de dados.
+    \item \textbf{Média:} A média aritmética é a estimativa de localização mais básica. A média é a  soma de todos os valores dividida pelo número total de valores.
+    \item \textbf{Mediana:} É o valor que separa os dados em duas metades, que ocupa a posição central em um conjunto de dados ordenado (organizado de forma crescente ou decrescente). Se houver um número ímpar de dados, ela será o valor do meio. Se houver um número par de dados, será a média aritmética dos dois valores centrais.
+    \item \textbf{Moda:} É o valor que aparece com mais frequência em um conjunto de dados.
+    Suponha o conjunto \texttt{[2,4,5,5,6,7,5]}, o valor de moda será o \texttt{5}. O mesmo acontece no conjunto \texttt{[A, B, C, A, D, A, E]}, o valor de moda será o \texttt{A}.
     \item \textbf{Variância:} Uma medida da dispersão dos dados em relação à média. A variância é calculada como a média dos quadrados das diferenças entre cada valor e a média.
-    \item \textbf{Desvio Padrão:} Uma medida da dispersão dos dados em relação à média. Quanto maior o desvio padrão, mais espalhados estão os dados.
+    \item \textbf{Desvio Padrão:} Raiz quadrada da variância, expressa na mesma unidade dos dados. Quanto maior o desvio padrão, mais espalhados estão os dados.
     \item \textbf{Correlação:} Uma medida que indica a força e a direção da relação entre duas variáveis. A correlação varia de -1 a 1, onde -1 indica uma correlação negativa perfeita, 0 indica nenhuma correlação e 1 indica uma correlação positiva perfeita.
+    \item \textbf{Outlier:} Valor extremo, muito diferente da maioria dos dados.
 \end{itemize}
 
-\subsection{Exemplo: Calculando a Média e o Desvio Padrão de Temperaturas Diárias}
+\subsection{Calculando a Média e o Desvio Padrão de Temperaturas Diárias}
 
 Suponha que registramos as temperaturas máximas diárias (°C) de uma semana em uma cidade. Os dados coletados são: 20, 22, 19, 23, 21, 20, 24. Vamos calcular a média e o desvio padrão passo a passo.
 
@@ -174,17 +196,15 @@ Passo a passo:
     \end{itemize}
     \item Some os quadrados: \(1.6641 + 0.5041 + 5.2441 + 2.9241 + 0.0841 + 1.6641 + 7.3441 = 19.4288\),
     \item Divida pelo número de observações: \(\frac{19.4288}{7} \approx 2.7755\),
-    \item Tire a raiz quadrada: \(\sigma = \sqrt{2.7755} \approx 1.66\).
+    \item Tire a raiz quadrada: \(\sigma = \sqrt{2.7755} \approx 1.67\).
 \end{enumerate}
-Assim, o desvio padrão das temperaturas é aproximadamente 1,66°C.
 
-\subsubsection{Interpretação}
-A média de 21,29°C indica a temperatura típica da semana, enquanto o desvio padrão de 1,66°C mostra que as temperaturas variam, em média, 1,66°C para mais ou menos em relação à média. Esses valores ajudam a entender a consistência do clima e podem ser usados em modelos de Machine Learning para previsões futuras.
+Assim, o desvio padrão das temperaturas é aproximadamente 1,67°C.
 
-\subsubsection{Cálculo com Python}
+\subsection{Aplicando Python}
 Os mesmos cálculos podem ser realizados de forma eficiente usando Python com a biblioteca NumPy. O código a seguir mostra como:
 
-\begin{lstlisting}[language=Python]
+\begin{minted}{python}
 # Importando a biblioteca NumPy
 import numpy as np
     
@@ -198,24 +218,1325 @@ print(f"Média das temperaturas: {media:.2f}°C")
 # Calcula o desvio padrão
 desvio_padrao = np.std(temperaturas)
 print(f"Desvio padrão das temperaturas: {desvio_padrao:.2f}°C")
-\end{lstlisting}    
+\end{minted} 
 
-Executando o código, obtemos uma média de 21,29°C e um desvio padrão de 1,67°C, valores consistentes com o cálculo manual (pequenas diferenças ocorrem devido a 
-arredondamentos).
-    
+Executando o código, obtemos uma média de 21,29°C e um desvio padrão de 1,67°C, os mesmos valores do cálculo manual. Por padrão, \texttt{np.std} calcula o desvio padrão populacional (divisão por \(n\)), o mesmo da fórmula acima; para o desvio amostral (divisão por \(n-1\)), use \texttt{np.std(temperaturas, ddof=1)}.
+
 \subsubsection{Visualização com Curva Normal}
-A distribuição das temperaturas pode ser visualizada em uma curva normal, que mostra como os dados se distribuem em torno da média. A Figura~\ref{fig:curva_normal} apresenta o histograma das temperaturas e a curva normal correspondente, gerada com Python e as bibliotecas Matplotlib e SciPy.
-    
-\begin{figure}[ht]
+A distribuição das temperaturas pode ser visualizada em uma curva normal, que mostra como os dados se distribuem em torno da média. A Figura \ref{fig:curva_normal} apresenta o histograma das temperaturas e a curva normal correspondente, gerada com Python e as bibliotecas Matplotlib e SciPy.
+
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{curva_normal_temperaturas.png}
 \caption{Distribuição das temperaturas diárias com curva normal (média = 21,29°C, desvio padrão = 1,67°C).}
 \label{fig:curva_normal}
 \end{figure}
-    
-\subsubsection{Interpretação}
-A média de 21,29°C e o desvio padrão de 1,67°C indicam que as temperaturas variam moderadamente em torno de um valor central. A curva normal na Figura~\ref{fig:curva_normal} ilustra essa distribuição, sendo útil em Machine Learning para entender a variabilidade dos dados antes de aplicar modelos preditivos.
 
+\subsubsection{Interpretação}
+A média de 21,29°C e o desvio padrão de 1,67°C indicam que as temperaturas variam moderadamente em torno de um valor central. A curva normal na Figura \ref{fig:curva_normal} ilustra essa distribuição, sendo útil em Machine Learning para entender a variabilidade dos dados antes de aplicar modelos preditivos.
+
+\section{Distribuições de Dados}
+Como hoje temos um grande volume de dados com diferentes níveis de qualidade e relevância, a amostragem é essencial, pois permite lidar com esses dados de maneira eficiente e reduzir possíveis vieses. Mesmo em iniciativas que envolvem big data, os modelos preditivos costumam ser inicialmente construídos e testados com amostras (divisão entre teste e treinamento). Além disso, amostras são frequentemente utilizadas em diversos experimentos, como testes de preços ou variações em páginas da web.
+\subsection{Distribuição Normal e Sua Relevância}
+A distribuição normal, ou gaussiana, é uma curva simétrica em forma de sino, definida por sua média ($\mu$) e desvio padrão ($\sigma$). Aproximadamente 68\% dos dados estão a 1 desvio padrão da média, 95\% a 2 desvios, e 99.7\% a 3 desvios. A normalidade é uma premissa de alguns métodos específicos, e não um pré-requisito geral de \textit{Machine Learning}. O Gaussian Naive Bayes e a Análise Discriminante Linear assumem \textit{features} normais dentro de cada classe; na regressão linear, a suposição recai sobre os resíduos e só importa para a inferência clássica (intervalos de confiança e testes sobre os coeficientes). Árvores de decisão, Random Forest, KNN, SVM e redes neurais não exigem que as variáveis sigam distribuição normal. Ainda assim, variáveis muito assimétricas podem se beneficiar de transformações (ex.: logarítmica).
+
+\subsection{Exemplo Prático: Verificando Normalidade em Dados de Altura}
+Geramos um conjunto fictício de alturas (média 170 cm, desvio 10 cm) e visualizamos sua distribuição:
+
+\begin{minted}[breaklines=true, breakanywhere=true]{python}
+    
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+np.random.seed(42)  # semente fixa para reproduzir o resultado
+alturas = np.random.normal(170, 10, 100)
+plt.hist(alturas, bins=10, density=True, alpha=0.6, color='b', label='Histograma')
+xmin, xmax = plt.xlim()
+x = np.linspace(xmin, xmax, 100)
+p = norm.pdf(x, 170, 10)
+plt.plot(x, p, 'k', linewidth=2, label='Curva Normal')
+plt.title("Distribuição de Alturas")
+plt.xlabel("Altura (cm)")
+plt.ylabel("Densidade")
+plt.legend()
+plt.show()
+
+from scipy.stats import shapiro
+estatistica, p_valor = shapiro(alturas)
+print(f"Teste Shapiro - Estatística: {estatistica:.3f}, p-valor: {p_valor:.3f}")
+\end{minted}
+
+\textbf{Resultados:} O histograma segue aproximadamente a curva normal (Figura~\ref{fig:alturas}). No teste de Shapiro-Wilk, o p-valor foi de 0,655, acima de 0,05: não há evidência para rejeitar a hipótese de normalidade.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{distribuição_de_alturas.png}
+\caption{Distribuição de alturas com curva normal.}
+\label{fig:alturas}
+\end{figure}
+
+\textbf{Interpretação:} Dados aproximadamente normais atendem aos métodos que dependem dessa suposição. Se o p-valor fosse menor que 0,05, valeria avaliar uma transformação (ex.: log) antes de aplicar testes paramétricos ou modelos que assumem normalidade.
+
+\section{Correlação de Pearson}
+
+A análise exploratória dos dados, na maioria dos projetos de modelagem, seja para pesquisa ou para ciência de dados, envolve o estudo da correlação entre variáveis, e entre variáveis e uma variável-alvo. A correlação de Pearson \( r \) mede a força e direção da relação linear entre duas variáveis \( X \) e \( Y \). A fórmula é dada por:
+
+\[
+r = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2 \cdot \sum (y_i - \bar{y})^2}}
+\]
+
+\subsection{Exemplo Prático}
+
+Considere os seguintes dados abaixo:
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Pessoa} & \textbf{Horas de Estudo (X)} & \textbf{Nota na Prova (Y)} \\
+\midrule
+João   & 2  & 60 \\
+Ana    & 4  & 70 \\
+Bruno  & 6  & 80 \\
+Carla  & 8  & 90 \\
+Lucas  & 10 & 100 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{1. Cálculo das Médias}
+Para (\(x\)) somamos as horas de estudo de todas as pessoas e dividimos pelo total de pessoas. E para (\(y\)) faremos o mesmo, soma-se as notas nas provas e dividimos pela quantidade de notas. 
+\[
+\bar{x} = \frac{2 + 4 + 6 + 8 + 10}{5} = 6
+\quad \text{e} \quad
+\bar{y} = \frac{60 + 70 + 80 + 90 + 100}{5} = 80
+\]
+
+\subsection*{2. Tabela de Cálculo}
+Observando a seguinte tabela de cálculo, poderemos, em seguida, substituir cada um dos elementos na fórmula de correlação.
+\begin{center}
+\begin{tabular}{ccccccc}
+\toprule
+\(x_i\) & \(y_i\) & \(x_i - \bar{x}\) & \(y_i - \bar{y}\) & \((x_i - \bar{x})(y_i - \bar{y})\) & \((x_i - \bar{x})^2\) & \((y_i - \bar{y})^2\) \\
+\midrule
+2  & 60  & -4 & -20 & 80  & 16 & 400 \\
+4  & 70  & -2 & -10 & 20  & 4  & 100 \\
+6  & 80  & 0  & 0   & 0   & 0  & 0   \\
+8  & 90  & 2  & 10  & 20  & 4  & 100 \\
+10 & 100 & 4  & 20  & 80  & 16 & 400 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{3. Substituindo na Fórmula}
+Ao substituir os elementos da fórmula, poderemos, enfim, chegar a uma conclusão a respeito da relação das notas das provas e a quantidade de horas estudadas por cada pessoa. 
+\[
+r = \frac{80 + 20 + 0 + 20 + 80}{\sqrt{(16 + 4 + 0 + 4 + 16)(400 + 100 + 0 + 100 + 400)}}=
+\]
+\vspace{1cm}
+\[
+r = \frac{200}{\sqrt{40 \cdot 1000}} = \frac{200}{\sqrt{40000}} = \frac{200}{200} = 1
+\]
+
+\subsection{Resultado}
+
+A correlação entre horas de estudo e nota na prova é \( r = 1 \), indicando uma \textbf{correlação positiva perfeita}. Ou seja, quanto mais a pessoa estuda, maior tende a ser sua nota.
+
+% \newpage 
+
+\subsubsection{Aplicando Python com mesmo exemplo}
+
+Utilizamos a correlação de Pearson, só que dessa vez aplicando código em Python, que gerou a Figura~\ref{fig:correlacao_horas_notas}, ilustrando essa relação, além de fazer o cálculo.
+
+
+\textbf{Código utilizado:}
+
+\begin{minted}[breaklines=true, breakanywhere=true]{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import pearsonr
+
+# Dados fictícios: Horas estudadas e notas obtidas
+horas_estudo = np.array([2, 4, 6, 8, 10])
+notas = np.array([60, 70, 80, 90, 100])
+
+# Cálculo da correlação de Pearson
+correlacao, p_valor = pearsonr(horas_estudo, notas)
+
+# Exibir os resultados
+print(f"Correlação de Pearson: {correlacao:.2f}")
+print(f"Valor-p: {p_valor:.4f}")
+
+# Gerar gráfico de dispersão
+plt.figure(figsize=(8, 5))
+plt.scatter(horas_estudo, notas, color='blue', label="Dados")
+plt.plot(horas_estudo, np.poly1d(np.polyfit(horas_estudo, notas, 1))(horas_estudo), color="red", linestyle="--", label="Tendência")
+plt.title('Correlação entre Horas Estudadas e Notas Obtidas')
+plt.xlabel('Horas Estudadas')
+plt.ylabel('Nota Obtida')
+plt.legend()
+plt.grid(False)
+plt.tight_layout()
+plt.show()
+\end{minted}
+
+\begin{verbatim}
+Saída: Correlação de Pearson: 1.00
+Valor-p: 0.0000
+\end{verbatim}
+
+\newpage
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Correlação_de_Person.png}
+\caption{Correlação entre horas estudadas e notas obtidas.}
+\label{fig:correlacao_horas_notas}
+\end{figure}
+
+O coeficiente de correlação de Pearson encontrado foi de exatamente $r = 1$, indicando uma \textbf{correlação positiva perfeita} assim como feito manualmente no exemplo anterior. Isso significa que, à medida que o número de horas estudadas aumenta, as notas dos alunos tendem a melhorar.
+
+\section{Testes de Hipóteses}
+Testes de hipóteses avaliam se diferenças ou relações nos dados são estatisticamente significativas, sendo capaz de orientar decisões.
+Imagine que todo dia você sai de casa e tem duas opções de caminho para ir ao trabalho: a Rua A e a Rua B. Você quer descobrir qual delas é mais rápida, mas há muitas variáveis envolvidas: semáforos, buracos, quantidade de carros, etc.
+Então você decide fazer um experimento: por 10 dias, metade das vezes você vai pela Rua A e, nas outras, pela Rua B. No final de cada viagem, você anota o tempo que levou.
+Depois de juntar os dados, você percebe que a Rua B parece ser mais rápida, mas será que é realmente mais eficiente ou foi só sorte? É aí que entra o teste A/B, um tipo de teste de hipótese.
+Com ele, você consegue verificar estatisticamente se a diferença entre os tempos das ruas é significativa, ou se as variações foram apenas por acaso (como um dia sem trânsito ou um semáforo quebrado).
+Em machine learning, A/B testing funciona do mesmo jeito. Suponha que você tenha dois modelos de recomendação: o modelo A (antigo) e o modelo B (novo). Você mostra os dois para diferentes usuários e mede qual gera mais cliques ou vendas. No fim, você faz um teste estatístico (como no exemplo das ruas) pra saber qual modelo realmente performa melhor, sem confiar só na sorte.
+A lógica é simples: testar, medir e decidir com base em dados reais.
+
+\subsection{Conceito de p-valor e Teste t}
+O teste t compara médias de dois grupos, testando a hipótese nula ($H_0$) de que não há diferença significativa. O p-valor indica a probabilidade de observar uma diferença tão grande quanto a encontrada (ou maior) caso $H_0$ seja verdadeira; por convenção, um p-valor menor que 0,05 leva a rejeitar $H_0$, sugerindo diferença real. Em ML, isso ajuda a determinar se uma \textit{feature} impacta a variável alvo.
+
+\subsection{Exemplo Prático: Comparando Médias de Dois Grupos}
+Comparamos temperaturas de duas cidades:
+
+\begin{minted}{python}
+from scipy.stats import ttest_ind
+
+temp_cidade1 = [22, 23, 22, 25, 19]
+temp_cidade2 = [20, 21, 19, 22, 18]
+estatistica, p_valor = ttest_ind(temp_cidade1, temp_cidade2)
+print(f"Estatística t: {estatistica:.2f}, p-valor: {p_valor:.3f}")
+\end{minted}
+
+\begin{verbatim}
+Saída: Estatística t: 1.83, p-valor: 0.104
+\end{verbatim}
+
+\textbf{Interpretação:} O p-valor de 0,104 (maior que 0,05) não permite rejeitar $H_0$: com apenas cinco medições por cidade, a diferença observada entre as médias (22,2°C contra 20,0°C) pode ser fruto do acaso. Isso é diferente de provar que as cidades são iguais; uma amostra maior poderia revelar uma diferença real. Em um projeto de ML, esse tipo de teste ajuda a avaliar se uma \textit{feature} como "cidade" carrega informação útil para prever a temperatura.
+
+\section{Normalização e Escalonamento}
+Ajustar a escala dos dados é uma etapa importante para boa parte dos modelos de \textit{Machine Learning}, mas não para todos.
+
+\subsection{Por que Normalizar Dados para Machine Learning}
+A normalização (ex.: reescalar para o intervalo de 0 a 1) e a padronização (ex.: média 0 e desvio padrão 1) equalizam as magnitudes das \textit{features}, evitando que variáveis com escalas maiores dominem o treinamento. Modelos baseados em distância (KNN, K-Means, SVM) e modelos treinados por gradiente descendente (regressão logística, redes neurais) são sensíveis à escala e dependem desse ajuste. Já os modelos baseados em regras de divisão, como árvores de decisão e Random Forest, são indiferentes à escala das variáveis.
+
+\subsection{Exemplo Prático: Escalonando Características para um Modelo}
+Escalonamos tamanho e quartos de casas:
+
+\begin{minted}{python}
+    
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+
+data = {'tamanho': [50, 70, 80, 100, 120], 'quartos': [1, 2, 2, 3, 3]}
+df = pd.DataFrame(data)
+scaler = StandardScaler()
+dados_escalonados = scaler.fit_transform(df)
+print("Dados Originais:")
+print(df)
+print("Dados Escalonados (média ~0, desvio ~1):")
+print(pd.DataFrame(dados_escalonados, columns=['tamanho', 'quartos']))
+\end{minted}
+
+\begin{verbatim}
+Saída:
+    Dados Originais:
+       tamanho  quartos
+    0       50        1
+    1       70        2
+    2       80        2
+    3      100        3
+    4      120        3
+    Dados Escalonados (média ~0, desvio ~1):
+        tamanho   quartos
+    0 -1.406930 -1.603567
+    1 -0.579324 -0.267261
+    2 -0.165521 -0.267261
+    3  0.662085  1.069045
+    4  1.489691  1.069045
+\end{verbatim}
+
+\textbf{Interpretação:} Antes do escalonamento, "tamanho" (50-120) tinha uma escala muito maior que "quartos" (1-3), o que poderia enviesar um modelo como SVM. Após o ajuste, ambas ficam na mesma ordem de grandeza e contribuem de forma equilibrada para o cálculo de distâncias.
+
+\section{Outliers em Modelos de Regressão}
+
+Em tarefas de regressão, a presença de \textit{outliers}, valores extremos que desviam significativamente do padrão geral dos dados, pode comprometer a precisão e a confiabilidade dos modelos preditivos. Esses pontos anômalos surgem por diversos motivos, como erros de medição, eventos raros ou variações naturais em datasets complexos. Em modelos de regressão linear, por exemplo, \textit{outliers} exercem uma influência desproporcional na estimativa dos coeficientes, pois o método dos mínimos quadrados busca minimizar o erro total, dando peso excessivo a valores aberrantes. Já em árvores de decisão, embora menos sensíveis, \textit{outliers} ainda podem distorcer as divisões iniciais, afetando a generalização.
+
+Detectar e tratar \textit{outliers} é uma etapa crítica no pré-processamento de dados para \textit{Machine Learning}. Métodos comuns incluem a análise estatística baseada no desvio padrão (valores além de 2 ou 3 desvios da média são suspeitos) e o uso do intervalo interquartil (IQR), que identifica pontos fora dos limites definidos por $Q1 - 1.5 \times IQR$ e $Q3 + 1.5 \times IQR$, onde $Q1$ e $Q3$ são os quartis inferior e superior, e $IQR = Q3 - Q1$. Após a detecção, as opções de tratamento variam: remover os \textit{outliers} (se forem erros), transformá-los (ex.: aplicar logaritmo) ou usar modelos robustos que os tolerem (ex.: regressão robusta ou árvores com poda).
+
+A importância desse processo fica clara ao considerar seu impacto prático. Um único \textit{outlier} em um dataset de preços de casas, como um imóvel de 60 m² custando R\$1.000.000 devido a um erro de digitação, pode inclinar a reta de regressão linear, levando a previsões imprecisas para casas típicas. Identificar e mitigar esses casos garante que o modelo reflita as tendências reais dos dados, em vez de ser distorcido por anomalias.
+
+\subsection{Exemplo Prático: Detecção de Outliers em Preços de Casas}
+Criaremos um dataset fictício de preços de casas, incluindo um \textit{outlier} intencional, para demonstrar como detectá-lo e avaliar seu impacto em uma regressão linear. O código Python a seguir implementa essa análise:
+
+Usaremos, para o exemplo, \texttt{LinearRegression} do scikit-learn para ajustar a regressão e \texttt{matplotlib.pyplot} para visualização gráfica. 
+\begin{minted}[]{python}
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+\end{minted}   
+
+Criando o outlier e o dataset para exemplificação:
+\begin{minted}[breaklines=true, breakanywhere=true]{python}
+# O último par (tamanho=60, preco=1000000) é o outlier intencional
+data = {
+    'tamanho': [ 50, 70, 80, 100, 120, 60, 90, 110, 85, 95, 60 ],
+    'preco': [ 180000, 240000, 280000, 350000, 420000, 200000, 300000, 380000, 290000, 320000, 1000000 ]
+}
+df = pd.DataFrame(data)
+\end{minted}    
+
+Calculando os limites do IQR para identificar os outliers:
+
+\begin{minted}[breaklines=true, breakanywhere=true]{python}
+Q1 = df['preco'].quantile(0.25)
+Q3 = df['preco'].quantile(0.75)
+IQR = Q3 - Q1
+limite_inferior = Q1 - 1.5 * IQR
+limite_superior = Q3 + 1.5 * IQR
+
+# Identificando outliers
+outliers = df[(df['preco'] < limite_inferior) | (df['preco'] > limite_superior)]
+print("Outliers detectados:")
+print(outliers)
+\end{minted}
+
+\textbf{Saída:}  
+\begin{verbatim}
+   - Outliers detectados:  
+\end{verbatim}
+  \begin{tabular}{|c|c|}  
+    \hline  
+    tamanho & preco \\  
+    \hline  
+    60 & 1000000 \\  
+    \hline  
+  \end{tabular}
+  
+\vspace{1cm}
+
+Ajustando a regressão com e sem o outlier:
+
+
+\begin{minted}[breaklines=true, breakanywhere=true]{python}
+# Regressão linear com outliers
+X = df[['tamanho']]
+y = df['preco']
+modelo_com_outlier = LinearRegression()
+modelo_com_outlier.fit(X, y)
+y_pred_com_outlier = modelo_com_outlier.predict(X)
+
+# Removendo o outlier e treinando novamente
+df_sem_outlier = df[df['preco'] <= limite_superior]
+X_sem_outlier = df_sem_outlier[['tamanho']]
+y_sem_outlier = df_sem_outlier['preco']
+modelo_sem_outlier = LinearRegression()
+modelo_sem_outlier.fit(X_sem_outlier, y_sem_outlier)
+y_pred_sem_outlier = modelo_sem_outlier.predict(X_sem_outlier)
+  
+\end{minted}
+Visualização:
+\begin{minted}[breaklines=true, breakanywhere=true]{python}
+plt.scatter(X, y, color='blue', label='Dados com outlier')
+plt.plot(X, y_pred_com_outlier, 
+        color='red', 
+        label='Regressão com outlier')
+plt.scatter(X_sem_outlier, 
+        y_sem_outlier, 
+        color='green', 
+        label='Dados sem outlier')
+plt.plot(X_sem_outlier, 
+        y_pred_sem_outlier, 
+        color='orange', 
+        label='Regressão sem outlier')
+plt.xlabel('Tamanho (m²)')
+plt.ylabel('Preço (R$)')
+plt.title('Impacto de Outliers na Regressão Linear')
+plt.legend()
+plt.show()
+
+# Coeficientes
+print(f"Com outlier - Inclinação: {modelo_com_outlier.coef_[0]:.2f}, "
+      f"Intercepto: {modelo_com_outlier.intercept_:.2f}")
+print(f"Sem outlier - Inclinação: {modelo_sem_outlier.coef_[0]:.2f}, "
+      f"Intercepto: {modelo_sem_outlier.intercept_:.2f}")
+\end{minted}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{outliers_detection.png}
+\caption{Representação de impacto de outliers na regressão linear.}
+\label{fig:outlier}
+\end{figure}
+
+  \begin{verbatim}
+- Coeficientes:  
+  - Com outlier: Inclinação = -356.81, Intercepto = 389842.45
+  - Sem outlier: Inclinação = 3470.86, Intercepto = -2494.17
+      
+  \end{verbatim}
+ 
+
+
+\textbf{Gráfico:} Na Figura~\ref{fig:outlier}, a reta ajustada com o \textit{outlier} (vermelha) fica quase horizontal e desalinhada dos pontos típicos, enquanto a reta sem o \textit{outlier} (laranja) segue de perto os dados verdes (sem o valor extremo).
+
+\subsection{Interpretação dos Resultados}
+A detecção via IQR identificou corretamente o preço de R\$1.000.000 como um \textit{outlier}, já que o limite superior calculado (R\$522.500, com $Q1$ = R\$260.000 e $Q3$ = R\$365.000) foi amplamente ultrapassado. Esse valor, associado a um tamanho modesto de 60 m², é inconsistente com o padrão dos outros preços, que variam de R\$180.000 a R\$420.000.
+
+A regressão linear com o \textit{outlier} resultou em uma inclinação de $-356{,}81$: segundo esse modelo, cada metro quadrado adicional reduziria o preço em cerca de R\$357, uma conclusão absurda. Como o ponto extremo pertence a uma casa pequena (60 m², abaixo do tamanho médio do dataset), ele ergue o lado esquerdo da reta e a deixa praticamente horizontal, com intercepto de 389842.45. Após removê-lo, a inclinação passa a 3470.86 (cerca de R\$3.471 por m²) e o intercepto fica próximo de zero ($-2494{,}17$), valores coerentes com os dados típicos. O gráfico confirma visualmente: a reta vermelha (com \textit{outlier}) é puxada para cima pelo valor anômalo, enquanto a laranja (sem \textit{outlier}) acompanha a tendência real.
+
+Em \textit{Machine Learning}, esse impacto é crítico. Um modelo treinado com \textit{outliers} não tratados pode superestimar preços de casas pequenas e subestimar os de casas grandes, levando a previsões pouco confiáveis. Neste exemplo, o modelo com \textit{outlier} prevê cerca de R\$372 mil para a casa de 50 m² (preço real: R\$180 mil) e R\$347 mil para a de 120 m² (preço real: R\$420 mil). Isso acontece porque os mínimos quadrados penalizam o erro ao quadrado, e um único desvio enorme passa a dominar a soma dos erros. A remoção do \textit{outlier} melhorou a generalização, mas em cenários reais, outras estratégias, como substituir o valor por uma média ou usar um modelo robusto como RANSAC, poderiam ser exploradas. Para árvores de decisão, o \textit{outlier} teria menos influência nas regiões finais, mas ainda poderia afetar divisões iniciais, reforçando a necessidade de tratamento prévio.
+
+Esse exemplo destaca a importância de diagnosticar e lidar com \textit{outliers} antes do treinamento, garantindo que o modelo capture as relações verdadeiras nos dados e produza previsões úteis em aplicações práticas, como avaliações imobiliárias.
+
+
+\newpage    
+
+\chapter{Regressão: Previsão de Valores Contínuos}
+
+\section{O que é Regressão?}
+
+Regressão é uma técnica de Machine Learning usada para prever valores contínuos, ou seja, números que podem assumir qualquer valor dentro de um intervalo. Exemplos incluem o preço de uma casa, a temperatura futura ou o tempo de entrega de um produto. Diferente da classificação, que prevê categorias discretas (como "sim" ou "não"), a regressão é ideal para problemas onde a saída é uma quantidade mensurável.
+
+Em Machine Learning, a regressão é um tipo de aprendizado supervisionado, pois depende de um conjunto de dados rotulados contendo pares de entradas (variáveis independentes) e saídas (variáveis dependentes). O objetivo é encontrar uma função matemática que relacione essas entradas às saídas, permitindo previsões precisas para novos dados. Entre os métodos de regressão, o mais simples e amplamente utilizado é a regressão linear, que será o foco deste capítulo.
+
+\section{Regressão Linear}
+
+A regressão linear assume que a relação entre a variável independente (\(x\)) e a variável dependente (\(y\)) pode ser aproximada por uma reta. A equação da regressão linear simples é dada por:
+\begin{equation}
+y = mx + b
+\end{equation}
+onde:
+\begin{itemize}
+    \item \(y\): Valor previsto (variável dependente),
+    \item \(x\): Valor de entrada (variável independente),
+    \item \(m\): Coeficiente angular (inclinação da reta),
+    \item \(b\): Intercepto (valor de \(y\) quando \(x = 0\)).
+\end{itemize}
+
+O objetivo do treinamento é ajustar \(m\) e \(b\) para minimizar o erro entre os valores previstos (\(\hat{y}\)) e os valores reais dos dados. Esse erro é frequentemente medido pelo erro quadrático médio (MSE), definido como:
+\begin{equation}
+\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+\end{equation}
+onde \(y_i\) é o valor real, \(\hat{y}_i\) é o valor previsto e \(n\) é o número de observações. A Figura~\ref{fig:regressao_linear} mostra uma reta ajustada a um conjunto de pontos.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{regressao_linear.png}
+\caption{Representação gráfica de uma regressão linear.}
+\label{fig:regressao_linear}
+\end{figure}
+
+\section{Exemplo Prático: Prever o Preço de Casas}
+
+Para ilustrar a regressão linear, consideremos um exemplo prático: prever o preço de casas (em milhares de reais) com base em seu tamanho (em metros quadrados). Suponha os seguintes dados coletados:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c}
+\toprule
+\textbf{Tamanho (m²)} & \textbf{Preço (mil R\$)} \\
+\midrule
+50  & 200 \\
+70  & 250 \\
+90  & 320 \\
+110 & 380 \\
+130 & 450 \\
+\bottomrule
+\end{tabular}
+\caption{Dados de tamanho e preço de casas.}
+\label{tab:casas}
+\end{table}
+
+\subsection{Cálculo Manual Simplificado}
+Para uma regressão linear simples, podemos estimar \(m\) e \(b\) usando o método dos mínimos quadrados. A fórmula para o coeficiente angular é:
+\begin{equation}
+m = \frac{n \sum (x_i y_i) - \sum x_i \sum y_i}{n \sum x_i^2 - (\sum x_i)^2}
+\end{equation}
+e o intercepto:
+\begin{equation}
+b = \frac{\sum y_i - m \sum x_i}{n}.
+\end{equation}
+
+Usando os dados da Tabela~\ref{tab:casas}:
+\begin{itemize}
+    \item \(n = 5\),
+    \item \(\sum x_i = 50 + 70 + 90 + 110 + 130 = 450\),
+    \item \(\sum y_i = 200 + 250 + 320 + 380 + 450 = 1600\),
+    \item \(\sum x_i y_i = (50 \cdot 200) + (70 \cdot 250) + (90 \cdot 320) + (110 \cdot 380) + (130 \cdot 450) = 156\,600\),
+    \item \(\sum x_i^2 = 50^2 + 70^2 + 90^2 + 110^2 + 130^2 = 44\,500\).
+\end{itemize}
+Substituímos:
+\begin{itemize}
+    \item \(m = \frac{5 \cdot 156\,600 - 450 \cdot 1600}{5 \cdot 44\,500 - 450^2} = \frac{783\,000 - 720\,000}{222\,500 - 202\,500} = \frac{63\,000}{20\,000} = 3.15\),
+    \item \(b = \frac{1600 - 3.15 \cdot 450}{5} = \frac{1600 - 1417.5}{5} = \frac{182.5}{5} = 36.5\).
+\end{itemize}
+Assim, a equação é \(y = 3.15x + 36.5\).
+
+\subsection{Calculando com Python}
+Em Python, usamos a biblioteca \texttt{scikit-learn} para ajustar o modelo:
+
+\begin{minted}{python}
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# Dados Fictícios
+X = np.array([[50], [70], [90], [110], [130]])  # Tamanho (m²)
+y = np.array([200, 250, 320, 380, 450])         # Preço (mil R$)
+
+# Cria e treina o modelo
+modelo = LinearRegression()
+modelo.fit(X, y)
+
+# Coeficientes
+m = modelo.coef_[0]      # Inclinação
+b = modelo.intercept_    # Intercepto
+print(f"Equação: y = {m:.2f}x + {b:.2f}")
+
+# Previsão para uma casa de 100 m²
+tamanho_teste = np.array([[100]])
+preco_previsto = modelo.predict(tamanho_teste)
+print(f"Preço previsto para 100 m²: {preco_previsto[0]:.2f} mil R$")
+\end{minted}
+Saída: 
+\begin{verbatim}
+Equação: y = 3.15x + 36.50
+Preço previsto para 100 m²: 351.50 mil R$
+\end{verbatim}
+
+\vspace{5mm}
+
+\subsection{Interpretação}
+A equação \(y = 3.15x + 36.5\), idêntica à do cálculo manual, indica que cada metro quadrado adicional aumenta o preço em 3,15 mil reais, com uma base de 36,5 mil reais. Para uma casa de 100 m², o preço previsto é 351,50 mil reais, um valor coerente com os dados (entre os 320 mil da casa de 90 m² e os 380 mil da de 110 m²). A regressão linear é útil para previsões simples, mas seu desempenho depende da linearidade da relação entre as variáveis.
+
+
+
+\section{Árvore de Decisão}
+\subsection{Árvores de Decisão para Regressão}
+
+Embora a regressão linear seja uma abordagem clássica para prever valores contínuos, as árvores de decisão oferecem uma alternativa poderosa e flexível, especialmente em cenários com relações não lineares entre variáveis. Este método, parte do algoritmo CART (\textit{Classification and Regression Tree}), constrói uma estrutura hierárquica que divide o espaço de dados em regiões com base em condições sobre os atributos, prevendo o valor médio das amostras em cada região terminal. Diferentemente da regressão linear, que assume uma relação linear global, as árvores de decisão capturam interações locais e padrões complexos, tornando-as adequadas para datasets com comportamento não uniforme.
+
+O funcionamento de uma árvore de decisão para regressão começa com a seleção de uma \textit{feature} e um ponto de corte que minimizem o erro quadrático médio (MSE, do inglês \textit{Mean Squared Error}) entre os valores reais e a média da região resultante. Por exemplo, em um dataset com tamanho de casas e número de quartos como preditores de preço, a árvore pode perguntar: "O tamanho é maior que 75 m²?" Se sim, segue para um ramo; se não, para outro. Esse processo de divisão continua recursivamente, criando nós e ramos, até que um critério de parada seja atingido, como uma profundidade máxima ou um número mínimo de amostras por nó. O valor previsto em cada folha é a média dos valores alvo das amostras ali contidas.
+
+As árvores de decisão têm vantagens notáveis: são intuitivas, fáceis de interpretar e não requerem suposições sobre a distribuição dos dados. Contudo, elas podem superajustar (\textit{overfitting}) se não forem limitadas, especialmente em datasets com ruído ou muitas variáveis. Parâmetros como \texttt{max\_depth} (profundidade máxima) e \texttt{min\_samples\_split} (mínimo de amostras por divisão) ajudam a controlar esse risco, equilibrando flexibilidade e generalização.
+
+\subsubsection{Exemplo Prático: Previsão de Preços de Casas}
+Para ilustrar o uso de árvores de decisão em regressão, consideremos um dataset fictício de preços de casas, com duas \textit{features}: tamanho (em metros quadrados) e número de quartos. Nosso objetivo é prever o preço com base nessas variáveis. O código Python a seguir implementa o modelo utilizando a biblioteca \texttt{scikit-learn}:
+
+\begin{minted}{python}
+    
+import pandas as pd
+import numpy as np
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+
+# Criando dados fictícios
+data = {
+    'tamanho': [50, 70, 80, 100, 120, 60, 90, 110, 85, 95],
+    'quartos': [1, 2, 2, 3, 3, 1, 2, 3, 2, 2],
+    'preco': [180000, 240000, 280000, 350000, 
+            420000, 200000, 300000, 380000, 290000, 320000]
+}
+df = pd.DataFrame(data)
+
+# Separando features (X) e alvo (y)
+X = df[['tamanho', 'quartos']]
+y = df['preco']
+
+# Dividindo em conjuntos de treino (80%) e teste (20%)
+X_train, X_test, y_train, y_test = train_test_split(X, 
+                                                    y, 
+                                                    test_size=0.2, 
+                                                    random_state=42)
+
+# Inicializando e treinando o modelo de árvore de decisão
+modelo = DecisionTreeRegressor(max_depth=3, random_state=42)
+modelo.fit(X_train, y_train)
+
+# Fazendo previsões no conjunto de teste
+y_pred = modelo.predict(X_test)
+
+# Calculando o erro quadrático médio
+mse = mean_squared_error(y_test, y_pred)
+print(f"Erro Quadrático Médio (MSE): {mse:.2f}")
+
+# Exibindo as previsões e valores reais
+resultados = pd.DataFrame({'Real': y_test, 'Previsto': y_pred})
+print("Comparação de Valores Reais e Previstos:")
+print(resultados)
+\end{minted}
+\textbf{Resultados:} Com \texttt{random\_state=42}, o conjunto de teste ficou com as amostras (tamanho=85, quartos=2) e (tamanho=70, quartos=2). A saída é:
+
+\begin{verbatim}
+Erro Quadrático Médio (MSE): 850000000.00
+Comparação de Valores Reais e Previstos:
+     Real  Previsto
+8  290000  280000.0
+1  240000  200000.0
+\end{verbatim}
+
+\subsubsection{Interpretação dos Resultados}
+O MSE de 850000000 é a média dos erros ao quadrado entre os preços reais e previstos no conjunto de teste. Convertendo para RMSE ($\sqrt{850000000} \approx 29155$), vemos que o erro típico é de cerca de R\$29.000, razoável para preços que variam de R\$180.000 a R\$420.000, mas longe de desprezível. Na comparação, a casa de 85 m² foi prevista com erro de R\$10.000, enquanto a de 70 m² recebeu R\$200.000, R\$40.000 abaixo do valor real: sem ela no treino, a árvore a colocou na mesma folha da casa de 60 m².
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{arvore_regressao.png}
+\caption{Árvore de decisão treinada no exemplo (gerada com \texttt{sklearn.tree.plot\_tree}). Cada nó mostra a regra de divisão, o número de amostras e o preço médio; as folhas trazem o valor previsto.}
+\label{fig:arvore_de_decisao}
+\end{figure}
+
+A Figura~\ref{fig:arvore_de_decisao} mostra as divisões aprendidas: a primeira pergunta é "tamanho $\leq$ 70 m²?", separando as casas menores (preços mais baixos) das maiores, e os níveis seguintes refinam os cortes de tamanho. A \textit{feature} quartos não foi usada em nenhuma divisão, porque neste dataset ela acompanha o tamanho e não acrescenta informação. O parâmetro \texttt{max\_depth=3} limitou a árvore a três níveis de decisão, evitando que ela memorize os dados de treino (sobreajuste) e promovendo generalização. Em \textit{Machine Learning}, esse controle é crucial: uma árvore muito profunda poderia alcançar MSE zero no treino, mas falhar miseravelmente no teste.
+
+Comparada à regressão linear, a árvore de decisão tem a vantagem de modelar relações não lineares, por exemplo, o impacto do número de quartos pode variar dependendo do tamanho da casa, algo que uma linha reta não captura. Contudo, seu desempenho depende do tamanho do dataset: com apenas 10 amostras, os resultados são preliminares. Em datasets maiores, como milhares de casas, a árvore poderia revelar interações mais complexas, mas também exigiria ajustes adicionais (ex.: poda ou aumento de \texttt{min\_samples\_split}).
+
+Em um contexto prático, esse modelo poderia ser usado por uma imobiliária para estimar preços iniciais de imóveis à venda, fornecendo uma base interpretável para ajustes manuais. Para melhorar, poderíamos testar profundidades diferentes ou combinar com outros métodos (ex.: Random Forest), tópicos que ficam para estudos posteriores.
+
+\newpage
+
+\section{Avaliação de Modelos de Regressão}
+
+Para avaliar a performance de modelos de regressão, utilizamos métricas que quantificam o erro entre os valores previstos e os reais. As mais comuns são o Erro Quadrático Médio (\textit{Mean Squared Error}, MSE), a Raiz do Erro Quadrático Médio (\textit{Root Mean Squared Error}, RMSE), o Erro Absoluto Médio (\textit{Mean Absolute Error}, MAE) e o coeficiente de determinação (\(R^2\)), descritas na Tabela~\ref{tab:metricas_regressao}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{1.6cm} p{3.2cm} p{4.2cm} p{4cm}}
+\toprule
+\textbf{Métrica} & \textbf{Descrição} & \textbf{Fórmula} & \textbf{Interpretação} \\ 
+\midrule
+MSE & Média dos quadrados dos erros entre valores previstos e reais & \(\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 \) & Valores menores indicam melhor ajuste; sensível a outliers devido ao quadrado. \\
+ \\ 
+RMSE & Raiz quadrada do MSE & \(\sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2} \) & Mesma unidade dos dados (ex.: R\$); mais interpretável que o MSE. \\ 
+ \\ 
+MAE & Média dos erros em valor absoluto & \(\frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i| \) & Mesma unidade dos dados; menos sensível a outliers que o MSE. \\
+ \\ 
+\(R^2\) & Proporção da variância de \(y\) explicada pelo modelo & \(1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2} \) & Quanto mais próximo de 1, melhor; 0 equivale a prever sempre a média. \\
+\bottomrule
+\end{tabular}
+\caption{Métricas de avaliação para modelos de regressão. Aqui, \(y_i\) é o valor real, \(\hat{y}_i\) é o valor previsto, \(\bar{y}\) é a média dos valores reais e \(n\) é o número de observações.}
+\label{tab:metricas_regressao}
+\end{table}
+
+\chapter{Classificação: Previsão de Categorias}
+
+\section{O que é Classificação?}
+
+Classificação é uma tarefa fundamental em Machine Learning que consiste em prever a categoria ou classe à qual um dado pertence, com base em suas características. Diferente da regressão, que estima valores contínuos (como o preço de uma casa), a classificação lida com variáveis discretas, geralmente representadas como rótulos ou etiquetas. O objetivo é treinar um modelo com exemplos rotulados, dados onde a categoria correta é conhecida, para que ele possa classificar novos dados desconhecidos de forma precisa.
+
+Em aplicações reais, a classificação está presente em diversas áreas. Um exemplo clássico é a detecção de spam em e-mails: dado o conteúdo de uma mensagem, o modelo deve decidir se ela é "spam" ou "não spam". Outros casos incluem o diagnóstico médico (doente/saudável), reconhecimento de imagens (gato/cachorro) e análise de sentimentos (positivo/negativo). Esses problemas requerem que o modelo aprenda padrões nos dados, como palavras específicas em e-mails ou sintomas em pacientes, para realizar previsões confiáveis.
+
+\section{Modelos Básicos de Classificação}
+
+Nesta seção, exploraremos dois modelos amplamente utilizados para classificação: Regressão Logística e K-Nearest Neighbors (KNN). Ambos são acessíveis para iniciantes e formam a base para entender algoritmos mais complexos.
+
+\subsection{Regressão Logística}
+
+Apesar do nome, Regressão Logística é um modelo de classificação, não de regressão. Ela estima a probabilidade de um dado pertencer a uma classe específica, sendo ideal para problemas binários (duas classes). O modelo utiliza a função \textbf{sigmoide} para transformar uma combinação linear das características em uma probabilidade entre 0 e 1:
+\begin{equation}
+P(y=1|x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \cdots + \beta_n x_n)}}
+\end{equation}
+onde \(P(y=1|x)\) é a probabilidade da classe positiva, \(x_i\) são as características, e \(\beta_i\) são os coeficientes ajustados pelo modelo. Se \(P > 0,5\), o dado é classificado como classe 1; caso contrário, como classe 0.
+
+Por exemplo, considere a tarefa de classificar e-mails como spam ou não spam com base em duas características: o número de palavras "grátis" e "urgente". Um conjunto de dados fictício poderia ser:
+\begin{itemize}
+    \item E-mail 1: 2 "grátis", 0 "urgente" → Não spam,
+    \item E-mail 2: 1 "grátis", 3 "urgente" → Spam.
+\end{itemize}
+A Regressão Logística ajusta os coeficientes \(\beta\) para prever a probabilidade de spam. Abaixo, um exemplo em Python usando a biblioteca scikit-learn:
+
+\begin{minted}{python}
+from sklearn.linear_model import LogisticRegression
+import numpy as np
+
+# Dados: [nº de "grátis", nº de "urgente"]
+X = np.array([[2, 0], [1, 3], [0, 1], [3, 2]])
+y = [0, 1, 0, 1]  # 0 = Não spam, 1 = Spam
+
+# Treina o modelo
+modelo = LogisticRegression()
+modelo.fit(X, y)
+
+# Previsão para novo e-mail: 2 "grátis", 1 "urgente"
+novo_email = np.array([[2, 1]])
+probabilidade = modelo.predict_proba(novo_email)
+print(f"Probabilidade de spam: {probabilidade[0][1]:.2f}")
+\end{minted}
+
+\begin{verbatim}
+Saída:
+    Probabilidade de spam: 0.44
+\end{verbatim}
+
+
+A probabilidade de 0,44 fica abaixo de 0,5, então o e-mail é classificado como não spam.
+
+\subsection{K-Nearest Neighbors (KNN)}
+
+O algoritmo K-Nearest Neighbors (KNN) é um método simples e intuitivo para classificação. Ele funciona encontrando os \(k\) exemplos mais próximos (vizinhos) de um novo dado no conjunto de treinamento e atribuindo a classe mais comum entre eles. A distância, geralmente Euclidiana, é calculada como:
+\begin{equation}
+d(x, y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
+\end{equation}
+onde \(x\) e \(y\) são pontos no espaço das características.
+
+Usando o mesmo exemplo de e-mails, suponha que queremos classificar um novo e-mail com 2 "grátis" e 1 "urgente". O KNN calcula a distância desse ponto aos exemplos de treinamento e escolhe, por exemplo, os 3 vizinhos mais próximos (\(k=3\)). Se dois forem "spam" e um "não spam", o e-mail é classificado como spam. Veja a implementação em Python:
+
+\begin{minted}{python}
+from sklearn.neighbors import KNeighborsClassifier
+import numpy as np
+
+# Dados: [nº de "grátis", nº de "urgente"]
+X = np.array([[2, 0], [1, 3], [0, 1], [3, 2]])
+y = [0, 1, 0, 1]  # 0 = Não spam, 1 = Spam
+
+# Treina o modelo com k=3
+modelo = KNeighborsClassifier(n_neighbors=3)
+modelo.fit(X, y)
+
+# Previsão para novo e-mail: 2 "grátis", 1 "urgente"
+novo_email = np.array([[2, 1]])
+predicao = modelo.predict(novo_email)
+print(f"Classe prevista: {'Spam' if predicao[0] == 1 else 'Não spam'}")
+\end{minted}
+
+\begin{verbatim}
+Saída:
+    Classe prevista: Não spam
+\end{verbatim}
+
+Os três vizinhos mais próximos do novo e-mail são os pontos (2, 0), (3, 2) e (0, 1), a distâncias de 1, 1,41 e 2. Dois deles são "não spam" e um é "spam", então a classe prevista é "não spam".
+
+\section{Considerações Finais}
+
+A Regressão Logística é eficaz para problemas lineares e oferece interpretabilidade por meio de probabilidades, enquanto o KNN é flexível e não assume uma forma específica para os dados, mas é sensível a outliers, à escala das \textit{features} e ao valor de \(k\). Nos capítulos seguintes, exploraremos como avaliar esses modelos e aplicá-los em cenários mais complexos.
+
+A Figura~\ref{fig:fronteira_decisao} ilustra a fronteira de decisão gerada pelo modelo de Regressão Logística para os dados de exemplo. A região azul representa a classe "não spam", enquanto a região vermelha indica "spam", com os pontos de treinamento destacados.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{fronteira_decisao.png}
+\caption{Fronteira de decisão simples para classificação de e-mails como spam ou não spam, usando Regressão Logística.}
+\label{fig:fronteira_decisao}
+\end{figure}
+
+\chapter{Clustering: Agrupamento de Dados}
+
+\section{O que é Aprendizado Não Supervisionado e Clustering?}
+
+Diferente do aprendizado supervisionado, onde os dados possuem rótulos que guiam o treinamento, o aprendizado não supervisionado trabalha com dados não rotulados, buscando identificar padrões ou estruturas intrínsecas sem orientação prévia. Seu objetivo é explorar os dados para encontrar relações naturais, como grupos ou anomalias, sem saber de antemão o que essas relações significam. Essa abordagem é amplamente usada em tarefas como segmentação de mercado, compressão de dados e detecção de outliers.
+
+Dentro do aprendizado não supervisionado, o clustering é uma das técnicas mais populares. Clustering consiste em agrupar dados semelhantes em clusters, de modo que os pontos dentro de um mesmo cluster sejam mais parecidos entre si do que com os de outros clusters. Um exemplo prático é a segmentação de clientes em uma loja online: clientes com padrões de compra semelhantes (ex.: frequência e valor gasto) podem ser agrupados para estratégias de marketing direcionadas. Outras aplicações incluem organização de documentos, análise de redes sociais e até astronomia, como agrupar estrelas por características.
+
+\section{Algoritmo K-Means}
+
+O K-Means é um dos algoritmos de clustering mais simples e amplamente utilizados. Ele divide os dados em \(k\) grupos, onde \(k\) é um número pré-definido pelo usuário, minimizando a variância dentro de cada cluster. O funcionamento do K-Means pode ser descrito nos seguintes passos:
+
+\begin{enumerate}
+    \item \textbf{Inicialização}: Escolha \(k\) pontos aleatórios como centroides iniciais dos clusters.
+    \item \textbf{Atribuição}: Associe cada ponto de dados ao centroide mais próximo, usando a distância Euclidiana:
+    \begin{equation}
+    d(x, c) = \sqrt{\sum_{i=1}^{n} (x_i - c_i)^2}
+    \end{equation}
+    onde \(x\) é um ponto de dados e \(c\) é um centroide.
+    \item \textbf{Atualização}: Recalcule os centroides como a média dos pontos atribuídos a cada cluster.
+    \item \textbf{Iteração}: Repita os passos 2 e 3 até que os centroides não mudem significativamente ou um número máximo de iterações seja atingido.
+\end{enumerate}
+
+O resultado é um conjunto de \(k\) clusters, onde cada ponto pertence ao cluster cujo centroide está mais próximo. Apesar de sua simplicidade, o K-Means tem limitações: ele assume clusters esféricos e pode ser sensível à escolha inicial dos centroides e ao valor de \(k\).
+
+\section{Exemplo Prático: Segmentar Clientes por Compras}
+
+Considere uma loja online que deseja segmentar clientes com base em duas características: o número de compras mensais e o valor médio gasto por compra (em reais). Um conjunto de dados fictício com 6 clientes poderia ser:
+\begin{itemize}
+    \item Cliente 1: 2 compras, R\$50,
+    \item Cliente 2: 5 compras, R\$120,
+    \item Cliente 3: 1 compra, R\$30,
+    \item Cliente 4: 3 compras, R\$60,
+    \item Cliente 5: 6 compras, R\$150,
+    \item Cliente 6: 4 compras, R\$100.
+\end{itemize}
+
+Vamos usar o K-Means com \(k=2\) para agrupar esses clientes em dois clusters: "compradores ocasionais" e "compradores frequentes". A seguir, mostramos como implementar isso em Python com a biblioteca scikit-learn:
+
+\begin{minted}{python}
+import numpy as np
+from sklearn.cluster import KMeans
+
+# Dados: [nº de compras, valor médio (R$)]
+X = np.array([[2, 50], [5, 120], [1, 30], [3, 60], [6, 150], [4, 100]])
+
+# Aplica K-Means com k=2
+kmeans = KMeans(n_clusters=2, random_state=42)
+kmeans.fit(X)
+
+# Resultados
+clusters = kmeans.labels_
+centroides = kmeans.cluster_centers_
+print("Atribuição dos clusters:", clusters)
+print("Centroides:", centroides)
+\end{minted}
+
+A saída é:
+\begin{itemize}
+    \item Atribuição dos clusters: [0, 1, 0, 0, 1, 1],
+    \item Centroides: [[2, 46.67], [5, 123.33]].
+\end{itemize}
+
+Isso indica que os clientes 1, 3 e 4 (cluster 0) são "compradores ocasionais" (média de 2 compras, R\$46,67), enquanto os clientes 2, 5 e 6 (cluster 1) são "compradores frequentes" (média de 5 compras, R\$123,33).
+
+
+\section{Visualização dos Clusters}
+
+Para entender melhor os resultados, podemos visualizar os clusters em um gráfico de dispersão. O código Python a seguir gera essa visualização, destacando os pontos dos clientes e os centroides:
+
+\begin{minted}{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+
+# Dados
+X = np.array([[2, 50], [5, 120], [1, 30], [3, 60], [6, 150], [4, 100]])
+
+# Aplica K-Means
+kmeans = KMeans(n_clusters=2, random_state=42)
+kmeans.fit(X)
+
+# Plota os clusters
+plt.scatter(X[:, 0], X[:, 1], c=kmeans.labels_,
+                                cmap='viridis', 
+                                edgecolors='k', 
+                                label='Clientes')
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], 
+            c='red', marker='x', s=200, label='Centroides')
+plt.xlabel('Número de Compras Mensais')
+plt.ylabel('Valor Médio por Compra (R$)')
+plt.title('Segmentação de Clientes com K-Means')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.savefig('clusters_clientes.png', dpi=300, bbox_inches='tight')
+plt.show()
+\end{minted}
+
+A Figura~\ref{fig:clusters_clientes} mostra o resultado, com os clientes em cores diferentes por cluster e os centroides marcados em vermelho.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{clusters_clientes.png}
+\caption{Visualização dos clusters de clientes com K-Means (\(k=2\)), destacando compradores ocasionais e frequentes.}
+\label{fig:clusters_clientes}
+\end{figure}
+
+
+
+\section{Interpretação e Limitações}
+
+O gráfico revela dois grupos distintos: compradores ocasionais com poucas compras e gastos baixos, e compradores frequentes com mais compras e gastos maiores. Essa segmentação pode orientar estratégias de marketing, como oferecer descontos aos ocasionais ou programas de fidelidade aos frequentes. No entanto, o K-Means exige que \(k\) seja escolhido previamente, o que nem sempre é trivial. Técnicas como o método do cotovelo (elbow method) podem ajudar a determinar o \(k\) ideal, um tópico que pode ser explorado em estudos mais avançados.
+
+Outro cuidado: as duas \textit{features} estão em escalas diferentes (1 a 6 compras contra R\$30 a R\$150), então a distância Euclidiana é dominada pelo valor gasto. Aqui o resultado é o mesmo porque as duas variáveis crescem juntas, mas em um projeto real o correto é padronizar os dados antes de aplicar o K-Means, como visto no Capítulo~\ref{cap:estatistica}.
+
+\newpage
+
+\chapter{Avaliação e Melhoria de Modelos}
+
+\section{Overfitting e Underfitting: Definições e Causas}
+
+A construção de modelos de Machine Learning envolve encontrar um equilíbrio entre aprender os padrões dos dados e generalizar para novos exemplos. Dois problemas comuns nesse processo são o \textit{overfitting} e o \textit{underfitting}. O \textit{overfitting} ocorre quando um modelo se ajusta excessivamente aos dados de treinamento, capturando inclusive ruídos ou detalhes irrelevantes, o que prejudica seu desempenho em dados novos. Por outro lado, o \textit{underfitting} acontece quando o modelo é simples demais, falhando em aprender os padrões principais dos dados.
+
+As causas do \textit{overfitting} incluem modelos muito complexos (ex.: muitas variáveis ou camadas), poucos dados de treinamento ou falta de regularização. O sintoma típico é um bom desempenho nos dados de treinamento e um desempenho ruim em dados novos. Já o \textit{underfitting} pode resultar de modelos simples (ex.: regressão linear para dados não lineares) ou treinamento insuficiente; aumentar a capacidade do modelo (mais parâmetros ou \textit{features}) é uma das soluções. Entender esses conceitos é essencial para avaliar e melhorar o desempenho de um modelo, garantindo que ele seja útil em aplicações reais.
+
+\section{Divisão Treino/Teste e Validação Cruzada}
+
+Para avaliar a capacidade de generalização de um modelo, é prática padrão dividir os dados em dois conjuntos: \textit{treino} e \textit{teste}. O conjunto de treino é usado para ajustar o modelo, enquanto o conjunto de teste, que contém dados não vistos durante o treinamento, serve para medir seu desempenho real. Uma divisão comum é 80\% para treino e 20\% para teste, mas isso pode variar conforme o tamanho do dataset.
+
+Quando os dados são limitados, a divisão simples pode ser instável, pois o resultado depende de quais dados caem no teste. Nesses casos, a validação cruzada é uma alternativa robusta. Na validação cruzada de \(k\) dobras (\textit{k-fold cross-validation}), os dados são divididos em \(k\) partes iguais. O modelo é treinado \(k\) vezes, usando \(k-1\) partes para treino e a parte restante para teste em cada iteração. A média dos desempenhos fornece uma estimativa mais confiável. Por exemplo, com \(k=5\), cada dobra representa 20\% dos dados como teste.
+
+\section{Exemplo Prático: Avaliar um Modelo de Regressão}
+
+Considere um conjunto de dados fictício para prever o preço de casas (em milhares de reais) com base em sua área (em m²). Os dados são:
+\begin{itemize}
+    \item Casa 1: 50 m², R\$200 mil,
+    \item Casa 2: 70 m², R\$280 mil,
+    \item Casa 3: 60 m², R\$240 mil,
+    \item Casa 4: 80 m², R\$320 mil,
+    \item Casa 5: 55 m², R\$210 mil.
+\end{itemize}
+
+Vamos usar uma regressão linear e avaliar seu desempenho com divisão treino/teste:
+
+\begin{minted}{python}
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+
+# Dados: área (m²) e preço (R$ mil)
+X = np.array([[50], [70], [60], [80], [55]])  # Característica
+y = np.array([200, 280, 240, 320, 210])       # Alvo
+
+# Divide em treino (80%) e teste (20%)
+X_treino, X_teste, y_treino, y_teste = train_test_split(X, 
+                                        y, 
+                                        test_size=0.2, 
+                                        random_state=42)
+
+# Treina o modelo
+modelo = LinearRegression()
+modelo.fit(X_treino, y_treino)
+
+# Previsão no conjunto de teste
+y_pred = modelo.predict(X_teste)
+
+# Calcula o erro quadrático médio (MSE)
+mse = mean_squared_error(y_teste, y_pred)
+print(f"Erro Quadrático Médio (MSE): {mse:.2f} (R$ mil)^2")
+\end{minted}
+
+\begin{verbatim}
+Saída: Erro Quadrático Médio (MSE): 2.09 (R$ mil)^2
+\end{verbatim}
+
+Com \texttt{random\_state=42}, o teste ficou com a Casa 2 (70 m², R\$280 mil). O modelo previu R\$278,55 mil, um erro de R\$1,45 mil, que ao quadrado resulta no MSE de 2,09. Um único exemplo de teste diz pouco sobre o desempenho; para uma avaliação mais robusta, usamos validação cruzada:
+
+\begin{minted}{python}
+from sklearn.model_selection import cross_val_score
+
+# Validação cruzada com 5 dobras
+scores = cross_val_score(modelo, X, y, cv=5, scoring='neg_mean_squared_error')
+mse_cv = -scores.mean()
+print(f"MSE médio com validação cruzada: {mse_cv:.2f} (R$ mil)^2")
+\end{minted}
+\begin{verbatim}
+Saída: MSE médio com validação cruzada: 33.70 (R$ mil)^2    
+\end{verbatim}
+
+\vspace{0,5cm}
+
+O MSE médio mostra como o modelo se sai em média ao prever dados novos, considerando várias divisões diferentes dos dados. Como temos apenas 5 casas, \texttt{cv=5} deixa uma casa de fora por vez (\textit{leave-one-out}). O valor de 33,70 é bem maior que os 2,09 da divisão única, sinal de que aquela divisão foi otimista.
+
+\section{Métricas de Avaliação}
+
+Para tarefas de classificação, métricas específicas ajudam a avaliar o desempenho além do erro bruto. A Tabela~\ref{tab:metricas} compara três métricas comuns:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{3cm} p{8cm}}
+\toprule
+\textbf{Métrica} & \textbf{Descrição} \\ 
+\midrule
+Accuracy & Proporção de previsões corretas (acertos / total). Ideal para classes balanceadas. \\
+\\
+Precision & Proporção de previsões positivas corretas (verdadeiros positivos / (verdadeiros positivos + falsos positivos)). Útil quando falsos positivos são custosos. \\
+\\
+Recall & Proporção de positivos reais identificados (verdadeiros positivos / (verdadeiros positivos + falsos negativos)). Importante quando falsos negativos são críticos. \\ 
+\bottomrule
+\end{tabular}
+\caption{Comparação de métricas de avaliação para classificação.}
+\label{tab:metricas}
+\end{table}
+
+Por exemplo, em um modelo de detecção de spam, alta precision reduz falsos positivos (e-mails legítimos marcados como spam), enquanto alto recall minimiza falsos negativos (spam não detectado).
+
+\section{Matriz de Confusão}
+
+A avaliação de modelos de aprendizado de máquina exige mais do que métricas agregadas como acurácia, especialmente em tarefas de classificação onde os erros têm impactos distintos. A matriz de confusão é uma ferramenta fundamental que detalha o desempenho de um modelo ao comparar previsões com valores reais, oferecendo uma análise granular dos acertos e erros por classe. Isso é essencial em problemas binários (ex.: fraude vs. não fraude) ou multiclasse, permitindo identificar padrões de falhas que métricas simples podem ocultar.
+
+Em uma classificação binária, a matriz de confusão é uma tabela 2x2 composta por:
+\begin{itemize}
+    \item \textbf{Verdadeiros Positivos (VP ou TP)}: Casos positivos (ex.: fraudes) corretamente previstos como positivos.
+    \item \textbf{Verdadeiros Negativos (VN ou TN)}: Casos negativos (ex.: não fraudes) corretamente previstos como negativos.
+    \item \textbf{Falsos Positivos (FP)}: Casos negativos previstos incorretamente como positivos (erro tipo I).
+    \item \textbf{Falsos Negativos (FN)}: Casos positivos previstos incorretamente como negativos (erro tipo II).
+\end{itemize}
+Esses elementos permitem calcular métricas derivadas, como precisão ($\text{Precisão} = \frac{VP}{VP + FP}$), revocação ou \textit{recall} ($\text{Revocação} = \frac{VP}{VP + FN}$) e F1-score ($F1 = 2 \cdot \frac{\text{Precisão} \cdot \text{Revocação}}{\text{Precisão} + \text{Revocação}}$), que balanceiam os custos de diferentes tipos de erros.
+
+A matriz de confusão é indispensável em \textit{Machine Learning} para avaliar o desempenho em cenários práticos. Por exemplo, em detecção de fraudes em cartões de crédito, falsos negativos (fraudes não detectadas) podem custar caro financeiramente, enquanto falsos positivos (transações legítimas bloqueadas) afetam a experiência do cliente. Integrada às técnicas de divisão de treino/teste e validação cruzada já discutidas neste capítulo, ela fornece uma visão mais rica para otimizar modelos e ajustar estratégias.
+
+\subsection{Exemplo Prático: Detecção de Fraudes em Cartões de Crédito}
+Vamos usar o dataset \textit{Credit Card Fraud Detection} do Kaggle (\url{https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud}), que contém transações de cartões de crédito europeus em setembro de 2013, com 284.807 registros e 31 colunas (tempo da transação, 28 variáveis anonimizadas, valor da transação e rótulo de fraude: 0 para não fraude, 1 para fraude). O dataset é altamente desbalanceado, com apenas 492 fraudes (0,17\% do total). Treinaremos um modelo de regressão logística e analisaremos sua matriz de confusão. O código Python a seguir implementa esse processo:
+
+
+\begin{minted}{python}
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix, classification_report
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Carregando o dataset (assumindo que foi baixado do Kaggle)
+df = pd.read_csv('creditcard.csv')
+X = df.drop(columns=['Class'])  # Features (excluindo o rótulo)
+y = df['Class']  # Rótulo (0 = não fraude, 1 = fraude)
+
+# Dividindo em treino e teste (20% para teste)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, 
+random_state=42, 
+stratify=y)
+
+# Treinando o modelo de regressão logística com pesos balanceados
+modelo = LogisticRegression(max_iter=1000, class_weight='balanced', 
+random_state=42)
+modelo.fit(X_train, y_train)
+
+# Fazendo previsões no conjunto de teste
+y_pred = modelo.predict(X_test)
+
+# Calculando a matriz de confusão
+matriz = confusion_matrix(y_test, y_pred)
+print("Matriz de Confusão:")
+print(matriz)
+
+# Relatório detalhado com precisão, revocação e F1-score
+print("\nRelatório de Classificação:")
+print(classification_report(y_test, y_pred, target_names=['Não Fraude', 'Fraude']))
+
+# Visualização da matriz de confusão
+plt.figure(figsize=(6, 4))
+sns.heatmap(matriz, annot=True, fmt='d', cmap='Blues', 
+            xticklabels=['Não Fraude', 'Fraude'], yticklabels=['Não Fraude', 
+            'Fraude'])
+plt.xlabel('Previsto')
+plt.ylabel('Real')
+plt.title('Matriz de Confusão - Detecção de Fraudes')
+plt.show()
+\end{minted}
+
+\textbf{Resultados:} No conjunto de teste com 56.962 amostras (20\% do total), os resultados foram:
+\begin{verbatim}
+- Matriz de Confusão:
+\end{verbatim}
+  \begin{tabular}{|c|c|c|}
+    \hline
+     & Previsto Não Fraude & Previsto Fraude \\
+    \hline
+    Real Não Fraude & 55313 (VN) & 1551 (FP) \\
+    Real Fraude & 8 (FN) & 90 (VP) \\
+    \hline
+  \end{tabular}
+  \begin{verbatim}
+- Relatório de Classificação: 
+  \end{verbatim}
+  \begin{verbatim}
+              precision    recall  f1-score   support
+
+  Não Fraude       1.00      0.97      0.99     56864
+      Fraude       0.05      0.92      0.10        98
+
+    accuracy                           0.97     56962
+   macro avg       0.53      0.95      0.54     56962
+weighted avg       1.00      0.97      0.98     56962
+  \end{verbatim}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{matriz de confusao.png}
+    \caption{Matriz de confusão do modelo de detecção de fraudes: o \textit{heatmap} destaca os acertos na diagonal e os erros fora dela.}
+    \label{fig:matriz_confusao}
+\end{figure}
+
+\subsection{Interpretação dos Resultados}
+A matriz de confusão (Figura~\ref{fig:matriz_confusao}) mostra que o modelo identificou corretamente 55313 transações como não fraudulentas (VN) e 90 como fraudulentas (VP), totalizando 55403 acertos em 56962 amostras, resultando em uma acurácia de 97\%. No entanto, a alta acurácia é enganosa devido ao desbalanceamento: as não fraudes dominam o dataset. Os 1551 falsos positivos (FP) são transações legítimas marcadas como fraudes, enquanto os 8 falsos negativos (FN) são fraudes não detectadas.
+
+O relatório detalha o desempenho por classe. Para "Não Fraude", a precisão é praticamente 1,00 e a revocação é 0,97, refletindo a facilidade de prever a classe majoritária. Para "Fraude", a revocação de 0,92 mostra que 90 das 98 fraudes reais foram capturadas, um bom resultado em um dataset tão desbalanceado. A precisão, porém, é de apenas 0,05: de cada 100 alertas de fraude, cerca de 95 eram transações legítimas (1551 falsos positivos contra 90 acertos). O F1-score de 0,10 reflete esse desequilíbrio, pois a média harmônica fica próxima do menor dos dois valores. Um cuidado ao ler o relatório: a linha \textit{macro avg} (0,53 e 0,95) é a média simples das duas classes e não descreve o desempenho na classe "Fraude".
+
+Em um contexto real, como bancos ou empresas de cartão, as 8 FN (fraudes perdidas) representam perdas financeiras, enquanto os 1551 FP podem irritar clientes com bloqueios desnecessários. A alta revocação é positiva para minimizar fraudes, mas a precisão muito baixa sugere que ajustes, como alterar o limiar de decisão do modelo ou usar técnicas de reamostragem (ex.: SMOTE), poderiam reduzir FP. A matriz de confusão, combinada com validação cruzada, expõe essas nuances, permitindo refinar o modelo para priorizar o que importa: detectar fraudes sem exagerar nos falsos alarmes. Esse insight é fundamental para aplicações práticas de \textit{Machine Learning}.
+
+\section{Interpretação e Próximos Passos}
+
+No exemplo de regressão, o MSE baixo da divisão única parecia indicar boa generalização, mas a validação cruzada ofereceu uma visão mais confiável. Para melhorar modelos, técnicas como regularização (ex.: Ridge, Lasso) podem reduzir \textit{overfitting}, enquanto mais dados ou modelos complexos combatem \textit{underfitting}. No caso de classificação, escolher a métrica certa depende do problema: \textit{accuracy} para balanceamento geral, \textit{precision} ou \textit{recall} para prioridades específicas. Esses tópicos podem ser aprofundados em estudos avançados.
+
+\chapter{Aplicando o Aprendizado em Dados Reais}
+
+\section{Ferramentas e Preparo}
+Antes de trabalhar com os dados reais e construir nosso classificador, é importante preparar o ambiente de desenvolvimento. Esta seção apresenta brevemente as ferramentas essenciais para este capítulo, ideais para iniciantes que ainda não estão familiarizados com elas.
+
+\subsection{Python e sua Versão Atual}
+Python é uma linguagem de programação amplamente usada em Machine Learning devido à sua simplicidade e vasta comunidade. Recomenda-se usar uma versão recente do Python 3, que oferece melhor desempenho e suporte às bibliotecas modernas. Para instalar, visite \texttt{python.org} e siga as instruções para o seu sistema operacional (Windows, Mac ou Linux). Todas as ferramentas a seguir assumem que o Python está instalado.
+
+\subsection{Google Colab e Jupyter Notebook}
+Para executar os códigos deste capítulo, recomendamos a utilização do Google Colab, no entanto você pode usar o Jupyter Notebook ou alguma outra IDE de sua preferência. O Google Colab é uma plataforma online gratuita que roda Python diretamente no navegador, sem necessidade de instalação local --- basta uma conta Google e acesso à internet. Ele é perfeito para iniciantes, pois já vem com bibliotecas como scikit-learn pré-instaladas. Alternativamente, o Jupyter Notebook é um ambiente local que permite escrever e executar código em blocos interativos.
+
+\subsection{Scikit-learn}
+O scikit-learn é uma biblioteca de Machine Learning em Python, conhecida por sua facilidade de uso e ampla gama de algoritmos, como regressão, classificação e clustering. No Google Colab ela já vem instalada; em um ambiente local, instale com \texttt{pip install scikit-learn}. Com essas ferramentas, estamos prontos para trabalhar com os dados de notícias.
+
+\section{Classificando Notícias com Aprendizado de Máquina}
+Neste capítulo, vamos usar aprendizado de máquina pra classificar notícias como \textbf{positivas} ou \textbf{negativas}. Temos um dataset pequeno, com 845 notícias coletadas entre março e abril de 2025, das quais 200 já foram classificadas manualmente na coluna \texttt{sentimento}. Não é uma quantidade ideal para um modelo de alto desempenho, mas é suficiente para servir de exemplo. Treinaremos um classificador \texttt{SVC}, usando o \texttt{TfidfVectorizer} para a vetorização das palavras, e veremos até onde ele chega.
+
+Um aviso sobre os rótulos: eles refletem a leitura do fato noticiado (uma boa ou uma má notícia), e não o tom emocional das palavras. "Inflação cai" foi marcada como positiva; "preço do café sobe", como negativa. É uma classificação subjetiva, e outra pessoa poderia discordar em vários casos.
+
+\subsection{Conectando ao Google Drive}
+Primeiro, faremos a conexão do Google Colab com o Drive:
+
+\begin{minted}{python}
+from google.colab import drive
+drive.mount('/content/drive')  
+\end{minted}
+O Colab pedirá permissão para acessar o Drive.
+
+\subsection{Download do arquivo para testes}
+Os comandos \texttt{!wget} e \texttt{!mv} do Google Colab fazem, respectivamente, o download do arquivo no GitHub e a movimentação dele para a raiz do seu Drive, já conectado anteriormente.
+
+\begin{minted}[breaklines=true, breakanywhere=true]{python}
+import os
+
+def download_and_save(url, root_drive):
+    file_name = os.path.basename(url) 
+    !wget {url} -O {file_name}
+    !mv {file_name} {root_drive}
+    print(f"Arquivo '{file_name}' salvo no Drive em '{root_drive}'.")
+url_github = "https://raw.githubusercontent.com/ronaldandrade/ebook/refs/heads/master/noticias.csv"
+root_drive = "/content/drive/MyDrive/noticias.csv"
+
+download_and_save(url_github, root_drive)  
+\end{minted}
+
+Sempre que a função \texttt{download\_and\_save()} for chamada, ela fará o download do arquivo \texttt{noticias.csv} novamente.
+
+\subsection{Carregando o Dataset}
+Utilizando a biblioteca {\texttt{pandas}} para carregar o dataset e com o comando {\texttt{print()}} você já conseguirá ver listado os primeiros títulos:
+
+\begin{minted}{python}
+import pandas as pd
+caminho = '/content/drive/MyDrive/noticias.csv'
+df = pd.read_csv(caminho)
+titulos = df['titulo'].tolist()
+print("Primeiros 5 títulos:", titulos[:5])
+\end{minted}
+
+\subsection{Analisando o Dataset}
+Antes de construir qualquer modelo de aprendizado de máquina, é essencial entender o conjunto de dados com o qual estamos trabalhando. A pré-visualização do dataset permite identificar a estrutura, os tipos de variáveis e possíveis problemas, como valores ausentes ou inconsistências. Em Python, as funções \texttt{head()} e \texttt{info()} da biblioteca \texttt{pandas} são ferramentas simples e excelentes para essa tarefa, oferecendo uma visão rápida dos dados e suas características técnicas.
+
+A função \texttt{df.head()} exibe as primeiras cinco linhas do \texttt{DataFrame}, dando uma amostra direta do conteúdo. Já \texttt{df.info()} fornece um resumo técnico: número de entradas, colunas, tipos de dados (ex.: \texttt{int}, \texttt{object}) e a presença de valores nulos. Juntas, elas formam o ponto de partida para decidir os próximos passos, como limpeza ou transformação dos dados.
+
+\begin{minted}{python}
+print(df.head())  # Exibe as primeiras 5 linhas
+\end{minted}
+
+A saída de \texttt{df.head()} mostra uma tabela como a seguir (com URLs e conteúdos simplificados para clareza):
+
+\begin{table}[H]
+\centering
+\small
+\caption{Amostra do Dataset de Notícias (df.head())}
+\begin{tabular}{|c|l|l|l|l|l|c|}
+\hline
+\textbf{id} & \textbf{titulo} & \textbf{conteudo} & \textbf{url} & \textbf{data\_publicacao} & \textbf{resumo} & \textbf{sentimento} \\
+\hline
+1 & Inflação argen... & <img="..."> & https://g1.... & 2025-03-15 00:50:10 & NaN & Positivo \\
+2 & Lula diz que ... & <img="..."> & https://g1.... & 2025-03-14 15:09:14 & NaN & Positivo \\
+3 & Argentina e... & <img="..."> & https://g1.... & 2025-03-14 14:18:25 & NaN & Negativo \\
+4 & Produção de ve... & <img="..."> & https://g1.... & 2025-03-14 14:00:19 & NaN & Positivo \\
+5 & Preço do ca... & <img="..."> & https://g1.... & 2025-03-14 13:40:05 & NaN & Negativo \\
+\hline
+\end{tabular}
+\end{table}
+
+A função \texttt{head()} traz as 5 primeiras linhas da tabela, nos mostrando suas sete colunas: \texttt{id} (identificador numérico), \texttt{titulo} (texto), \texttt{conteudo} (HTML com imagens), \texttt{url} (endereço web), \texttt{data\_publicacao} (timestamp), \texttt{resumo} (valores ausentes) e \texttt{sentimento} (categórico: Positivo ou Negativo). 
+\begin{minted}{python}
+print(df.info())  # Resumo técnico do dataset
+\end{minted}
+Saída: 
+\begin{verbatim}
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 845 entries, 0 to 844
+Data columns (total 7 columns):
+ #   Column           Non-Null Count  Dtype 
+---  ------           --------------  ----- 
+ 0   id               845 non-null    int64 
+ 1   titulo           845 non-null    object
+ 2   conteudo         845 non-null    object
+ 3   url              845 non-null    object
+ 4   data_publicacao  845 non-null    object
+ 5   resumo           230 non-null    object
+ 6   sentimento       200 non-null    object
+dtypes: int64(1), object(6)
+memory usage: 46.3+ KB
+\end{verbatim}
+O \texttt{df.info()} mostra os tipos de dados, o total de linhas e colunas e quantos valores não nulos há em cada coluna. A coluna \texttt{resumo}, por exemplo, tem 230 valores não nulos, ou seja, 615 linhas vazias. Já \texttt{titulo}, completa nas 845 linhas, e \texttt{sentimento}, preenchida em 200, são as colunas essenciais para a nossa tarefa de classificação. Essa análise inicial orienta a limpeza (ex.: descartar \texttt{resumo}) e o pré-processamento (ex.: tratar \texttt{titulo} como entrada principal), passos que detalharemos adiante.
+
+\subsection{Preparando os Dados Classificados}
+Para que o computador entenda como as classificações foram feitas, precisamos passar para uma forma que ele saiba interpretar, ou seja, números. Selecionamos as notícias que já têm rótulo, filtrando pelos valores não nulos da coluna \texttt{sentimento} (mais seguro do que confiar na posição das linhas), e convertemos os rótulos para 1 se positivo e 0 se negativo:
+
+\begin{minted}[breaklines=true, breakanywhere=true]{python}
+df_rotulado = df[df['sentimento'].notna()].copy()
+titulos_rotulados = df_rotulado['titulo'].tolist()
+rotulos = [1 if s == 'Positivo' else 0 for s in df_rotulado['sentimento']]
+print("Total de exemplos rotulados:", len(rotulos))
+print("Primeiros 5 rótulos:", rotulos[:5])
+print("Total de positivos:", sum(rotulos), "Total de negativos:", len(rotulos) - sum(rotulos))
+\end{minted}
+\begin{verbatim}
+Saída: Total de exemplos rotulados: 200
+Primeiros 5 rótulos: [1, 1, 0, 1, 0]
+Total de positivos: 108 Total de negativos: 92
+\end{verbatim}
+
+As classes estão razoavelmente equilibradas: 108 notícias positivas e 92 negativas.
+
+\subsection{Transformando Texto em Números}
+Agora precisamos fazer o mesmo com os títulos. Usamos o \texttt{TfidfVectorizer}, classe do scikit-learn que transforma textos em números:
+
+\begin{minted}[breaklines=true, breakanywhere=true]{python}
+from sklearn.feature_extraction.text import TfidfVectorizer
+stopwords_pt = ['e', 'em', 'de', 'para', 'com', 'que', 'do', 'da', 'no', 'na', 'o', 'a', 'as', 'os']
+vetorizador = TfidfVectorizer(max_features=1000, stop_words=stopwords_pt, lowercase=True)
+\end{minted}
+
+Os modelos de Machine Learning não processam textos diretamente, da maneira como nós, humanos, fazemos. Computadores operam com números e cálculos matemáticos, então, para que um modelo possa trabalhar com dados textuais, é necessário convertê-los em uma representação numérica.
+
+No caso do \texttt{TfidfVectorizer}, cada título vira uma linha de uma matriz, com uma coluna para cada palavra do vocabulário. O valor de cada célula fica entre 0 e 1: zero quando a palavra não aparece no título, e um peso tanto maior quanto mais a palavra aparece naquele título e mais rara ela é no restante do corpus. Dessa forma, o algoritmo pode analisar padrões estatísticos nos textos e tomar decisões com base nesses números.
+
+Repare que apenas criamos o vetorizador, sem aplicá-lo aos dados. O vocabulário e os pesos devem ser aprendidos somente com os títulos de treino. Se o vetorizador enxergasse também os títulos de teste, o modelo receberia informação de dados que deveria desconhecer, um problema chamado \textbf{vazamento de dados} (\textit{data leakage}), que torna a avaliação otimista demais.
+
+\subsection{Treinando e Testando o Modelo}
+Os próximos passos consistem no seguinte: dividimos os dados rotulados em duas partes, treino e teste, treinamos um modelo e avaliamos o desempenho.
+
+A função \texttt{train\_test\_split} do scikit-learn separa 80\% dos títulos para treino e 20\% para teste (\texttt{test\_size=0.2}). O \texttt{random\_state} garante que a separação aconteça sempre da mesma maneira, evitando variações nos resultados cada vez que rodamos o código:
+\begin{minted}{python}
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(titulos_rotulados, 
+                                                rotulos, 
+                                                test_size=0.2, 
+                                                random_state=42)
+print("Treino:", len(X_train), "Teste:", len(X_test))
+\end{minted}
+\begin{verbatim}
+Saída: Treino: 160 Teste: 40
+\end{verbatim}
+Ficamos com 160 títulos para treino e 40 para teste. É pouco: quanto maior o dataset, melhor tende a ser o aprendizado e mais confiável fica a medida de acurácia.
+
+\subsection{Hora do Treinamento}
+
+O SVM (Support Vector Machine) é um modelo de aprendizado de máquina muito eficiente para tarefas de classificação, especialmente quando há duas categorias bem definidas. Ele funciona encontrando uma linha (ou hiperplano) que separa os dados da melhor forma possível, maximizando a distância entre as classes.
+
+No código abaixo, juntamos o vetorizador e um SVM com kernel linear em um \texttt{Pipeline}. Ao chamar \texttt{fit}, o pipeline ajusta o TF-IDF e o SVM usando apenas os dados de treino; ao chamar \texttt{predict}, aplica a mesma transformação aos textos novos antes de classificá-los. Depois, avaliamos o desempenho usando acurácia, precisão e recall.
+
+\begin{minted}{python}
+from sklearn.pipeline import Pipeline
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score, precision_score, recall_score
+
+modelo = Pipeline([
+    ('tfidf', vetorizador),
+    ('svm', SVC(kernel='linear', class_weight='balanced'))
+])
+modelo.fit(X_train, y_train)
+y_pred = modelo.predict(X_test)
+
+print("Tamanho do vocabulário:", len(vetorizador.vocabulary_))
+print("Acurácia no teste:", accuracy_score(y_test, y_pred))
+print("Precisão:", precision_score(y_test, y_pred))
+print("Recall:", recall_score(y_test, y_pred))
+\end{minted}
+
+\begin{verbatim}
+Saída: Tamanho do vocabulário: 976
+Acurácia no teste: 0.6
+Precisão: 0.5833333333333334
+Recall: 0.7
+\end{verbatim}
+
+Os 160 títulos de treino têm 976 palavras distintas, abaixo do limite de 1.000 definido em \texttt{max\_features}. O modelo acertou 24 dos 40 títulos de teste (acurácia de 0,60). O teste tem 20 notícias positivas e 20 negativas: o modelo reconheceu 14 das 20 positivas (\textit{recall} de 0,70), mas também classificou como positivas 10 das 20 negativas, daí a precisão de 0,58.
+
+É um resultado modesto, pouco acima dos 50\% que um chute alcançaria. A principal explicação é a quantidade de dados: com 160 exemplos, a maioria das palavras aparece uma ou duas vezes, e o modelo tem pouco material para associar termos a sentimentos. Além disso, manchetes são textos curtos e o rótulo é subjetivo. Para melhorar o desempenho, podemos rotular mais exemplos, usar uma lista de \textit{stopwords} mais completa, incluir pares de palavras (\texttt{ngram\_range=(1, 2)}), ajustar hiperparâmetros ou testar outros modelos.
+
+\subsection{Testando com Novas Notícias}
+Vamos testar o modelo com duas notícias fictícias pra ver como ele se comporta:
+
+\begin{minted}[breaklines=true, breakanywhere=true]{python}
+novos_titulos = ["Dólar cai e inflação diminui", 
+            "EUA tem maior número de deportações nos últimos anos"]
+predicoes = modelo.predict(novos_titulos)  # Vetoriza e faz as previsões
+print("Previsões novas:", ["Positivo" if p == 1 else "Negativo" for p in predicoes])
+\end{minted}
+\begin{verbatim}
+Saída: Previsões novas: ['Positivo', 'Positivo']
+\end{verbatim}
+
+O título "Dólar cai e inflação diminui" foi classificado como positivo, o que parece razoável. Já "EUA tem maior número de deportações nos últimos anos" também saiu como positivo, uma classificação que muitos leitores contestariam. O motivo está no vocabulário: as palavras "deportações" e "número" não aparecem em nenhum título de treino, então o modelo as ignora e decide com base em termos genéricos como "EUA", "maior" e "anos", por uma margem mínima. As máquinas aprendem padrões estatísticos das palavras que já viram e desconhecem o significado do fato noticiado.
+
+Vale ressaltar também que a interpretação de uma notícia pode variar de pessoa para pessoa. A classificação de sentimentos em textos depende de padrões objetivos e também da percepção individual do leitor, de seu contexto e de suas opiniões.
+
+\subsection{(Opcional) Classificando Todas as Notícias}
+Podemos usar o modelo pra prever o sentimento das 645 notícias que ainda não têm rótulo, preservando as 200 classificações manuais:
+\begin{minted}[breaklines=true, breakanywhere=true]{python}
+sem_rotulo = df['sentimento'].isna()
+predicoes_restantes = modelo.predict(df.loc[sem_rotulo, 'titulo'])
+df.loc[sem_rotulo, 'sentimento'] = ['Positivo' if p == 1 else 'Negativo' for p in predicoes_restantes]
+df.to_csv('/content/drive/MyDrive/noticias_classificadas.csv', index=False)
+\end{minted}
+
+Dado o desempenho medido no teste, esses rótulos automáticos devem ser tratados como um rascunho a revisar. Com isso, você percorreu o fluxo completo: carregar um dataset, preparar os rótulos, vetorizar o texto, treinar, avaliar e aplicar um modelo de classificação.
+
+\chapter{Melhorias e Recursos}
+
+\section{Síntese Conceitual das Técnicas Utilizadas}
+A análise de sentimentos, como explorada ao longo do último capítulo, representa uma interseção poderosa entre ciência de dados, aprendizado de máquina e processamento de linguagem natural, oferecendo ferramentas para interpretar e quantificar emoções em textos. Este trabalho teve como objetivo principal introduzir os leitores a um pipeline prático e replicável para classificar notícias como positivas ou negativas, utilizando um conjunto de dados real e técnicas amplamente reconhecidas no campo. A escolha do ambiente Google Colab proporcionou um espaço acessível e colaborativo para a execução do projeto, enquanto o dataset de notícias — com uma parte de exemplos rotulados manualmente — serviu como base para demonstrar cada etapa do processo, desde a aquisição dos dados até a avaliação e aplicação do modelo treinado.
+
+O crescente volume de informações textuais geradas diariamente, seja em notícias, redes sociais ou outras plataformas digitais, torna a análise de sentimentos uma competência cada vez mais relevante. Empresas utilizam essas técnicas para monitorar a percepção pública sobre produtos e serviços, enquanto pesquisadores as aplicam para compreender tendências sociais e comportamentais. Neste contexto, o conteúdo deste livro buscou não apenas ensinar um método específico, mas também estabelecer fundamentos que permitam aos leitores adaptar e expandir o que foi aprendido para diferentes cenários. A escolha de ferramentas como \texttt{pandas} para manipulação de dados, \texttt{TfidfVectorizer} para representação textual e o algoritmo Support Vector Machine (SVM) reflete um equilíbrio entre simplicidade e eficácia, adequado tanto para iniciantes quanto para aqueles que desejam aprofundar seus estudos.
+Além disso, o processo aqui apresentado destaca a importância de etapas críticas como o pré-processamento de dados e a validação de modelos, que são essenciais para garantir resultados confiáveis em projetos de aprendizado de máquina. Ao classificar automaticamente as notícias sem rótulo e testar o modelo com exemplos fictícios, foi possível ilustrar como os conceitos teóricos se traduzem em aplicações práticas. Este capítulo final tem como objetivo consolidar esses aprendizados em uma síntese conceitual, oferecendo uma visão clara das técnicas empregadas e suas implicações. Adicionalmente, serão apresentados caminhos para avanços futuros e uma seleção de recursos que podem guiar os leitores em sua jornada de aprimoramento em ciência de dados e análise de sentimentos.
+Para a representação numérica dos títulos das notícias, empregou-se o método TF-IDF (\textit{Term Frequency-Inverse Document Frequency}), implementado por meio do \texttt{TfidfVectorizer} da biblioteca \texttt{scikit-learn}. Esse método transformou os textos em vetores numéricos, eliminando palavras irrelevantes (\textit{stopwords}) e limitando o vocabulário a, no máximo, 1.000 termos. O algoritmo de classificação escolhido foi o Support Vector Machine (SVM) com kernel linear, configurado com pesos balanceados (\texttt{class\_weight='balanced'}) para compensar a pequena diferença entre as classes positiva (108 exemplos) e negativa (92). O vetorizador e o classificador foram reunidos em um \texttt{Pipeline}, evitando vazamento de dados do teste para o treino. O conjunto de notícias rotuladas foi dividido em 80\% para treinamento e 20\% para teste, utilizando a função \texttt{train\_test\_split}, e o desempenho foi avaliado por acurácia (0,60), precisão (0,58) e \textit{recall} (0,70), resultados modestos e esperados para um treino com apenas 160 exemplos.
+O modelo treinado foi aplicado tanto para prever o sentimento de notícias fictícias quanto para classificar automaticamente as 645 notícias sem rótulo do dataset, cujos resultados foram salvos em um novo arquivo CSV. Esse fluxo — desde a obtenção dos dados até a aplicação prática do modelo — exemplifica a integração de pré-processamento de texto, aprendizado supervisionado e validação de resultados em um contexto real.
+
+\section{Para ir mais além}
+Para aqueles que desejam expandir os conhecimentos adquiridos, aprofundar-se em algum dos assuntos abordados neste livro ou mesmo aperfeiçoar o modelo reproduzido, deixo aqui algumas recomendações de conteúdos mais avançados:
+\begin{enumerate}
+    \item \textbf{Exploração de outros algoritmos}: Além do SVM, modelos como Random Forest (\texttt{RandomForestClassifier}) ou redes neurais recorrentes (via \texttt{TensorFlow} ou \texttt{PyTorch}) podem ser testados para potencialmente melhorar a capacidade preditiva em datasets textuais.
+    \item \textbf{Expansão do conjunto de dados}: Aumentar o número de exemplos rotulados, seja por anotação manual ou por integração com fontes externas (ex.: APIs de notícias), pode aprimorar a generalização do modelo.
+    \item \textbf{Otimização de hiperparâmetros}: Ajustes nos parâmetros do SVM, como a escolha de kernels alternativos (\texttt{kernel='rbf'}) ou a variação do parâmetro de regularização (\texttt{C}), podem ser explorados via validação cruzada para otimizar o desempenho.
+    \item \textbf{Classificação em tempo real}: Implementar um sistema que colete notícias em tempo real (ex.: utilizando \texttt{requests} e \texttt{BeautifulSoup}) e aplique o modelo treinado pode transformar o projeto em uma ferramenta dinâmica.
+    \item \textbf{Extensão multilíngue}: Adaptar o pipeline para processar textos em outros idiomas, ajustando o pré-processamento (ex.: \texttt{stop\_words='english'}) e utilizando datasets multilíngues, amplia o alcance da análise de sentimentos.
+\end{enumerate}
+
+\section{Recursos Recomendados}
+Os seguintes recursos são indicados para aprofundamento no estudo de aprendizado de máquina e análise de sentimentos:
+\begin{itemize}
+    \item \textbf{Livros}: \textit{Python Machine Learning} de Sebastian Raschka e Vahid Mirjalili oferece uma base sólida em algoritmos de aprendizado de máquina, enquanto \textit{Deep Learning with Python} de François Chollet introduz redes neurais de forma prática. E não poderia faltar \textit{Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow}, de Aurélien Géron, que traz extenso conteúdo sobre o assunto.
+    \item \textbf{Cursos}: O curso \textit{Machine Learning} de Andrew Ng na Coursera é uma referência em fundamentos teóricos, e o curso \textit{Data Science com Python} da DataCamp foca em aplicações práticas.
+    \item \textbf{Documentação}: A documentação oficial do \texttt{scikit-learn} (\url{https://scikit-learn.org}) detalha as funcionalidades de pré-processamento e modelagem usadas neste livro.
+    \item \textbf{Comunidades}: Fóruns como o subreddit \textit{r/MachineLearning} (\url{https://reddit.com/r/MachineLearning}) e comunidades de ciência de dados no Discord são espaços para discussão e troca de experiências.
+    \item \textbf{Conjuntos de dados}: Plataformas como Kaggle (\url{https://kaggle.com}) e o UCI Machine Learning Repository (\url{https://archive.ics.uci.edu}) disponibilizam datasets variados para experimentação.
+\end{itemize}
+
+\section{Considerações Finais}
+Este livro apresentou os fundamentos do aprendizado de máquina, da estatística básica à regressão, à classificação e ao clustering, e terminou com um projeto completo de análise de sentimentos. As etapas percorridas (aquisição de dados, pré-processamento de texto, treinamento de modelos e avaliação) formam uma base para projetos futuros. Encorajamos os leitores a explorar as sugestões avançadas e os recursos recomendados, aplicando os conceitos aprendidos em novos contextos e contribuindo para o avanço de suas habilidades em ciência de dados.
+
+\begin{thebibliography}{99}
+
+\bibitem{bruce}
+Bruce, P., \& Bruce, A. (2017). \textit{Estatística prática para cientistas de dados}. O'Reilly Media.
+
+\bibitem{cole}
+Knaflic, C. N. (2015). \textit{Storytelling com dados: um guia sobre visualização de dados para profissionais de negócios}. Wiley.
+
+\bibitem{geron}
+Géron, A. (2023). \textit{Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems} (3rd ed.). O'Reilly Media.
+
+\bibitem{bishop}
+Bishop, C. M. (2006). \textit{Pattern Recognition and Machine Learning}. Springer.
+
+\bibitem{scikit}
+Scikit-learn developers. (2024). \textit{Scikit-learn: Machine Learning in Python}. Disponível em \url{https://scikit-learn.org}. Acesso em: 1 abr. 2025.
+
+\bibitem{bird}
+Bird, S., Klein, E., \& Loper, E. (2009). \textit{Natural Language Processing with Python: Analyzing Text with the Natural Language Toolkit}. O'Reilly Media.
+
+\bibitem{bussab}
+Bussab, W. de O., \& Morettin, P. A. (2017). \textit{Estatística Básica} (9ª ed.). Saraiva Educação.
+
+\end{thebibliography}
 \end{document}  
 
 
