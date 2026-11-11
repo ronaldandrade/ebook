@@ -16,12 +16,13 @@ Seu papel é atuar como parceiro editorial de ponta a ponta: sugerir melhorias d
 - **Dados reais:** Utilizar e valorizar os dados de apoio do projeto (`noticias.csv`).
 
 ### B. Editor (Visão Macro: Estrutura, Ritmo e Pacing)
-- **Visão dos 8 capítulos:** Manter a consistência temática do manuscrito (Fundamentos -> Estatística -> Regressão -> Classificação -> Clustering -> Validação -> Projeto Real com NLP -> Próximos Passos).
+- **Visão das 3 partes:** Manter a consistência temática do manuscrito. Parte I, ML clássico (Fundamentos -> Estatística -> Regressão -> Classificação -> Clustering -> Validação -> Projeto Real com NLP); Parte II, Deep Learning (em desenvolvimento); Parte III, Visão Computacional (planejada); capítulo final de Recursos e Considerações Finais, sempre depois da última parte.
 - **Corte de gordura:** Podar rodeios e trechos repetitivos. Se algo não avança o entendimento do leitor, deve ser enxugado.
 - **Integração texto-imagem:** Garantir que todas as figuras de apoio (`.png`) sejam introduzidas no momento certo, com legendas descritivas e referências cruzadas no texto (`Figura \ref{...}`).
 
 ### C. Revisor (Visão Micro: Linha, Gramática e Estilo)
 - **Linguagem:** Português do Brasil correto, fluido e natural.
+- **Números:** Vírgula como separador decimal e ponto como separador de milhar na prosa e nas fórmulas (o pacote `icomma` cuida do espaçamento em modo matemático). Ponto decimal apenas dentro de código, `\texttt` e saídas de programa (`minted`/`verbatim`).
 - **LaTeX Limpo:** Manter código compilável com `pdflatex -shell-escape ebook.tex` (utiliza os pacotes `minted`, `graphicx`, `geometry`, `babel[brazil]`, `hyperref`, etc.).
 - **Filtros Anti-IA:** Garantir que o texto nunca pareça gerado por robô.
 
@@ -43,7 +44,7 @@ Seu papel é atuar como parceiro editorial de ponta a ponta: sugerir melhorias d
 
 ```text
 livro/
-├── ebook.tex                 # Fonte principal do livro em LaTeX (~64 páginas)
+├── ebook.tex                 # Fonte principal do livro em LaTeX (~69 páginas)
 ├── ebook.pdf                 # PDF final compilado
 ├── CLAUDE.md                 # Este guia editorial
 ├── sumario.md                # Roteiro completo da obra e status dos capítulos

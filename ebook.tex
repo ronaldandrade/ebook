@@ -10,6 +10,7 @@
 \usepackage{indentfirst}
 \usepackage{listings}
 \usepackage{amsmath}
+\usepackage{icomma} % vírgula decimal em modo matemático sem espaço extra
 \usepackage{booktabs}
 \usepackage{minted}
 \lstset{
@@ -17,7 +18,7 @@ language=Python, basicstyle=\ttfamily\small, frame=single, breaklines=true, lite
 
 \title{Meu Aprendizado de Máquinas}
 \author{Ronald A. Mendonça}
-\date{2025}
+\date{\the\year} % ano corrente até o lançamento
 
 \begin{document}
 
@@ -59,6 +60,10 @@ Neste livro reúno os conceitos fundamentais para iniciantes que desejam dar os 
 preferencialmente em Python, embora os conceitos sejam explicados de forma acessível. Meu objetivo é desmistificar o ML, oferecendo uma base teórica para quem quer começar a construir modelos simples e entender seus resultados.
 
 Ao longo das próximas páginas, você será introduzido aos conceitos essenciais de Machine Learning, desde a manipulação de dados até a criação de modelos de regressão, classificação e clustering. Cada capítulo combina teoria com exemplos práticos, incluindo trechos de código em Python para ilustrar a aplicação dos métodos discutidos. Ao final, você terá conteúdo suficiente para construir um modelo de machine learning simples e entender os princípios que o sustentam.
+
+O livro está organizado em três partes. A Parte I cobre o aprendizado de máquina clássico, dos dados à avaliação de modelos, e termina com um projeto em dados reais. A Parte II trata de Deep Learning, e a Parte III, de Visão Computacional.
+
+\part{Aprendizado de Máquina Clássico}
 
 \chapter{Conceitos Fundamentais: Dados e Aprendizado}
 
@@ -163,7 +168,7 @@ Para os dados fornecidos:
 \begin{itemize}
     \item Soma dos valores: \(20 + 22 + 19 + 23 + 21 + 20 + 24 = 149\),
     \item Número de observações: \(n = 7\),
-    \item Média: \(\bar{x} = \frac{149}{7} \approx 21.29\).
+    \item Média: \(\bar{x} = \frac{149}{7} \approx 21,29\).
 \end{itemize}
 Portanto, a temperatura média diária é aproximadamente 21,29°C.
 
@@ -176,27 +181,27 @@ Passo a passo:
 \begin{enumerate}
     \item Calcule as diferenças entre cada valor e a média (\(x_i - \bar{x}\)):
     \begin{itemize}
-        \item \(20 - 21.29 = -1.29\),
-        \item \(22 - 21.29 = 0.71\),
-        \item \(19 - 21.29 = -2.29\),
-        \item \(23 - 21.29 = 1.71\),
-        \item \(21 - 21.29 = -0.29\),
-        \item \(20 - 21.29 = -1.29\),
-        \item \(24 - 21.29 = 2.71\).
+        \item \(20 - 21,29 = -1,29\),
+        \item \(22 - 21,29 = 0,71\),
+        \item \(19 - 21,29 = -2,29\),
+        \item \(23 - 21,29 = 1,71\),
+        \item \(21 - 21,29 = -0,29\),
+        \item \(20 - 21,29 = -1,29\),
+        \item \(24 - 21,29 = 2,71\).
     \end{itemize}
     \item Eleve cada diferença ao quadrado:
     \begin{itemize}
-        \item \((-1.29)^2 = 1.6641\),
-        \item \(0.71^2 = 0.5041\),
-        \item \((-2.29)^2 = 5.2441\),
-        \item \(1.71^2 = 2.9241\),
-        \item \((-0.29)^2 = 0.0841\),
-        \item \((-1.29)^2 = 1.6641\),
-        \item \(2.71^2 = 7.3441\).
+        \item \((-1,29)^2 = 1,6641\),
+        \item \(0,71^2 = 0,5041\),
+        \item \((-2,29)^2 = 5,2441\),
+        \item \(1,71^2 = 2,9241\),
+        \item \((-0,29)^2 = 0,0841\),
+        \item \((-1,29)^2 = 1,6641\),
+        \item \(2,71^2 = 7,3441\).
     \end{itemize}
-    \item Some os quadrados: \(1.6641 + 0.5041 + 5.2441 + 2.9241 + 0.0841 + 1.6641 + 7.3441 = 19.4288\),
-    \item Divida pelo número de observações: \(\frac{19.4288}{7} \approx 2.7755\),
-    \item Tire a raiz quadrada: \(\sigma = \sqrt{2.7755} \approx 1.67\).
+    \item Some os quadrados: \(1,6641 + 0,5041 + 5,2441 + 2,9241 + 0,0841 + 1,6641 + 7,3441 = 19,4288\),
+    \item Divida pelo número de observações: \(\frac{19,4288}{7} \approx 2,7755\),
+    \item Tire a raiz quadrada: \(\sigma = \sqrt{2,7755} \approx 1,67\).
 \end{enumerate}
 
 Assim, o desvio padrão das temperaturas é aproximadamente 1,67°C.
@@ -238,7 +243,7 @@ A média de 21,29°C e o desvio padrão de 1,67°C indicam que as temperaturas v
 \section{Distribuições de Dados}
 Como hoje temos um grande volume de dados com diferentes níveis de qualidade e relevância, a amostragem é essencial, pois permite lidar com esses dados de maneira eficiente e reduzir possíveis vieses. Mesmo em iniciativas que envolvem big data, os modelos preditivos costumam ser inicialmente construídos e testados com amostras (divisão entre teste e treinamento). Além disso, amostras são frequentemente utilizadas em diversos experimentos, como testes de preços ou variações em páginas da web.
 \subsection{Distribuição Normal e Sua Relevância}
-A distribuição normal, ou gaussiana, é uma curva simétrica em forma de sino, definida por sua média ($\mu$) e desvio padrão ($\sigma$). Aproximadamente 68\% dos dados estão a 1 desvio padrão da média, 95\% a 2 desvios, e 99.7\% a 3 desvios. A normalidade é uma premissa de alguns métodos específicos, e não um pré-requisito geral de \textit{Machine Learning}. O Gaussian Naive Bayes e a Análise Discriminante Linear assumem \textit{features} normais dentro de cada classe; na regressão linear, a suposição recai sobre os resíduos e só importa para a inferência clássica (intervalos de confiança e testes sobre os coeficientes). Árvores de decisão, Random Forest, KNN, SVM e redes neurais não exigem que as variáveis sigam distribuição normal. Ainda assim, variáveis muito assimétricas podem se beneficiar de transformações (ex.: logarítmica).
+A distribuição normal, ou gaussiana, é uma curva simétrica em forma de sino, definida por sua média ($\mu$) e desvio padrão ($\sigma$). Aproximadamente 68\% dos dados estão a 1 desvio padrão da média, 95\% a 2 desvios, e 99,7\% a 3 desvios. A normalidade é uma premissa de alguns métodos específicos, e não um pré-requisito geral de \textit{Machine Learning}. O Gaussian Naive Bayes e a Análise Discriminante Linear assumem \textit{features} normais dentro de cada classe; na regressão linear, a suposição recai sobre os resíduos e só importa para a inferência clássica (intervalos de confiança e testes sobre os coeficientes). Árvores de decisão, Random Forest, KNN, SVM e redes neurais não exigem que as variáveis sigam distribuição normal. Ainda assim, variáveis muito assimétricas podem se beneficiar de transformações (ex.: logarítmica).
 
 \subsection{Exemplo Prático: Verificando Normalidade em Dados de Altura}
 Geramos um conjunto fictício de alturas (média 170 cm, desvio 10 cm) e visualizamos sua distribuição:
@@ -474,7 +479,7 @@ Saída:
 
 Em tarefas de regressão, a presença de \textit{outliers}, valores extremos que desviam significativamente do padrão geral dos dados, pode comprometer a precisão e a confiabilidade dos modelos preditivos. Esses pontos anômalos surgem por diversos motivos, como erros de medição, eventos raros ou variações naturais em datasets complexos. Em modelos de regressão linear, por exemplo, \textit{outliers} exercem uma influência desproporcional na estimativa dos coeficientes, pois o método dos mínimos quadrados busca minimizar o erro total, dando peso excessivo a valores aberrantes. Já em árvores de decisão, embora menos sensíveis, \textit{outliers} ainda podem distorcer as divisões iniciais, afetando a generalização.
 
-Detectar e tratar \textit{outliers} é uma etapa crítica no pré-processamento de dados para \textit{Machine Learning}. Métodos comuns incluem a análise estatística baseada no desvio padrão (valores além de 2 ou 3 desvios da média são suspeitos) e o uso do intervalo interquartil (IQR), que identifica pontos fora dos limites definidos por $Q1 - 1.5 \times IQR$ e $Q3 + 1.5 \times IQR$, onde $Q1$ e $Q3$ são os quartis inferior e superior, e $IQR = Q3 - Q1$. Após a detecção, as opções de tratamento variam: remover os \textit{outliers} (se forem erros), transformá-los (ex.: aplicar logaritmo) ou usar modelos robustos que os tolerem (ex.: regressão robusta ou árvores com poda).
+Detectar e tratar \textit{outliers} é uma etapa crítica no pré-processamento de dados para \textit{Machine Learning}. Métodos comuns incluem a análise estatística baseada no desvio padrão (valores além de 2 ou 3 desvios da média são suspeitos) e o uso do intervalo interquartil (IQR), que identifica pontos fora dos limites definidos por $Q1 - 1,5 \times IQR$ e $Q3 + 1,5 \times IQR$, onde $Q1$ e $Q3$ são os quartis inferior e superior, e $IQR = Q3 - Q1$. Após a detecção, as opções de tratamento variam: remover os \textit{outliers} (se forem erros), transformá-los (ex.: aplicar logaritmo) ou usar modelos robustos que os tolerem (ex.: regressão robusta ou árvores com poda).
 
 A importância desse processo fica clara ao considerar seu impacto prático. Um único \textit{outlier} em um dataset de preços de casas, como um imóvel de 60 m² custando R\$1.000.000 devido a um erro de digitação, pode inclinar a reta de regressão linear, levando a previsões imprecisas para casas típicas. Identificar e mitigar esses casos garante que o modelo reflita as tendências reais dos dados, em vez de ser distorcido por anomalias.
 
@@ -596,7 +601,7 @@ print(f"Sem outlier - Inclinação: {modelo_sem_outlier.coef_[0]:.2f}, "
 \subsection{Interpretação dos Resultados}
 A detecção via IQR identificou corretamente o preço de R\$1.000.000 como um \textit{outlier}, já que o limite superior calculado (R\$522.500, com $Q1$ = R\$260.000 e $Q3$ = R\$365.000) foi amplamente ultrapassado. Esse valor, associado a um tamanho modesto de 60 m², é inconsistente com o padrão dos outros preços, que variam de R\$180.000 a R\$420.000.
 
-A regressão linear com o \textit{outlier} resultou em uma inclinação de $-356{,}81$: segundo esse modelo, cada metro quadrado adicional reduziria o preço em cerca de R\$357, uma conclusão absurda. Como o ponto extremo pertence a uma casa pequena (60 m², abaixo do tamanho médio do dataset), ele ergue o lado esquerdo da reta e a deixa praticamente horizontal, com intercepto de 389842.45. Após removê-lo, a inclinação passa a 3470.86 (cerca de R\$3.471 por m²) e o intercepto fica próximo de zero ($-2494{,}17$), valores coerentes com os dados típicos. O gráfico confirma visualmente: a reta vermelha (com \textit{outlier}) é puxada para cima pelo valor anômalo, enquanto a laranja (sem \textit{outlier}) acompanha a tendência real.
+A regressão linear com o \textit{outlier} resultou em uma inclinação de $-356,81$: segundo esse modelo, cada metro quadrado adicional reduziria o preço em cerca de R\$357, uma conclusão absurda. Como o ponto extremo pertence a uma casa pequena (60 m², abaixo do tamanho médio do dataset), ele ergue o lado esquerdo da reta e a deixa praticamente horizontal, com intercepto de 389842,45. Após removê-lo, a inclinação passa a 3470,86 (cerca de R\$3.471 por m²) e o intercepto fica próximo de zero ($-2494,17$), valores coerentes com os dados típicos. O gráfico confirma visualmente: a reta vermelha (com \textit{outlier}) é puxada para cima pelo valor anômalo, enquanto a laranja (sem \textit{outlier}) acompanha a tendência real.
 
 Em \textit{Machine Learning}, esse impacto é crítico. Um modelo treinado com \textit{outliers} não tratados pode superestimar preços de casas pequenas e subestimar os de casas grandes, levando a previsões pouco confiáveis. Neste exemplo, o modelo com \textit{outlier} prevê cerca de R\$372 mil para a casa de 50 m² (preço real: R\$180 mil) e R\$347 mil para a de 120 m² (preço real: R\$420 mil). Isso acontece porque os mínimos quadrados penalizam o erro ao quadrado, e um único desvio enorme passa a dominar a soma dos erros. A remoção do \textit{outlier} melhorou a generalização, mas em cenários reais, outras estratégias, como substituir o valor por uma média ou usar um modelo robusto como RANSAC, poderiam ser exploradas. Para árvores de decisão, o \textit{outlier} teria menos influência nas regiões finais, mas ainda poderia afetar divisões iniciais, reforçando a necessidade de tratamento prévio.
 
@@ -676,15 +681,15 @@ Usando os dados da Tabela~\ref{tab:casas}:
     \item \(n = 5\),
     \item \(\sum x_i = 50 + 70 + 90 + 110 + 130 = 450\),
     \item \(\sum y_i = 200 + 250 + 320 + 380 + 450 = 1600\),
-    \item \(\sum x_i y_i = (50 \cdot 200) + (70 \cdot 250) + (90 \cdot 320) + (110 \cdot 380) + (130 \cdot 450) = 156\,600\),
-    \item \(\sum x_i^2 = 50^2 + 70^2 + 90^2 + 110^2 + 130^2 = 44\,500\).
+    \item \(\sum x_i y_i = (50 \cdot 200) + (70 \cdot 250) + (90 \cdot 320) + (110 \cdot 380) + (130 \cdot 450) = 156.600\),
+    \item \(\sum x_i^2 = 50^2 + 70^2 + 90^2 + 110^2 + 130^2 = 44.500\).
 \end{itemize}
 Substituímos:
 \begin{itemize}
-    \item \(m = \frac{5 \cdot 156\,600 - 450 \cdot 1600}{5 \cdot 44\,500 - 450^2} = \frac{783\,000 - 720\,000}{222\,500 - 202\,500} = \frac{63\,000}{20\,000} = 3.15\),
-    \item \(b = \frac{1600 - 3.15 \cdot 450}{5} = \frac{1600 - 1417.5}{5} = \frac{182.5}{5} = 36.5\).
+    \item \(m = \frac{5 \cdot 156.600 - 450 \cdot 1600}{5 \cdot 44.500 - 450^2} = \frac{783.000 - 720.000}{222.500 - 202.500} = \frac{63.000}{20.000} = 3,15\),
+    \item \(b = \frac{1600 - 3,15 \cdot 450}{5} = \frac{1600 - 1417,5}{5} = \frac{182,5}{5} = 36,5\).
 \end{itemize}
-Assim, a equação é \(y = 3.15x + 36.5\).
+Assim, a equação é \(y = 3,15x + 36,5\).
 
 \subsection{Calculando com Python}
 Em Python, usamos a biblioteca \texttt{scikit-learn} para ajustar o modelo:
@@ -720,7 +725,7 @@ Preço previsto para 100 m²: 351.50 mil R$
 \vspace{5mm}
 
 \subsection{Interpretação}
-A equação \(y = 3.15x + 36.5\), idêntica à do cálculo manual, indica que cada metro quadrado adicional aumenta o preço em 3,15 mil reais, com uma base de 36,5 mil reais. Para uma casa de 100 m², o preço previsto é 351,50 mil reais, um valor coerente com os dados (entre os 320 mil da casa de 90 m² e os 380 mil da de 110 m²). A regressão linear é útil para previsões simples, mas seu desempenho depende da linearidade da relação entre as variáveis.
+A equação \(y = 3,15x + 36,5\), idêntica à do cálculo manual, indica que cada metro quadrado adicional aumenta o preço em 3,15 mil reais, com uma base de 36,5 mil reais. Para uma casa de 100 m², o preço previsto é 351,50 mil reais, um valor coerente com os dados (entre os 320 mil da casa de 90 m² e os 380 mil da de 110 m²). A regressão linear é útil para previsões simples, mas seu desempenho depende da linearidade da relação entre as variáveis.
 
 
 
@@ -830,7 +835,7 @@ MAE & Média dos erros em valor absoluto & \(\frac{1}{n} \sum_{i=1}^{n} |y_i - \
 \label{tab:metricas_regressao}
 \end{table}
 
-\chapter{Classificação: Previsão de Categorias}
+\chapter{Classificação: Previsão de Categorias}\label{cap:classificacao}
 
 \section{O que é Classificação?}
 
@@ -989,10 +994,11 @@ print("Centroides:", centroides)
 \end{minted}
 
 A saída é:
-\begin{itemize}
-    \item Atribuição dos clusters: [0, 1, 0, 0, 1, 1],
-    \item Centroides: [[2, 46.67], [5, 123.33]].
-\end{itemize}
+\begin{verbatim}
+Atribuição dos clusters: [0 1 0 0 1 1]
+Centroides: [[  2.          46.66666667]
+ [  5.         123.33333333]]
+\end{verbatim}
 
 Isso indica que os clientes 1, 3 e 4 (cluster 0) são "compradores ocasionais" (média de 2 compras, R\$46,67), enquanto os clientes 2, 5 e 6 (cluster 1) são "compradores frequentes" (média de 5 compras, R\$123,33).
 
@@ -1480,25 +1486,72 @@ df.to_csv('/content/drive/MyDrive/noticias_classificadas.csv', index=False)
 
 Dado o desempenho medido no teste, esses rótulos automáticos devem ser tratados como um rascunho a revisar. Com isso, você percorreu o fluxo completo: carregar um dataset, preparar os rótulos, vetorizar o texto, treinar, avaliar e aplicar um modelo de classificação.
 
-\chapter{Melhorias e Recursos}
-
 \section{Síntese Conceitual das Técnicas Utilizadas}
-A análise de sentimentos, como explorada ao longo do último capítulo, representa uma interseção poderosa entre ciência de dados, aprendizado de máquina e processamento de linguagem natural, oferecendo ferramentas para interpretar e quantificar emoções em textos. Este trabalho teve como objetivo principal introduzir os leitores a um pipeline prático e replicável para classificar notícias como positivas ou negativas, utilizando um conjunto de dados real e técnicas amplamente reconhecidas no campo. A escolha do ambiente Google Colab proporcionou um espaço acessível e colaborativo para a execução do projeto, enquanto o dataset de notícias — com uma parte de exemplos rotulados manualmente — serviu como base para demonstrar cada etapa do processo, desde a aquisição dos dados até a avaliação e aplicação do modelo treinado.
+A análise de sentimentos, como explorada ao longo deste capítulo, representa uma interseção poderosa entre ciência de dados, aprendizado de máquina e processamento de linguagem natural, oferecendo ferramentas para interpretar e quantificar emoções em textos. Este capítulo teve como objetivo principal introduzir os leitores a um pipeline prático e replicável para classificar notícias como positivas ou negativas, utilizando um conjunto de dados real e técnicas amplamente reconhecidas no campo. A escolha do ambiente Google Colab proporcionou um espaço acessível e colaborativo para a execução do projeto, enquanto o dataset de notícias — com uma parte de exemplos rotulados manualmente — serviu como base para demonstrar cada etapa do processo, desde a aquisição dos dados até a avaliação e aplicação do modelo treinado.
 
-O crescente volume de informações textuais geradas diariamente, seja em notícias, redes sociais ou outras plataformas digitais, torna a análise de sentimentos uma competência cada vez mais relevante. Empresas utilizam essas técnicas para monitorar a percepção pública sobre produtos e serviços, enquanto pesquisadores as aplicam para compreender tendências sociais e comportamentais. Neste contexto, o conteúdo deste livro buscou não apenas ensinar um método específico, mas também estabelecer fundamentos que permitam aos leitores adaptar e expandir o que foi aprendido para diferentes cenários. A escolha de ferramentas como \texttt{pandas} para manipulação de dados, \texttt{TfidfVectorizer} para representação textual e o algoritmo Support Vector Machine (SVM) reflete um equilíbrio entre simplicidade e eficácia, adequado tanto para iniciantes quanto para aqueles que desejam aprofundar seus estudos.
-Além disso, o processo aqui apresentado destaca a importância de etapas críticas como o pré-processamento de dados e a validação de modelos, que são essenciais para garantir resultados confiáveis em projetos de aprendizado de máquina. Ao classificar automaticamente as notícias sem rótulo e testar o modelo com exemplos fictícios, foi possível ilustrar como os conceitos teóricos se traduzem em aplicações práticas. Este capítulo final tem como objetivo consolidar esses aprendizados em uma síntese conceitual, oferecendo uma visão clara das técnicas empregadas e suas implicações. Adicionalmente, serão apresentados caminhos para avanços futuros e uma seleção de recursos que podem guiar os leitores em sua jornada de aprimoramento em ciência de dados e análise de sentimentos.
+O crescente volume de informações textuais geradas diariamente, seja em notícias, redes sociais ou outras plataformas digitais, torna a análise de sentimentos uma competência cada vez mais relevante. Empresas utilizam essas técnicas para monitorar a percepção pública sobre produtos e serviços, enquanto pesquisadores as aplicam para compreender tendências sociais e comportamentais. Neste contexto, o conteúdo desta primeira parte do livro buscou não apenas ensinar um método específico, mas também estabelecer fundamentos que permitam aos leitores adaptar e expandir o que foi aprendido para diferentes cenários. A escolha de ferramentas como \texttt{pandas} para manipulação de dados, \texttt{TfidfVectorizer} para representação textual e o algoritmo Support Vector Machine (SVM) reflete um equilíbrio entre simplicidade e eficácia, adequado tanto para iniciantes quanto para aqueles que desejam aprofundar seus estudos.
+Além disso, o processo aqui apresentado destaca a importância de etapas críticas como o pré-processamento de dados e a validação de modelos, que são essenciais para garantir resultados confiáveis em projetos de aprendizado de máquina. Ao classificar automaticamente as notícias sem rótulo e testar o modelo com exemplos fictícios, foi possível ilustrar como os conceitos teóricos se traduzem em aplicações práticas. Os parágrafos a seguir consolidam esses aprendizados em uma síntese das técnicas empregadas.
 Para a representação numérica dos títulos das notícias, empregou-se o método TF-IDF (\textit{Term Frequency-Inverse Document Frequency}), implementado por meio do \texttt{TfidfVectorizer} da biblioteca \texttt{scikit-learn}. Esse método transformou os textos em vetores numéricos, eliminando palavras irrelevantes (\textit{stopwords}) e limitando o vocabulário a, no máximo, 1.000 termos. O algoritmo de classificação escolhido foi o Support Vector Machine (SVM) com kernel linear, configurado com pesos balanceados (\texttt{class\_weight='balanced'}) para compensar a pequena diferença entre as classes positiva (108 exemplos) e negativa (92). O vetorizador e o classificador foram reunidos em um \texttt{Pipeline}, evitando vazamento de dados do teste para o treino. O conjunto de notícias rotuladas foi dividido em 80\% para treinamento e 20\% para teste, utilizando a função \texttt{train\_test\_split}, e o desempenho foi avaliado por acurácia (0,60), precisão (0,58) e \textit{recall} (0,70), resultados modestos e esperados para um treino com apenas 160 exemplos.
 O modelo treinado foi aplicado tanto para prever o sentimento de notícias fictícias quanto para classificar automaticamente as 645 notícias sem rótulo do dataset, cujos resultados foram salvos em um novo arquivo CSV. Esse fluxo — desde a obtenção dos dados até a aplicação prática do modelo — exemplifica a integração de pré-processamento de texto, aprendizado supervisionado e validação de resultados em um contexto real.
 
 \section{Para ir mais além}
 Para aqueles que desejam expandir os conhecimentos adquiridos, aprofundar-se em algum dos assuntos abordados neste livro ou mesmo aperfeiçoar o modelo reproduzido, deixo aqui algumas recomendações de conteúdos mais avançados:
 \begin{enumerate}
-    \item \textbf{Exploração de outros algoritmos}: Além do SVM, modelos como Random Forest (\texttt{RandomForestClassifier}) ou redes neurais recorrentes (via \texttt{TensorFlow} ou \texttt{PyTorch}) podem ser testados para potencialmente melhorar a capacidade preditiva em datasets textuais.
+    \item \textbf{Exploração de outros algoritmos}: Além do SVM, modelos como Random Forest (\texttt{RandomForestClassifier}) ou redes neurais recorrentes (via \texttt{TensorFlow} ou \texttt{PyTorch}) podem ser testados para potencialmente melhorar a capacidade preditiva em datasets textuais. As redes neurais são o assunto da Parte II.
     \item \textbf{Expansão do conjunto de dados}: Aumentar o número de exemplos rotulados, seja por anotação manual ou por integração com fontes externas (ex.: APIs de notícias), pode aprimorar a generalização do modelo.
     \item \textbf{Otimização de hiperparâmetros}: Ajustes nos parâmetros do SVM, como a escolha de kernels alternativos (\texttt{kernel='rbf'}) ou a variação do parâmetro de regularização (\texttt{C}), podem ser explorados via validação cruzada para otimizar o desempenho.
     \item \textbf{Classificação em tempo real}: Implementar um sistema que colete notícias em tempo real (ex.: utilizando \texttt{requests} e \texttt{BeautifulSoup}) e aplique o modelo treinado pode transformar o projeto em uma ferramenta dinâmica.
     \item \textbf{Extensão multilíngue}: Adaptar o pipeline para processar textos em outros idiomas, ajustando o pré-processamento (ex.: \texttt{stop\_words='english'}) e utilizando datasets multilíngues, amplia o alcance da análise de sentimentos.
 \end{enumerate}
+
+%% ======================================================================
+%% PARTE II — DEEP LEARNING (estrutura inicial; capítulos em desenvolvimento)
+%% ======================================================================
+\part{Deep Learning}
+
+\chapter{Do Neurônio às Redes Neurais}\label{cap:redes_neurais}
+
+A regressão logística do Capítulo~\ref{cap:classificacao} já é um neurônio artificial: ela multiplica cada entrada por um peso, soma os resultados e passa essa soma pela função sigmoide. Uma rede neural empilha várias dessas unidades em camadas, e esse empilhamento permite aprender fronteiras de decisão que uma única reta não consegue traçar. A Parte II começa nesse ponto e segue até o treinamento de redes com várias camadas.
+
+% TODO (autor): desenvolver o capítulo. Rascunhos em rascunhos/ antes de vir para cá.
+\textit{Capítulo em desenvolvimento.} Tópicos previstos:
+\begin{itemize}
+    \item O neurônio artificial e o Perceptron.
+    \item Da regressão logística ao Perceptron Multicamadas (MLP).
+    \item Funções de ativação: sigmoide, ReLU e softmax.
+    \item Propagação direta (\textit{forward pass}) calculada à mão em uma rede pequena.
+\end{itemize}
+
+\chapter{Como uma Rede Aprende}\label{cap:backpropagation}
+
+% TODO (autor): desenvolver o capítulo.
+\textit{Capítulo em desenvolvimento.} Tópicos previstos:
+\begin{itemize}
+    \item O aprendizado como problema de otimização: funções de perda.
+    \item Derivadas, derivadas parciais e o vetor gradiente.
+    \item Gradiente descendente e taxa de aprendizado.
+    \item Regra da cadeia e retropropagação (\textit{backpropagation}).
+    \item Uma iteração de treino resolvida à mão e conferida em Python.
+\end{itemize}
+
+\chapter{Treinando Redes Neurais na Prática}\label{cap:treino_redes}
+
+% TODO (autor): desenvolver o capítulo.
+\textit{Capítulo em desenvolvimento.} Tópicos previstos:
+\begin{itemize}
+    \item Implementação de uma rede em Python.
+    \item Épocas, lotes (\textit{batches}) e curvas de perda.
+    \item \textit{Overfitting} em redes: regularização, \textit{dropout} e parada antecipada.
+    \item Projeto prático da Parte II.
+\end{itemize}
+
+%% ======================================================================
+%% PARTE III — VISÃO COMPUTACIONAL entra aqui (\part{Visão Computacional})
+%% ======================================================================
+
+%% Fechamento do livro (fora das partes no sumário)
+\addtocontents{toc}{\protect\addvspace{2em}}
+\chapter{Recursos e Considerações Finais}
 
 \section{Recursos Recomendados}
 Os seguintes recursos são indicados para aprofundamento no estudo de aprendizado de máquina e análise de sentimentos:
@@ -1511,7 +1564,7 @@ Os seguintes recursos são indicados para aprofundamento no estudo de aprendizad
 \end{itemize}
 
 \section{Considerações Finais}
-Este livro apresentou os fundamentos do aprendizado de máquina, da estatística básica à regressão, à classificação e ao clustering, e terminou com um projeto completo de análise de sentimentos. As etapas percorridas (aquisição de dados, pré-processamento de texto, treinamento de modelos e avaliação) formam uma base para projetos futuros. Encorajamos os leitores a explorar as sugestões avançadas e os recursos recomendados, aplicando os conceitos aprendidos em novos contextos e contribuindo para o avanço de suas habilidades em ciência de dados.
+A Parte I deste livro apresentou os fundamentos do aprendizado de máquina clássico, da estatística básica à regressão, à classificação e ao clustering, e terminou com um projeto completo de análise de sentimentos. As etapas percorridas (aquisição de dados, pré-processamento de texto, treinamento de modelos e avaliação) formam a base sobre a qual as partes de Deep Learning e Visão Computacional se apoiam. Encorajamos os leitores a explorar as sugestões avançadas e os recursos recomendados, aplicando os conceitos aprendidos em novos contextos e contribuindo para o avanço de suas habilidades em ciência de dados.
 
 \begin{thebibliography}{99}
 

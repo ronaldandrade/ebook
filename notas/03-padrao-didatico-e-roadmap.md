@@ -42,5 +42,5 @@ Em vez de tentar reescrever toda a obra de uma só vez, o trabalho editorial dev
 - [ ] Garantir que o tom de voz permaneça autêntico, sem vícios de IA e fiel à experiência prática do autor.
 
 ### Fase 5: Expansão Futura (Deep Learning e Visão Computacional)
-- [ ] Capítulo/Parte nova sobre Redes Neurais e Backpropagation.
+- [ ] Capítulo/Parte nova sobre Redes Neurais e Backpropagation. (Em 11/11/2026 a Parte II foi criada no `ebook.tex` com três capítulos em esqueleto: 8, 9 e 10. Falta escrever o conteúdo.)
 - [ ] Projetos autorais em Visão Computacional (classificação, detecção de objetos, OCR).
