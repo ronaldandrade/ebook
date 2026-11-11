@@ -1,0 +1,18 @@
+# LaTeX build artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.toc
+*.out
+*.pyg
+_minted-*/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS and Backups
+.DS_Store
+*.bak*
