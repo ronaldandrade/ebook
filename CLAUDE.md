@@ -44,7 +44,7 @@ Seu papel é atuar como parceiro editorial de ponta a ponta: sugerir melhorias d
 
 ```text
 livro/
-├── ebook.tex                 # Fonte principal do livro em LaTeX (~69 páginas)
+├── ebook.tex                 # Fonte principal do livro em LaTeX (~81 páginas)
 ├── ebook.pdf                 # PDF final compilado
 ├── CLAUDE.md                 # Este guia editorial
 ├── sumario.md                # Roteiro completo da obra e status dos capítulos

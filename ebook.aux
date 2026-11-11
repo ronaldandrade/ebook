@@ -79,93 +79,127 @@
 \@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Dados de tamanho e preço de casas.}}{31}{table.3.1}\protected@file@percent }
 \newlabel{tab:casas}{{3.1}{31}{Dados de tamanho e preço de casas}{table.3.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Cálculo Manual Simplificado}{31}{subsection.3.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Calculando com Python}{31}{subsection.3.3.2}\protected@file@percent }
+\newlabel{eq:peso_simples}{{3.3}{31}{Cálculo Manual Simplificado}{equation.3.3.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Calculando com Python}{32}{subsection.3.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Interpretação}{32}{subsection.3.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Árvore de Decisão}{32}{section.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Árvores de Decisão para Regressão}{32}{subsection.3.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Exemplo Prático: Previsão de Preços de Casas}{33}{section*.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Interpretação dos Resultados}{34}{section*.14}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Árvore de decisão treinada no exemplo (gerada com \texttt  {sklearn.tree.plot\_tree}). Cada nó mostra a regra de divisão, o número de amostras e o preço médio; as folhas trazem o valor previsto.}}{35}{figure.3.2}\protected@file@percent }
-\newlabel{fig:arvore_de_decisao}{{3.2}{35}{Árvore de decisão treinada no exemplo (gerada com \texttt {sklearn.tree.plot\_tree}). Cada nó mostra a regra de divisão, o número de amostras e o preço médio; as folhas trazem o valor previsto}{figure.3.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}Avaliação de Modelos de Regressão}{36}{section.3.5}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Métricas de avaliação para modelos de regressão. Aqui, \(y_i\) é o valor real, \(\hat  {y}_i\) é o valor previsto, \(\bar  {y}\) é a média dos valores reais e \(n\) é o número de observações.}}{36}{table.3.2}\protected@file@percent }
-\newlabel{tab:metricas_regressao}{{3.2}{36}{Métricas de avaliação para modelos de regressão. Aqui, \(y_i\) é o valor real, \(\hat {y}_i\) é o valor previsto, \(\bar {y}\) é a média dos valores reais e \(n\) é o número de observações}{table.3.2}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Classificação: Previsão de Categorias}{37}{chapter.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Notação Algébrica e Vetorial}{32}{section.3.4}\protected@file@percent }
+\newlabel{sec:notacao}{{3.4}{32}{Notação Algébrica e Vetorial}{section.3.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Convenções}{33}{subsection.3.4.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Notação usada a partir deste capítulo.}}{33}{table.3.2}\protected@file@percent }
+\newlabel{tab:notacao}{{3.2}{33}{Notação usada a partir deste capítulo}{table.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Regressão Linear Múltipla}{33}{subsection.3.4.2}\protected@file@percent }
+\newlabel{eq:regressao_multipla}{{3.5}{33}{Regressão Linear Múltipla}{equation.3.4.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Vetores e Produto Escalar}{34}{subsection.3.4.3}\protected@file@percent }
+\newlabel{eq:modelo_vetorial}{{3.7}{34}{Vetores e Produto Escalar}{equation.3.4.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.4}A Matriz de Dados}{34}{subsection.3.4.4}\protected@file@percent }
+\newlabel{eq:modelo_matricial}{{3.9}{35}{A Matriz de Dados}{equation.3.4.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.5}A Função de Custo em Forma Vetorial}{35}{subsection.3.4.5}\protected@file@percent }
+\newlabel{eq:custo_mse}{{3.10}{36}{A Função de Custo em Forma Vetorial}{equation.3.4.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.6}A Equação Normal}{36}{subsection.3.4.6}\protected@file@percent }
+\newlabel{eq:equacao_normal}{{3.11}{36}{A Equação Normal}{equation.3.4.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.7}Equação Normal em Python}{37}{subsection.3.4.7}\protected@file@percent }
+\newlabel{sec:normal_python}{{3.4.7}{37}{Equação Normal em Python}{subsection.3.4.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.8}Interpretando os Pesos}{38}{subsection.3.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.9}Limitações da Solução Fechada}{39}{subsection.3.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Árvore de Decisão}{40}{section.3.5}\protected@file@percent }
+\newlabel{sec:arvore}{{3.5}{40}{Árvore de Decisão}{section.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}Árvores de Decisão para Regressão}{40}{subsection.3.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Exemplo Prático: Previsão de Preços de Casas}{40}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Interpretação dos Resultados}{42}{section*.14}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Árvore de decisão treinada no exemplo (gerada com \texttt  {sklearn.tree.plot\_tree}). Cada nó mostra a regra de divisão, o número de amostras e o preço médio; as folhas trazem o valor previsto.}}{42}{figure.3.2}\protected@file@percent }
+\newlabel{fig:arvore_de_decisao}{{3.2}{42}{Árvore de decisão treinada no exemplo (gerada com \texttt {sklearn.tree.plot\_tree}). Cada nó mostra a regra de divisão, o número de amostras e o preço médio; as folhas trazem o valor previsto}{figure.3.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Avaliação de Modelos de Regressão}{44}{section.3.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Métricas de avaliação para modelos de regressão. Aqui, \(y_i\) é o valor real, \(\hat  {y}_i\) é o valor previsto, \(\bar  {y}\) é a média dos valores reais e \(n\) é o número de observações.}}{44}{table.3.3}\protected@file@percent }
+\newlabel{tab:metricas_regressao}{{3.3}{44}{Métricas de avaliação para modelos de regressão. Aqui, \(y_i\) é o valor real, \(\hat {y}_i\) é o valor previsto, \(\bar {y}\) é a média dos valores reais e \(n\) é o número de observações}{table.3.3}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Classificação: Previsão de Categorias}{45}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cap:classificacao}{{4}{37}{Classificação: Previsão de Categorias}{chapter.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}O que é Classificação?}{37}{section.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Modelos Básicos de Classificação}{37}{section.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Regressão Logística}{37}{subsection.4.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}K-Nearest Neighbors (KNN)}{38}{subsection.4.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Considerações Finais}{39}{section.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Fronteira de decisão simples para classificação de e-mails como spam ou não spam, usando Regressão Logística.}}{40}{figure.4.1}\protected@file@percent }
-\newlabel{fig:fronteira_decisao}{{4.1}{40}{Fronteira de decisão simples para classificação de e-mails como spam ou não spam, usando Regressão Logística}{figure.4.1}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Clustering: Agrupamento de Dados}{41}{chapter.5}\protected@file@percent }
+\newlabel{cap:classificacao}{{4}{45}{Classificação: Previsão de Categorias}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}O que é Classificação?}{45}{section.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Modelos Básicos de Classificação}{45}{section.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Regressão Logística}{45}{subsection.4.2.1}\protected@file@percent }
+\newlabel{eq:logistica}{{4.3}{46}{Regressão Logística}{equation.4.2.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces A função sigmoide transforma o escore \(z\) em probabilidade. O ponto laranja é o novo e-mail do exemplo desta seção, com \(z = -0,24\) e probabilidade de spam de 0,44.}}{46}{figure.4.1}\protected@file@percent }
+\newlabel{fig:sigmoide}{{4.1}{46}{A função sigmoide transforma o escore \(z\) em probabilidade. O ponto laranja é o novo e-mail do exemplo desta seção, com \(z = -0,24\) e probabilidade de spam de 0,44}{figure.4.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Conferindo a Conta à Mão}{48}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{A Fronteira de Decisão}{48}{section*.16}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Fronteira de decisão da regressão logística no exemplo de spam: a reta \(x_2 = 2,25 - 0,5\tmspace  +\thinmuskip {.1667em}x_1\). A região azul corresponde a ``não spam'' (\(z < 0\)) e a vermelha a ``spam'' (\(z > 0\)), com os quatro e-mails de treino destacados.}}{49}{figure.4.2}\protected@file@percent }
+\newlabel{fig:fronteira_decisao}{{4.2}{49}{Fronteira de decisão da regressão logística no exemplo de spam: a reta \(x_2 = 2,25 - 0,5\,x_1\). A região azul corresponde a ``não spam'' (\(z < 0\)) e a vermelha a ``spam'' (\(z > 0\)), com os quatro e-mails de treino destacados}{figure.4.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Interpretando os Pesos: Chances}{49}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Como os Pesos São Ajustados: Entropia Cruzada}{50}{section*.18}\protected@file@percent }
+\newlabel{eq:entropia_cruzada}{{4.6}{50}{Como os Pesos São Ajustados: Entropia Cruzada}{equation.4.2.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Pesos da regressão logística no exemplo de spam para diferentes valores de \texttt  {C}.}}{50}{table.4.1}\protected@file@percent }
+\newlabel{tab:regularizacao}{{4.1}{50}{Pesos da regressão logística no exemplo de spam para diferentes valores de \texttt {C}}{table.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}K-Nearest Neighbors (KNN)}{51}{subsection.4.2.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Distâncias euclidianas do novo e-mail (2 ``grátis'', 1 ``urgente'') aos exemplos de treino.}}{52}{table.4.2}\protected@file@percent }
+\newlabel{tab:knn_distancias}{{4.2}{52}{Distâncias euclidianas do novo e-mail (2 ``grátis'', 1 ``urgente'') aos exemplos de treino}{table.4.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Considerações Finais}{52}{section.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Clustering: Agrupamento de Dados}{53}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}O que é Aprendizado Não Supervisionado e Clustering?}{41}{section.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Algoritmo K-Means}{41}{section.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Exemplo Prático: Segmentar Clientes por Compras}{42}{section.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Visualização dos Clusters}{43}{section.5.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Visualização dos clusters de clientes com K-Means (\(k=2\)), destacando compradores ocasionais e frequentes.}}{44}{figure.5.1}\protected@file@percent }
-\newlabel{fig:clusters_clientes}{{5.1}{44}{Visualização dos clusters de clientes com K-Means (\(k=2\)), destacando compradores ocasionais e frequentes}{figure.5.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}Interpretação e Limitações}{44}{section.5.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Avaliação e Melhoria de Modelos}{46}{chapter.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}O que é Aprendizado Não Supervisionado e Clustering?}{53}{section.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Algoritmo K-Means}{53}{section.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Exemplo Prático: Segmentar Clientes por Compras}{54}{section.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Visualização dos Clusters}{55}{section.5.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Visualização dos clusters de clientes com K-Means (\(k=2\)), destacando compradores ocasionais e frequentes.}}{56}{figure.5.1}\protected@file@percent }
+\newlabel{fig:clusters_clientes}{{5.1}{56}{Visualização dos clusters de clientes com K-Means (\(k=2\)), destacando compradores ocasionais e frequentes}{figure.5.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Interpretação e Limitações}{57}{section.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Avaliação e Melhoria de Modelos}{58}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Overfitting e Underfitting: Definições e Causas}{46}{section.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Divisão Treino/Teste e Validação Cruzada}{46}{section.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Exemplo Prático: Avaliar um Modelo de Regressão}{47}{section.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}Métricas de Avaliação}{48}{section.6.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Comparação de métricas de avaliação para classificação.}}{48}{table.6.1}\protected@file@percent }
-\newlabel{tab:metricas}{{6.1}{48}{Comparação de métricas de avaliação para classificação}{table.6.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.5}Matriz de Confusão}{49}{section.6.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.1}Exemplo Prático: Detecção de Fraudes em Cartões de Crédito}{49}{subsection.6.5.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Matriz de confusão do modelo de detecção de fraudes: o \textit  {heatmap} destaca os acertos na diagonal e os erros fora dela.}}{52}{figure.6.1}\protected@file@percent }
-\newlabel{fig:matriz_confusao}{{6.1}{52}{Matriz de confusão do modelo de detecção de fraudes: o \textit {heatmap} destaca os acertos na diagonal e os erros fora dela}{figure.6.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.2}Interpretação dos Resultados}{52}{subsection.6.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.6}Interpretação e Próximos Passos}{53}{section.6.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Aplicando o Aprendizado em Dados Reais}{54}{chapter.7}\protected@file@percent }
+\newlabel{cap:avaliacao}{{6}{58}{Avaliação e Melhoria de Modelos}{chapter.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Overfitting e Underfitting: Definições e Causas}{58}{section.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Divisão Treino/Teste e Validação Cruzada}{58}{section.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Exemplo Prático: Avaliar um Modelo de Regressão}{59}{section.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Métricas de Avaliação}{60}{section.6.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Comparação de métricas de avaliação para classificação.}}{60}{table.6.1}\protected@file@percent }
+\newlabel{tab:metricas}{{6.1}{60}{Comparação de métricas de avaliação para classificação}{table.6.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Matriz de Confusão}{61}{section.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.1}Exemplo Prático: Detecção de Fraudes em Cartões de Crédito}{61}{subsection.6.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Matriz de confusão do modelo de detecção de fraudes: o \textit  {heatmap} destaca os acertos na diagonal e os erros fora dela.}}{64}{figure.6.1}\protected@file@percent }
+\newlabel{fig:matriz_confusao}{{6.1}{64}{Matriz de confusão do modelo de detecção de fraudes: o \textit {heatmap} destaca os acertos na diagonal e os erros fora dela}{figure.6.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.2}Interpretação dos Resultados}{64}{subsection.6.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.6}Interpretação e Próximos Passos}{65}{section.6.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Aplicando o Aprendizado em Dados Reais}{66}{chapter.7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {7.1}Ferramentas e Preparo}{54}{section.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.1}Python e sua Versão Atual}{54}{subsection.7.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.2}Google Colab e Jupyter Notebook}{54}{subsection.7.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.3}Scikit-learn}{55}{subsection.7.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.2}Classificando Notícias com Aprendizado de Máquina}{55}{section.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}Conectando ao Google Drive}{55}{subsection.7.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Download do arquivo para testes}{55}{subsection.7.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.3}Carregando o Dataset}{56}{subsection.7.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.4}Analisando o Dataset}{56}{subsection.7.2.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces Amostra do Dataset de Notícias (df.head())}}{57}{table.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.5}Preparando os Dados Classificados}{57}{subsection.7.2.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.6}Transformando Texto em Números}{58}{subsection.7.2.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.7}Treinando e Testando o Modelo}{58}{subsection.7.2.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.8}Hora do Treinamento}{59}{subsection.7.2.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.9}Testando com Novas Notícias}{60}{subsection.7.2.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.10}(Opcional) Classificando Todas as Notícias}{60}{subsection.7.2.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.3}Síntese Conceitual das Técnicas Utilizadas}{61}{section.7.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.4}Para ir mais além}{62}{section.7.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {part}{II\hspace  {1em}Deep Learning}{63}{part.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}Do Neurônio às Redes Neurais}{64}{chapter.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Ferramentas e Preparo}{66}{section.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.1}Python e sua Versão Atual}{66}{subsection.7.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.2}Google Colab e Jupyter Notebook}{66}{subsection.7.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.3}Scikit-learn}{67}{subsection.7.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Classificando Notícias com Aprendizado de Máquina}{67}{section.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}Conectando ao Google Drive}{67}{subsection.7.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Download do arquivo para testes}{67}{subsection.7.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.3}Carregando o Dataset}{68}{subsection.7.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.4}Analisando o Dataset}{68}{subsection.7.2.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces Amostra do Dataset de Notícias (df.head())}}{69}{table.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.5}Preparando os Dados Classificados}{69}{subsection.7.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.6}Transformando Texto em Números}{70}{subsection.7.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.7}Treinando e Testando o Modelo}{70}{subsection.7.2.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.8}Hora do Treinamento}{71}{subsection.7.2.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.9}Testando com Novas Notícias}{72}{subsection.7.2.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.10}(Opcional) Classificando Todas as Notícias}{72}{subsection.7.2.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Síntese Conceitual das Técnicas Utilizadas}{73}{section.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.4}Para ir mais além}{74}{section.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {part}{II\hspace  {1em}Deep Learning}{75}{part.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Do Neurônio às Redes Neurais}{76}{chapter.8}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cap:redes_neurais}{{8}{64}{Do Neurônio às Redes Neurais}{chapter.8}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {9}Como uma Rede Aprende}{65}{chapter.9}\protected@file@percent }
+\newlabel{cap:redes_neurais}{{8}{76}{Do Neurônio às Redes Neurais}{chapter.8}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}Como uma Rede Aprende}{77}{chapter.9}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cap:backpropagation}{{9}{65}{Como uma Rede Aprende}{chapter.9}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {10}Treinando Redes Neurais na Prática}{66}{chapter.10}\protected@file@percent }
+\newlabel{cap:backpropagation}{{9}{77}{Como uma Rede Aprende}{chapter.9}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {10}Treinando Redes Neurais na Prática}{78}{chapter.10}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cap:treino_redes}{{10}{66}{Treinando Redes Neurais na Prática}{chapter.10}{}}
+\newlabel{cap:treino_redes}{{10}{78}{Treinando Redes Neurais na Prática}{chapter.10}{}}
 \@writefile{toc}{\addvspace {2em}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {11}Recursos e Considerações Finais}{67}{chapter.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {11}Recursos e Considerações Finais}{79}{chapter.11}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {11.1}Recursos Recomendados}{67}{section.11.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {11.2}Considerações Finais}{67}{section.11.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11.1}Recursos Recomendados}{79}{section.11.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11.2}Considerações Finais}{79}{section.11.2}\protected@file@percent }
 \bibcite{bruce}{1}
 \bibcite{cole}{2}
 \bibcite{geron}{3}
@@ -186,10 +220,14 @@
   2A66546B255AB6695AB483EF35208EE798ED819534FB1471F1B3AFC2A12306FB.pygtex,
   A851046F84A9C0E7D8D2B627ABB8882B98ED819534FB1471F1B3AFC2A12306FB.pygtex,
   77A73B5FA75FF7623869E4522122575D98ED819534FB1471F1B3AFC2A12306FB.pygtex,
-  ECB627D3F0B71EFE16ED5F6B2067A38598ED819534FB1471F1B3AFC2A12306FB.pygtex,
+  DBBE5CFE5A9CE8C8B838B394963AB5F698ED819534FB1471F1B3AFC2A12306FB.pygtex,
+  C3E4C45305A34B097DB1808834301DD898ED819534FB1471F1B3AFC2A12306FB.pygtex,
+  22101C56A7DDA62DEDED25EF2CCB643C98ED819534FB1471F1B3AFC2A12306FB.pygtex,
   DA2B46419310FDCECEF97D3341E2251C98ED819534FB1471F1B3AFC2A12306FB.pygtex,
-  89D12518DE90B660C817E9590EE2A93698ED819534FB1471F1B3AFC2A12306FB.pygtex,
+  41E9C6ACBD715497C5A399134CC5545A98ED819534FB1471F1B3AFC2A12306FB.pygtex,
+  BF99AAAADCE5707A922BEF12CF62779498ED819534FB1471F1B3AFC2A12306FB.pygtex,
   C62E0C2229F8898835C584E12421B38398ED819534FB1471F1B3AFC2A12306FB.pygtex,
+  A816E032AC5F1C41B4DA0C4A8023EEA198ED819534FB1471F1B3AFC2A12306FB.pygtex,
   8C95EA422E865DACEB1E2B14A92B709198ED819534FB1471F1B3AFC2A12306FB.pygtex,
   33BEBD4A6EBEA17DF1AFA4CD3461F77498ED819534FB1471F1B3AFC2A12306FB.pygtex,
   82AA75C77CBC13FB62EFA79F451AC45A98ED819534FB1471F1B3AFC2A12306FB.pygtex,

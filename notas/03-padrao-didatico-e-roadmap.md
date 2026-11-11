@@ -29,8 +29,8 @@ Em vez de tentar reescrever toda a obra de uma só vez, o trabalho editorial dev
 - [x] Desmistificar a premissa de distribuição normal no Capítulo 2 e detalhar sensibilidade a escala.
 
 ### Fase 2: Reorganização Estrutural e Contextualização Matemática
-- [ ] Introduzir notação algébrica e vetorial nos Capítulos 3 (Regressão) e 4 (Classificação).
-- [ ] Modelar a regressão linear e logística através de funções de perda e gradiente descendente.
+- [x] Introduzir notação algébrica e vetorial nos Capítulos 3 (Regressão) e 4 (Classificação). (11/11/2026: Seção 3.4 com convenções, produto escalar, matriz de dados, custo vetorial e equação normal; Cap. 4 com logística vetorial e KNN por norma. A notação foi padronizada também no K-Means.)
+- [ ] Modelar a regressão linear e logística através de funções de perda e gradiente descendente. (Parcial: as funções de perda, MSE e entropia cruzada, já estão nos Caps. 3 e 4; o gradiente descendente ficou para o Cap. 9, na Parte II.)
 - [ ] Transferir/conectar o estudo de outliers diretamente ao comportamento das perdas quadráticas na regressão. (Parcial: o exemplo foi corrigido e virou seção própria, ainda no Capítulo 2.)
 
 ### Fase 3: Aprofundamento dos Algoritmos Existentes

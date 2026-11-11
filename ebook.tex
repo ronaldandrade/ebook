@@ -10,6 +10,7 @@
 \usepackage{indentfirst}
 \usepackage{listings}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{icomma} % vírgula decimal em modo matemático sem espaço extra
 \usepackage{booktabs}
 \usepackage{minted}
@@ -620,19 +621,19 @@ Em Machine Learning, a regressão é um tipo de aprendizado supervisionado, pois
 
 \section{Regressão Linear}
 
-A regressão linear assume que a relação entre a variável independente (\(x\)) e a variável dependente (\(y\)) pode ser aproximada por uma reta. A equação da regressão linear simples é dada por:
+A regressão linear assume que a relação entre a variável de entrada (\(x\)) e a variável de saída (\(y\)) pode ser aproximada por uma reta. Na escola, essa reta aparece como \(y = mx + b\). Em Machine Learning, o coeficiente angular costuma ser chamado de \textbf{peso} (\textit{weight}) e escrito \(w\), e o intercepto \(b\) recebe também o nome de \textbf{viés} (\textit{bias}), sem relação com o viés estatístico de dados enviesados. Usaremos essa notação no resto do livro, porque ela se estende naturalmente para modelos com muitas variáveis e para as redes neurais da Parte II. A equação da regressão linear simples fica:
 \begin{equation}
-y = mx + b
+\hat{y} = wx + b
 \end{equation}
 onde:
 \begin{itemize}
-    \item \(y\): Valor previsto (variável dependente),
-    \item \(x\): Valor de entrada (variável independente),
-    \item \(m\): Coeficiente angular (inclinação da reta),
-    \item \(b\): Intercepto (valor de \(y\) quando \(x = 0\)).
+    \item \(\hat{y}\): valor previsto (o ``chapéu'' distingue a previsão do valor real \(y\));
+    \item \(x\): valor de entrada (variável independente);
+    \item \(w\): peso, ou coeficiente angular: quanto \(\hat{y}\) aumenta quando \(x\) aumenta uma unidade;
+    \item \(b\): viés, ou intercepto: valor de \(\hat{y}\) quando \(x = 0\).
 \end{itemize}
 
-O objetivo do treinamento é ajustar \(m\) e \(b\) para minimizar o erro entre os valores previstos (\(\hat{y}\)) e os valores reais dos dados. Esse erro é frequentemente medido pelo erro quadrático médio (MSE), definido como:
+O objetivo do treinamento é ajustar \(w\) e \(b\) para minimizar o erro entre os valores previstos (\(\hat{y}\)) e os valores reais dos dados. Esse erro é frequentemente medido pelo erro quadrático médio (MSE), definido como:
 \begin{equation}
 \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 \end{equation}
@@ -667,14 +668,15 @@ Para ilustrar a regressão linear, consideremos um exemplo prático: prever o pr
 \end{table}
 
 \subsection{Cálculo Manual Simplificado}
-Para uma regressão linear simples, podemos estimar \(m\) e \(b\) usando o método dos mínimos quadrados. A fórmula para o coeficiente angular é:
-\begin{equation}
-m = \frac{n \sum (x_i y_i) - \sum x_i \sum y_i}{n \sum x_i^2 - (\sum x_i)^2}
+Para uma regressão linear simples, podemos estimar \(w\) e \(b\) usando o método dos mínimos quadrados, que escolhe os valores com o menor MSE possível. A fórmula para o peso é:
+\begin{equation}\label{eq:peso_simples}
+w = \frac{n \sum (x_i y_i) - \sum x_i \sum y_i}{n \sum x_i^2 - (\sum x_i)^2}
 \end{equation}
-e o intercepto:
+e o viés:
 \begin{equation}
-b = \frac{\sum y_i - m \sum x_i}{n}.
+b = \frac{\sum y_i - w \sum x_i}{n}.
 \end{equation}
+Em ambas, \(n\) é o número de casas e cada somatório percorre todas elas (\(i = 1, \dots, n\)).
 
 Usando os dados da Tabela~\ref{tab:casas}:
 \begin{itemize}
@@ -686,10 +688,10 @@ Usando os dados da Tabela~\ref{tab:casas}:
 \end{itemize}
 Substituímos:
 \begin{itemize}
-    \item \(m = \frac{5 \cdot 156.600 - 450 \cdot 1600}{5 \cdot 44.500 - 450^2} = \frac{783.000 - 720.000}{222.500 - 202.500} = \frac{63.000}{20.000} = 3,15\),
+    \item \(w = \frac{5 \cdot 156.600 - 450 \cdot 1600}{5 \cdot 44.500 - 450^2} = \frac{783.000 - 720.000}{222.500 - 202.500} = \frac{63.000}{20.000} = 3,15\),
     \item \(b = \frac{1600 - 3,15 \cdot 450}{5} = \frac{1600 - 1417,5}{5} = \frac{182,5}{5} = 36,5\).
 \end{itemize}
-Assim, a equação é \(y = 3,15x + 36,5\).
+Assim, a equação é \(\hat{y} = 3,15x + 36,5\).
 
 \subsection{Calculando com Python}
 Em Python, usamos a biblioteca \texttt{scikit-learn} para ajustar o modelo:
@@ -707,9 +709,9 @@ modelo = LinearRegression()
 modelo.fit(X, y)
 
 # Coeficientes
-m = modelo.coef_[0]      # Inclinação
-b = modelo.intercept_    # Intercepto
-print(f"Equação: y = {m:.2f}x + {b:.2f}")
+w = modelo.coef_[0]      # Peso (inclinação)
+b = modelo.intercept_    # Viés (intercepto)
+print(f"Equação: y = {w:.2f}x + {b:.2f}")
 
 # Previsão para uma casa de 100 m²
 tamanho_teste = np.array([[100]])
@@ -725,11 +727,254 @@ Preço previsto para 100 m²: 351.50 mil R$
 \vspace{5mm}
 
 \subsection{Interpretação}
-A equação \(y = 3,15x + 36,5\), idêntica à do cálculo manual, indica que cada metro quadrado adicional aumenta o preço em 3,15 mil reais, com uma base de 36,5 mil reais. Para uma casa de 100 m², o preço previsto é 351,50 mil reais, um valor coerente com os dados (entre os 320 mil da casa de 90 m² e os 380 mil da de 110 m²). A regressão linear é útil para previsões simples, mas seu desempenho depende da linearidade da relação entre as variáveis.
+A equação \(\hat{y} = 3,15x + 36,5\), idêntica à do cálculo manual, indica que cada metro quadrado adicional aumenta o preço em 3,15 mil reais, com uma base de 36,5 mil reais. Para uma casa de 100 m², o preço previsto é 351,50 mil reais, um valor coerente com os dados (entre os 320 mil da casa de 90 m² e os 380 mil da de 110 m²). A regressão linear é útil para previsões simples, mas seu desempenho depende da linearidade da relação entre as variáveis.
+
+\section{Notação Algébrica e Vetorial}\label{sec:notacao}
+
+O preço de uma casa raramente depende só do tamanho. Número de quartos, idade do imóvel e bairro também pesam, e cada nova variável acrescentaria mais termos às fórmulas da seção anterior. Para trabalhar com qualquer número de variáveis sem reescrever tudo, a regressão linear (e praticamente todo o Machine Learning) usa a linguagem de vetores e matrizes. Esta seção constrói essa linguagem passo a passo, sempre com o exemplo das casas. Ela será reaproveitada na classificação (Capítulo~\ref{cap:classificacao}), no clustering e nas redes neurais da Parte II.
+
+\subsection{Convenções}
+
+A Tabela~\ref{tab:notacao} reúne os símbolos usados daqui em diante. A regra principal é visual: letra normal para um número, minúscula em negrito para vetor e maiúscula em negrito para matriz.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{3.2cm} p{10.3cm}}
+\toprule
+\textbf{Símbolo} & \textbf{Significado} \\
+\midrule
+\(x\), \(w\), \(b\) & Minúsculas em itálico: números isolados (escalares). \\
+\(\mathbf{x}\), \(\mathbf{w}\) & Minúsculas em negrito: vetores, escritos como colunas. \\
+\(\mathbf{X}\) & Maiúscula em negrito: matriz. \\
+\(n\) & Número de exemplos (linhas do dataset), indexados por \(i = 1, \dots, n\). \\
+\(d\) & Número de \textit{features} (colunas), indexadas por \(j = 1, \dots, d\). \\
+\(x_{ij}\) & Valor da \textit{feature} \(j\) no exemplo \(i\). \\
+\(\mathbf{x}_i\) & Vetor com todas as \textit{features} do exemplo \(i\). \\
+\(y_i\), \(\hat{y}_i\) & Valor real e valor previsto para o exemplo \(i\). \\
+\(\mathbf{v}^\top\) & Transposta de \(\mathbf{v}\): transforma uma coluna em linha, e vice-versa. \\
+\(\mathbb{R}^d\) & Conjunto dos vetores formados por \(d\) números reais. \\
+\(\|\mathbf{v}\|\) & Norma (comprimento) do vetor \(\mathbf{v}\). \\
+\bottomrule
+\end{tabular}
+\caption{Notação usada a partir deste capítulo.}
+\label{tab:notacao}
+\end{table}
+
+\subsection{Regressão Linear Múltipla}
+
+Com \(d\) \textit{features}, o modelo ganha um peso para cada uma:
+\begin{equation}\label{eq:regressao_multipla}
+\hat{y} = w_1 x_1 + w_2 x_2 + \cdots + w_d x_d + b = \sum_{j=1}^{d} w_j x_j + b
+\end{equation}
+Cada \textit{feature} \(x_j\) é multiplicada pelo seu peso \(w_j\), que mede quanto a previsão muda quando \(x_j\) aumenta uma unidade e todas as outras \textit{features} ficam constantes. O viés \(b\) continua sendo um só. Com \(d = 1\), a equação volta a ser a reta \(\hat{y} = wx + b\).
+
+Para as casas, com o tamanho como \(x_1\) e o número de quartos como \(x_2\):
+\[
+\hat{y} = w_1 \cdot \text{tamanho} + w_2 \cdot \text{quartos} + b
+\]
+Com duas \textit{features}, o modelo deixa de ser uma reta e passa a ser um plano no espaço (tamanho, quartos, preço). Com mais \textit{features}, vira um \textbf{hiperplano}: não conseguimos desenhá-lo, mas ele segue exatamente as mesmas regras.
+
+\subsection{Vetores e Produto Escalar}
+
+Agrupamos as \textit{features} de um exemplo em um vetor \(\mathbf{x} \in \mathbb{R}^d\) e os pesos em um vetor \(\mathbf{w} \in \mathbb{R}^d\):
+\[
+\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_d \end{pmatrix},
+\qquad
+\mathbf{w} = \begin{pmatrix} w_1 \\ w_2 \\ \vdots \\ w_d \end{pmatrix}
+\]
+O \textbf{produto escalar} entre dois vetores do mesmo tamanho multiplica-os elemento a elemento e soma os resultados:
+\begin{equation}
+\mathbf{w}^\top \mathbf{x} = \begin{pmatrix} w_1 & w_2 & \cdots & w_d \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_d \end{pmatrix} = w_1 x_1 + w_2 x_2 + \cdots + w_d x_d
+\end{equation}
+A transposta \(\mathbf{w}^\top\) deita o vetor de pesos, e uma linha multiplicada por uma coluna resulta em um único número. Com isso, a Equação~\ref{eq:regressao_multipla} fica:
+\begin{equation}\label{eq:modelo_vetorial}
+\hat{y} = \mathbf{w}^\top \mathbf{x} + b
+\end{equation}
+Essa linha resume a regressão linear com qualquer número de \textit{features}: o somatório continua lá, escondido dentro do produto escalar.
+
+Ajustando o modelo de tamanho e quartos às 10 casas que usaremos também na árvore de decisão (Seção~\ref{sec:arvore}), com preços em mil reais, obtemos \(\mathbf{w} = (3,0816;\ 12,4633)\) e \(b = 4,8124\) (o código está mais adiante, na Seção~\ref{sec:normal_python}). Para prever o preço de uma casa de 100 m² com 3 quartos:
+\[
+\hat{y} = \begin{pmatrix} 3,0816 & 12,4633 \end{pmatrix} \begin{pmatrix} 100 \\ 3 \end{pmatrix} + 4,8124 = 308,16 + 37,39 + 4,81 = 350,36
+\]
+O produto escalar é uma soma ponderada: cada \textit{feature} entra com seu valor multiplicado pelo peso que o modelo lhe atribui. Nessa previsão, o tamanho contribui com 308,16 mil reais e os quartos com 37,39 mil.
+
+\subsection{A Matriz de Dados}
+
+Empilhando os \(n\) exemplos, um por linha, obtemos a \textbf{matriz de dados} \(\mathbf{X}\), com \(n\) linhas e \(d\) colunas. É o mesmo formato de um \texttt{DataFrame} do pandas: uma linha por casa, uma coluna por \textit{feature}.
+\[
+\mathbf{X} = \begin{pmatrix} \mathbf{x}_1^\top \\ \mathbf{x}_2^\top \\ \vdots \\ \mathbf{x}_n^\top \end{pmatrix}
+= \begin{pmatrix}
+x_{11} & x_{12} & \cdots & x_{1d} \\
+x_{21} & x_{22} & \cdots & x_{2d} \\
+\vdots & \vdots & \ddots & \vdots \\
+x_{n1} & x_{n2} & \cdots & x_{nd}
+\end{pmatrix}
+\]
+O produto de uma matriz por um vetor calcula o produto escalar de cada linha com o vetor. Assim, as previsões para todos os exemplos saem de uma vez:
+\begin{equation}
+\hat{\mathbf{y}} = \mathbf{X}\mathbf{w} + b\,\mathbf{1}
+\end{equation}
+onde \(\hat{\mathbf{y}}\) é o vetor com as \(n\) previsões, a \(i\)-ésima linha de \(\mathbf{X}\mathbf{w}\) é \(\mathbf{x}_i^\top \mathbf{w}\) e \(\mathbf{1}\) é um vetor de \(n\) uns, que soma o mesmo \(b\) a todas as previsões.
+
+Um truque simplifica ainda mais a escrita: acrescentar a \(\mathbf{X}\) uma primeira coluna formada só por uns e colocar o viés no início do vetor de parâmetros, \(\boldsymbol{\theta} = (b;\ w_1;\ \dots;\ w_d)\). A coluna de uns multiplica \(b\) em todas as linhas, e o modelo inteiro vira um único produto:
+\begin{equation}\label{eq:modelo_matricial}
+\hat{\mathbf{y}} = \mathbf{X}\boldsymbol{\theta}
+\end{equation}
+Daqui até o fim do capítulo, \(\mathbf{X}\) inclui essa coluna de uns. Para as 5 casas da Tabela~\ref{tab:casas} (\(d = 1\)), com os parâmetros encontrados no cálculo manual:
+\[
+\mathbf{X} = \begin{pmatrix} 1 & 50 \\ 1 & 70 \\ 1 & 90 \\ 1 & 110 \\ 1 & 130 \end{pmatrix},
+\quad
+\boldsymbol{\theta} = \begin{pmatrix} 36,5 \\ 3,15 \end{pmatrix},
+\quad
+\hat{\mathbf{y}} = \mathbf{X}\boldsymbol{\theta} = \begin{pmatrix} 36,5 + 3,15 \cdot 50 \\ 36,5 + 3,15 \cdot 70 \\ 36,5 + 3,15 \cdot 90 \\ 36,5 + 3,15 \cdot 110 \\ 36,5 + 3,15 \cdot 130 \end{pmatrix}
+= \begin{pmatrix} 194 \\ 257 \\ 320 \\ 383 \\ 446 \end{pmatrix}
+\]
+
+\subsection{A Função de Custo em Forma Vetorial}
+
+O vetor de \textbf{resíduos} guarda o erro cometido em cada exemplo:
+\[
+\mathbf{e} = \mathbf{y} - \hat{\mathbf{y}} = \mathbf{y} - \mathbf{X}\boldsymbol{\theta}
+\]
+Para as casas:
+\[
+\mathbf{e} = \begin{pmatrix} 200 \\ 250 \\ 320 \\ 380 \\ 450 \end{pmatrix} - \begin{pmatrix} 194 \\ 257 \\ 320 \\ 383 \\ 446 \end{pmatrix} = \begin{pmatrix} 6 \\ -7 \\ 0 \\ -3 \\ 4 \end{pmatrix}
+\]
+O MSE é a soma dos quadrados dos resíduos dividida por \(n\). A soma dos quadrados dos componentes de um vetor é o produto escalar dele com ele mesmo, \(\mathbf{e}^\top \mathbf{e}\), que também é o quadrado do seu comprimento, a \textbf{norma euclidiana} \(\|\mathbf{e}\|\). Assim, o MSE vira uma função dos parâmetros:
+\begin{equation}\label{eq:custo_mse}
+J(\boldsymbol{\theta}) = \frac{1}{n} \|\mathbf{y} - \mathbf{X}\boldsymbol{\theta}\|^2 = \frac{1}{n} (\mathbf{y} - \mathbf{X}\boldsymbol{\theta})^\top (\mathbf{y} - \mathbf{X}\boldsymbol{\theta})
+\end{equation}
+\(J\) é a \textbf{função de custo}: para cada escolha de \(\boldsymbol{\theta}\), ela devolve um número que mede o quanto o modelo erra nos dados de treino. Nas casas, \(\mathbf{e}^\top\mathbf{e} = 36 + 49 + 0 + 9 + 16 = 110\) e \(J = 110/5 = 22\).
+
+Treinar o modelo é encontrar o \(\boldsymbol{\theta}\) que torna \(J\) o menor possível. Essa formulação (escolher um modelo, escolher uma função de custo e minimizá-la) é a mesma das redes neurais da Parte II; só mudam o modelo e o custo.
+
+\subsection{A Equação Normal}
+
+Para a regressão linear, o mínimo de \(J\) tem solução exata. Igualando a zero as derivadas de \(J\) em relação a cada parâmetro (ferramenta que a Parte II desenvolve com calma), chega-se ao sistema \(\mathbf{X}^\top\mathbf{X}\,\boldsymbol{\theta} = \mathbf{X}^\top\mathbf{y}\), cuja solução é a \textbf{equação normal}:
+\begin{equation}\label{eq:equacao_normal}
+\boldsymbol{\theta} = (\mathbf{X}^\top\mathbf{X})^{-1}\,\mathbf{X}^\top\mathbf{y}
+\end{equation}
+Os termos são:
+\begin{itemize}
+    \item \(\mathbf{X}^\top\mathbf{X}\): matriz quadrada, com uma linha e uma coluna por parâmetro, que resume como as colunas de \(\mathbf{X}\) se relacionam entre si;
+    \item \(\mathbf{X}^\top\mathbf{y}\): vetor que resume como cada coluna de \(\mathbf{X}\) se relaciona com o alvo;
+    \item \((\cdot)^{-1}\): a inversa da matriz, o equivalente matricial de dividir.
+\end{itemize}
+
+Vamos resolvê-la à mão para as 5 casas. Primeiro, os dois produtos:
+\[
+\mathbf{X}^\top\mathbf{X} = \begin{pmatrix} n & \sum x_i \\ \sum x_i & \sum x_i^2 \end{pmatrix} = \begin{pmatrix} 5 & 450 \\ 450 & 44.500 \end{pmatrix},
+\qquad
+\mathbf{X}^\top\mathbf{y} = \begin{pmatrix} \sum y_i \\ \sum x_i y_i \end{pmatrix} = \begin{pmatrix} 1600 \\ 156.600 \end{pmatrix}
+\]
+São exatamente os somatórios do cálculo manual, agora organizados em uma matriz e um vetor. Para inverter uma matriz \(2 \times 2\), usamos a regra
+\[
+\begin{pmatrix} p & q \\ r & s \end{pmatrix}^{-1} = \frac{1}{ps - qr} \begin{pmatrix} s & -q \\ -r & p \end{pmatrix}
+\]
+em que \(ps - qr\) é o determinante da matriz. Aqui ele vale \(5 \cdot 44.500 - 450^2 = 20.000\), o mesmo denominador da Equação~\ref{eq:peso_simples}. Então:
+\begin{align*}
+\boldsymbol{\theta} &= \frac{1}{20.000} \begin{pmatrix} 44.500 & -450 \\ -450 & 5 \end{pmatrix} \begin{pmatrix} 1600 \\ 156.600 \end{pmatrix} \\[4pt]
+&= \frac{1}{20.000} \begin{pmatrix} 44.500 \cdot 1600 - 450 \cdot 156.600 \\ -450 \cdot 1600 + 5 \cdot 156.600 \end{pmatrix} \\[4pt]
+&= \frac{1}{20.000} \begin{pmatrix} 730.000 \\ 63.000 \end{pmatrix}
+= \begin{pmatrix} 36,5 \\ 3,15 \end{pmatrix}
+\end{align*}
+Chegamos a \(b = 36,5\) e \(w = 3,15\), como antes. As fórmulas do cálculo manual são a equação normal escrita por extenso para o caso de uma única \textit{feature}; a versão matricial vale para qualquer \(d\).
+
+A solução tem uma propriedade geométrica útil: \(\mathbf{X}^\top\mathbf{e} = \mathbf{0}\), ou seja, o vetor de resíduos tem produto escalar zero com cada coluna de \(\mathbf{X}\) (dizemos que é \textbf{ortogonal} a elas). Com a coluna de uns, isso significa que os resíduos somam zero: \(6 - 7 + 0 - 3 + 4 = 0\). Com a coluna de tamanhos, \(50 \cdot 6 - 70 \cdot 7 + 90 \cdot 0 - 110 \cdot 3 + 130 \cdot 4 = 300 - 490 + 0 - 330 + 520 = 0\). A intuição: se os resíduos ainda tivessem alguma relação linear com uma das colunas, ajustar o parâmetro dessa coluna reduziria o erro, e a solução não seria a melhor.
+
+\subsection{Equação Normal em Python}\label{sec:normal_python}
+
+Em NumPy, o operador \texttt{@} faz produtos de matrizes e \texttt{.T} calcula a transposta. O código a seguir refaz o exemplo das 5 casas:
+
+\begin{minted}{python}
+import numpy as np
+
+# Casas da Tabela 3.1: tamanho (m²) e preço (mil R$)
+x = np.array([50, 70, 90, 110, 130])
+y = np.array([200, 250, 320, 380, 450])
+
+# Matriz de dados: coluna de uns (viés) + coluna de tamanhos
+X = np.column_stack([np.ones(len(x)), x])
+
+# Equação normal: resolve (X^T X) theta = X^T y
+theta = np.linalg.solve(X.T @ X, X.T @ y)
+print("theta = [b, w]:", np.round(theta, 2))
+
+# Previsões em lote e resíduos
+y_hat = X @ theta
+residuos = y - y_hat
+print("Previsões:", np.round(y_hat, 2))
+print("Resíduos: ", np.round(residuos, 2))
+print("MSE:", round(residuos @ residuos / len(y), 2))
+\end{minted}
+\begin{verbatim}
+Saída: theta = [b, w]: [36.5   3.15]
+Previsões: [194. 257. 320. 383. 446.]
+Resíduos:  [ 6. -7.  0. -3.  4.]
+MSE: 22.0
+\end{verbatim}
+
+Usamos \texttt{np.linalg.solve}, que resolve o sistema \(\mathbf{X}^\top\mathbf{X}\,\boldsymbol{\theta} = \mathbf{X}^\top\mathbf{y}\) diretamente, em vez de calcular a inversa com \texttt{np.linalg.inv} e multiplicar. O resultado é o mesmo, com menos operações e menos erro de arredondamento.
+
+O mesmo código funciona com duas \textit{features}; basta acrescentar uma coluna à matriz. Abaixo, ajustamos o modelo de tamanho e quartos às 10 casas e comparamos o resultado com o do scikit-learn:
+
+\begin{minted}{python}
+from sklearn.linear_model import LinearRegression
+
+tamanho = np.array([50, 70, 80, 100, 120, 60, 90, 110, 85, 95])
+quartos = np.array([1, 2, 2, 3, 3, 1, 2, 3, 2, 2])
+preco = np.array([180, 240, 280, 350, 420, 200, 300, 380, 290, 320])  # mil R$
+
+# Equação normal com duas features
+X = np.column_stack([np.ones(len(preco)), tamanho, quartos])
+theta = np.linalg.solve(X.T @ X, X.T @ preco)
+b, w = theta[0], theta[1:]
+print(f"NumPy:        b = {b:.2f}, w = {np.round(w, 2)}")
+
+# Mesmo modelo com scikit-learn (sem a coluna de uns)
+modelo = LinearRegression().fit(np.column_stack([tamanho, quartos]), preco)
+print(f"scikit-learn: b = {modelo.intercept_:.2f}, w = {np.round(modelo.coef_, 2)}")
+
+# Previsão: produto escalar w^T x + b
+x_novo = np.array([100, 3])
+print(f"Previsão para 100 m² e 3 quartos: {w @ x_novo + b:.2f} mil R$")
+\end{minted}
+\begin{verbatim}
+Saída: NumPy:        b = 4.81, w = [ 3.08 12.46]
+scikit-learn: b = 4.81, w = [ 3.08 12.46]
+Previsão para 100 m² e 3 quartos: 350.36 mil R$
+\end{verbatim}
+
+Os dois caminhos chegam aos mesmos parâmetros. O \texttt{LinearRegression} acrescenta o viés por conta própria e usa um método de mínimos quadrados numericamente mais estável que a equação normal, mas resolve o mesmo problema. A última linha é a Equação~\ref{eq:modelo_vetorial} em código: \texttt{w @ x\_novo} é o produto escalar \(\mathbf{w}^\top\mathbf{x}\).
+
+\subsection{Interpretando os Pesos}
+
+O modelo ajustado às 10 casas é:
+\[
+\hat{y} = 4,81 + 3,08 \cdot \text{tamanho} + 12,46 \cdot \text{quartos} \quad \text{(mil R\$)}
+\]
+O peso \(w_1 = 3,08\) diz que, com o número de quartos fixo, cada metro quadrado a mais soma cerca de 3,08 mil reais à previsão. O peso \(w_2 = 12,46\) diz que, com o tamanho fixo, cada quarto a mais soma 12,46 mil reais.
+
+``Fixo'' é a palavra que importa. Ajustando às mesmas 10 casas um modelo só com o tamanho, o peso do tamanho é 3,47. Quando os quartos entram, parte do efeito que antes era atribuído ao tamanho passa para eles, porque as duas \textit{features} andam juntas: a correlação de Pearson (Capítulo~\ref{cap:estatistica}) entre tamanho e quartos nessas casas é 0,92.
+
+Essa correlação forte entre \textit{features}, chamada \textbf{multicolinearidade}, deixa os pesos instáveis. Nas 10 casas quase não há imóveis de mesmo tamanho com número diferente de quartos, então o modelo tem pouca informação para separar um efeito do outro. Removendo uma casa de cada vez e reajustando o modelo, o peso dos quartos varia de 9,76 a 17,41, enquanto o do tamanho fica entre 2,88 e 3,22. A previsão do preço continua boa; o que fica pouco confiável é a leitura isolada de \(w_2\).
+
+Também vale notar que o MSE no próprio treino caiu de 35,89 (só tamanho) para 24,79 (tamanho e quartos). Isso não prova que o modelo melhorou: na regressão linear, acrescentar uma \textit{feature} nunca aumenta o erro de treino, porque o modelo sempre pode dar peso zero a ela. Medir o desempenho em dados que o modelo não viu é o assunto do Capítulo~\ref{cap:avaliacao}.
+
+\subsection{Limitações da Solução Fechada}
+
+A equação normal é elegante, mas tem limites práticos:
+\begin{itemize}
+    \item \textbf{Invertibilidade:} \(\mathbf{X}^\top\mathbf{X}\) precisa ter inversa. Isso falha quando uma coluna é combinação exata de outras (por exemplo, a área em m² e a mesma área em pés quadrados) ou quando há mais parâmetros do que exemplos. Com colunas quase redundantes, como tamanho e quartos, a inversa existe, mas pequenas mudanças nos dados mudam muito o resultado.
+    \item \textbf{Escala:} colunas em escalas muito diferentes (uns, tamanhos de 50 a 120, quartos de 1 a 3) pioram a precisão numérica e impedem comparar os pesos entre si. Padronizar as \textit{features}, como no Capítulo~\ref{cap:estatistica}, resolve as duas coisas.
+    \item \textbf{Custo computacional:} resolver o sistema exige um número de operações que cresce aproximadamente com o cubo do número de parâmetros. Com milhares ou milhões de \textit{features}, como em textos e imagens, isso se torna inviável. Nesses casos, os parâmetros são encontrados aos poucos pelo \textbf{gradiente descendente}, assunto do Capítulo~\ref{cap:backpropagation}.
+    \item \textbf{Forma do modelo:} \(\hat{y} = \mathbf{w}^\top\mathbf{x} + b\) só representa relações lineares nas \textit{features} fornecidas. Para capturar curvas, é preciso criar novas \textit{features} (por exemplo, \(x^2\)) ou usar outro tipo de modelo, como a árvore de decisão da próxima seção.
+    \item \textbf{Outliers:} como o custo eleva os erros ao quadrado, um único ponto extremo pode puxar o hiperplano inteiro, como vimos no Capítulo~\ref{cap:estatistica}.
+\end{itemize}
 
 
 
-\section{Árvore de Decisão}
+\section{Árvore de Decisão}\label{sec:arvore}
 \subsection{Árvores de Decisão para Regressão}
 
 Embora a regressão linear seja uma abordagem clássica para prever valores contínuos, as árvores de decisão oferecem uma alternativa poderosa e flexível, especialmente em cenários com relações não lineares entre variáveis. Este método, parte do algoritmo CART (\textit{Classification and Regression Tree}), constrói uma estrutura hierárquica que divide o espaço de dados em regiões com base em condições sobre os atributos, prevendo o valor médio das amostras em cada região terminal. Diferentemente da regressão linear, que assume uma relação linear global, as árvores de decisão capturam interações locais e padrões complexos, tornando-as adequadas para datasets com comportamento não uniforme.
@@ -845,22 +1090,52 @@ Em aplicações reais, a classificação está presente em diversas áreas. Um e
 
 \section{Modelos Básicos de Classificação}
 
-Nesta seção, exploraremos dois modelos amplamente utilizados para classificação: Regressão Logística e K-Nearest Neighbors (KNN). Ambos são acessíveis para iniciantes e formam a base para entender algoritmos mais complexos.
+Dois modelos servem de porta de entrada para a classificação: a Regressão Logística e o K-Nearest Neighbors (KNN). Ambos usam a notação vetorial da Seção~\ref{sec:notacao} de formas diferentes: o primeiro calcula um produto escalar, o segundo mede distâncias.
 
 \subsection{Regressão Logística}
 
-Apesar do nome, Regressão Logística é um modelo de classificação, não de regressão. Ela estima a probabilidade de um dado pertencer a uma classe específica, sendo ideal para problemas binários (duas classes). O modelo utiliza a função \textbf{sigmoide} para transformar uma combinação linear das características em uma probabilidade entre 0 e 1:
+Apesar do nome, a regressão logística é um modelo de classificação. Ela estima a probabilidade de um exemplo pertencer à classe positiva (classe 1) em problemas binários. O ponto de partida é a mesma combinação linear da regressão (Equação~\ref{eq:modelo_vetorial}):
 \begin{equation}
-P(y=1|x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \cdots + \beta_n x_n)}}
+z = \mathbf{w}^\top \mathbf{x} + b = w_1 x_1 + w_2 x_2 + \cdots + w_d x_d + b
 \end{equation}
-onde \(P(y=1|x)\) é a probabilidade da classe positiva, \(x_i\) são as características, e \(\beta_i\) são os coeficientes ajustados pelo modelo. Se \(P > 0,5\), o dado é classificado como classe 1; caso contrário, como classe 0.
+O valor \(z\), chamado de \textbf{logit} ou escore, pode ser qualquer número real, e por isso não serve como probabilidade. A \textbf{função sigmoide} \(\sigma\) comprime esse valor no intervalo entre 0 e 1:
+\begin{equation}
+\sigma(z) = \frac{1}{1 + e^{-z}}
+\end{equation}
+em que \(e \approx 2,718\) é a base do logaritmo natural. Juntando as duas partes, o modelo completo é:
+\begin{equation}\label{eq:logistica}
+P(y = 1 \mid \mathbf{x}) = \sigma(\mathbf{w}^\top \mathbf{x} + b) = \frac{1}{1 + e^{-(\mathbf{w}^\top \mathbf{x} + b)}}
+\end{equation}
+onde \(P(y = 1 \mid \mathbf{x})\) se lê ``probabilidade de \(y\) ser 1, dadas as \textit{features} \(\mathbf{x}\)''. A probabilidade da classe 0 é o complemento, \(1 - P(y = 1 \mid \mathbf{x})\).
 
-Por exemplo, considere a tarefa de classificar e-mails como spam ou não spam com base em duas características: o número de palavras "grátis" e "urgente". Um conjunto de dados fictício poderia ser:
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{sigmoide.png}
+\caption{A função sigmoide transforma o escore \(z\) em probabilidade. O ponto laranja é o novo e-mail do exemplo desta seção, com \(z = -0,24\) e probabilidade de spam de 0,44.}
+\label{fig:sigmoide}
+\end{figure}
+
+A Figura~\ref{fig:sigmoide} mostra o formato em S da sigmoide. Três propriedades explicam seu uso:
 \begin{itemize}
-    \item E-mail 1: 2 "grátis", 0 "urgente" → Não spam,
-    \item E-mail 2: 1 "grátis", 3 "urgente" → Spam.
+    \item \(\sigma(0) = 0,5\): escore zero significa indecisão total;
+    \item para \(z\) muito positivo, \(e^{-z}\) fica próximo de zero e \(\sigma(z)\) se aproxima de 1; para \(z\) muito negativo, \(e^{-z}\) fica enorme e \(\sigma(z)\) se aproxima de 0;
+    \item a curva é simétrica: \(\sigma(-z) = 1 - \sigma(z)\).
 \end{itemize}
-A Regressão Logística ajusta os coeficientes \(\beta\) para prever a probabilidade de spam. Abaixo, um exemplo em Python usando a biblioteca scikit-learn:
+
+O exemplo é classificado como classe 1 quando \(P(y = 1 \mid \mathbf{x}) > 0,5\). Como \(\sigma(z) > 0,5\) exatamente quando \(z > 0\), a regra de decisão se resume ao sinal do escore:
+\begin{equation}
+\hat{y} = \begin{cases} 1, & \text{se } \mathbf{w}^\top \mathbf{x} + b > 0 \\ 0, & \text{caso contrário} \end{cases}
+\end{equation}
+A sigmoide traduz o escore em probabilidade, mas a classe prevista depende apenas de \(z\) ser positivo ou negativo.
+
+Por exemplo, considere a tarefa de classificar e-mails como spam ou não spam com base em duas \textit{features}: o número de ocorrências das palavras ``grátis'' (\(x_1\)) e ``urgente'' (\(x_2\)). Um conjunto de dados fictício poderia ser:
+\begin{itemize}
+    \item E-mail 1: 2 ``grátis'', 0 ``urgente'' → Não spam,
+    \item E-mail 2: 1 ``grátis'', 3 ``urgente'' → Spam,
+    \item E-mail 3: 0 ``grátis'', 1 ``urgente'' → Não spam,
+    \item E-mail 4: 3 ``grátis'', 2 ``urgente'' → Spam.
+\end{itemize}
+A regressão logística ajusta \(\mathbf{w}\) e \(b\) para prever a probabilidade de spam. Abaixo, o exemplo em Python com o scikit-learn:
 
 \begin{minted}{python}
 from sklearn.linear_model import LogisticRegression
@@ -874,6 +1149,11 @@ y = [0, 1, 0, 1]  # 0 = Não spam, 1 = Spam
 modelo = LogisticRegression()
 modelo.fit(X, y)
 
+# Parâmetros aprendidos
+w = modelo.coef_[0]
+b = modelo.intercept_[0]
+print("w =", np.round(w, 3), " b =", round(b, 3))
+
 # Previsão para novo e-mail: 2 "grátis", 1 "urgente"
 novo_email = np.array([[2, 1]])
 probabilidade = modelo.predict_proba(novo_email)
@@ -882,19 +1162,113 @@ print(f"Probabilidade de spam: {probabilidade[0][1]:.2f}")
 
 \begin{verbatim}
 Saída:
+    w = [0.471 0.942]  b = -2.12
     Probabilidade de spam: 0.44
 \end{verbatim}
 
-
 A probabilidade de 0,44 fica abaixo de 0,5, então o e-mail é classificado como não spam.
+
+\subsubsection{Conferindo a Conta à Mão}
+
+Com \(\mathbf{w} = (0,471;\ 0,942)\), \(b = -2,1195\) (a saída arredonda para \(-2,12\)) e o novo e-mail \(\mathbf{x} = (2;\ 1)\), o escore é:
+\[
+z = \mathbf{w}^\top \mathbf{x} + b = 0,471 \cdot 2 + 0,942 \cdot 1 - 2,1195 = 0,942 + 0,942 - 2,1195 = -0,2355
+\]
+e a probabilidade:
+\[
+P(y = 1 \mid \mathbf{x}) = \sigma(-0,2355) = \frac{1}{1 + e^{0,2355}} = \frac{1}{1 + 1,2655} \approx 0,44
+\]
+O mesmo valor do \texttt{predict\_proba}. Como \(z\) é negativo, a classe prevista é 0 (não spam).
+
+Para calcular as probabilidades de vários exemplos de uma vez, usamos a forma matricial: \(\mathbf{p} = \sigma(\mathbf{X}\mathbf{w} + b\,\mathbf{1})\), com a sigmoide aplicada a cada elemento do vetor. Para os quatro e-mails de treino:
+
+\begin{minted}{python}
+z = X @ w + b
+p = 1 / (1 + np.exp(-z))
+print("z:", np.round(z, 2))
+print("p:", np.round(p, 2))
+print("predict_proba:", np.round(modelo.predict_proba(X)[:, 1], 2))
+\end{minted}
+\begin{verbatim}
+Saída: z: [-1.18  1.18 -1.18  1.18]
+p: [0.24 0.76 0.24 0.76]
+predict_proba: [0.24 0.76 0.24 0.76]
+\end{verbatim}
+
+Aqui \texttt{X} não tem a coluna de uns, porque o scikit-learn guarda o viés separado em \texttt{intercept\_}. Os dois e-mails de spam recebem probabilidade 0,76, e os dois legítimos, 0,24.
+
+\subsubsection{A Fronteira de Decisão}
+
+Os pontos em que o modelo fica exatamente indeciso são aqueles com \(z = 0\). Para o exemplo de spam:
+\[
+0,471\, x_1 + 0,942\, x_2 - 2,1195 = 0 \quad\Longrightarrow\quad x_2 = 2,25 - 0,5\, x_1
+\]
+Dividindo tudo por 0,942, obtemos a reta que separa as duas regiões da Figura~\ref{fig:fronteira_decisao}: ela corta o eixo de ``urgente'' em 2,25 e desce meia unidade a cada ``grátis'' a mais. Os e-mails acima da reta têm \(z > 0\) e são classificados como spam.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{fronteira_decisao.png}
+\caption{Fronteira de decisão da regressão logística no exemplo de spam: a reta \(x_2 = 2,25 - 0,5\,x_1\). A região azul corresponde a ``não spam'' (\(z < 0\)) e a vermelha a ``spam'' (\(z > 0\)), com os quatro e-mails de treino destacados.}
+\label{fig:fronteira_decisao}
+\end{figure}
+
+Com \(d\) \textit{features}, o conjunto \(\mathbf{w}^\top \mathbf{x} + b = 0\) é um hiperplano: uma reta em duas dimensões, um plano em três. Por isso a regressão logística é um \textbf{classificador linear}: sua fronteira nunca faz curvas. Classes que exigem uma fronteira curva, como uma classe concentrada no centro e a outra ao redor, não são separadas corretamente sem a criação de novas \textit{features}.
+
+O vetor \(\mathbf{w}\) também tem papel geométrico. Ele é perpendicular à fronteira e aponta para o lado da classe 1: aqui, \(\mathbf{w} = (0,471;\ 0,942)\) aponta para mais ``grátis'' e, sobretudo, mais ``urgente''. Dividindo o escore pela norma de \(\mathbf{w}\), obtemos a distância (com sinal) de um ponto até a fronteira:
+\[
+\text{distância} = \frac{\mathbf{w}^\top \mathbf{x} + b}{\|\mathbf{w}\|}, \qquad \|\mathbf{w}\| = \sqrt{0,471^2 + 0,942^2} \approx 1,053
+\]
+Para o novo e-mail, \(-0,2355 / 1,053 \approx -0,22\): ele está a apenas 0,22 unidades da fronteira, do lado ``não spam''. Essa proximidade explica uma probabilidade tão perto de 0,5.
+
+\subsubsection{Interpretando os Pesos: Chances}
+
+Isolando o escore na Equação~\ref{eq:logistica}, chegamos a uma forma linear:
+\begin{equation}
+\ln\!\left(\frac{p}{1 - p}\right) = \mathbf{w}^\top \mathbf{x} + b
+\end{equation}
+onde \(p = P(y = 1 \mid \mathbf{x})\). A razão \(p/(1 - p)\) é a \textbf{chance} (\textit{odds}): quantas vezes o spam é mais provável que o não spam. Para o novo e-mail, \(0,4414 / 0,5586 \approx 0,79\), ou 0,79 para 1. O logaritmo da chance (\textit{log-odds}) é exatamente o logit \(z\).
+
+Como o log-odds é linear nas \textit{features}, cada peso tem uma leitura direta. Cada ``grátis'' a mais soma 0,471 ao log-odds, o que multiplica a chance de spam por \(e^{0,471} \approx 1,60\). Cada ``urgente'' a mais soma 0,942, multiplicando a chance por \(e^{0,942} \approx 2,57\). Um peso positivo aumenta a chance da classe 1, um negativo a reduz e um peso zero indica uma \textit{feature} ignorada pelo modelo. Valem os mesmos cuidados da regressão: a leitura supõe as demais \textit{features} constantes, e comparar pesos só faz sentido quando as \textit{features} estão na mesma escala (aqui, ambas são contagens de palavras).
+
+\subsubsection{Como os Pesos São Ajustados: Entropia Cruzada}
+
+Na regressão linear, o custo era o MSE. Para modelos que produzem probabilidades, o custo padrão é a \textbf{entropia cruzada binária} (\textit{log-loss}):
+\begin{equation}\label{eq:entropia_cruzada}
+J(\mathbf{w}, b) = -\frac{1}{n} \sum_{i=1}^{n} \Big[\, y_i \ln p_i + (1 - y_i) \ln(1 - p_i) \,\Big], \qquad p_i = \sigma(\mathbf{w}^\top \mathbf{x}_i + b)
+\end{equation}
+Como \(y_i\) vale 0 ou 1, só um dos dois termos atua em cada exemplo. Se o exemplo é da classe 1, o custo é \(-\ln p_i\); se é da classe 0, é \(-\ln(1 - p_i)\). Em ambos os casos, o custo é o logaritmo negativo da probabilidade que o modelo deu à classe correta: perto de zero quando essa probabilidade é alta e cada vez maior conforme ela se aproxima de zero. Um erro cometido com confiança custa muito mais que uma dúvida.
+
+No exemplo, os e-mails de spam têm \(p_i = 0,76\) (custo \(-\ln 0,76 \approx 0,27\)) e os legítimos têm \(p_i = 0,24\) (custo \(-\ln 0,76 \approx 0,27\)). A média é \(J \approx 0,27\).
+
+Diferente do MSE da regressão linear, a entropia cruzada não tem uma fórmula fechada como a equação normal. Os pesos são encontrados por métodos iterativos da família do gradiente descendente, que partem de um palpite e o melhoram passo a passo (Capítulo~\ref{cap:backpropagation}). O \texttt{LogisticRegression} faz isso internamente com o algoritmo \texttt{lbfgs}.
+
+Nosso exemplo tem uma particularidade: os quatro e-mails podem ser separados perfeitamente por uma reta. Nesse caso, a entropia cruzada diminui sempre que os pesos crescem, porque as probabilidades se aproximam de 0 e 1, e o mínimo só seria atingido com pesos infinitos. Os pesos ficam finitos porque o \texttt{LogisticRegression} aplica, por padrão, uma \textbf{regularização} L2: soma ao custo uma penalidade proporcional a \(\|\mathbf{w}\|^2\), que desencoraja pesos grandes. O parâmetro \texttt{C} controla essa penalidade (padrão \texttt{C=1}; quanto maior \texttt{C}, mais fraca ela é). A Tabela~\ref{tab:regularizacao} mostra o efeito.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{rccc}
+\toprule
+\textbf{\texttt{C}} & \(\mathbf{w}\) & \(b\) & \textbf{\(P(\text{spam})\) do novo e-mail} \\
+\midrule
+1 & (0,47; 0,94) & \(-2,12\) & 0,44 \\
+10 & (1,13; 2,25) & \(-5,07\) & 0,36 \\
+100 & (1,87; 3,73) & \(-8,40\) & 0,28 \\
+10.000 & (3,00; 6,65) & \(-14,29\) & 0,16 \\
+\bottomrule
+\end{tabular}
+\caption{Pesos da regressão logística no exemplo de spam para diferentes valores de \texttt{C}.}
+\label{tab:regularizacao}
+\end{table}
+
+A fronteira quase não se move (até \texttt{C=100} ela continua sendo \(x_2 = 2,25 - 0,5\,x_1\)), mas a sigmoide fica cada vez mais íngreme e as probabilidades mais extremas. A classe prevista para o novo e-mail não muda, e a probabilidade cai de 0,44 para 0,16. As probabilidades da regressão logística são estimativas que dependem da regularização, sobretudo com poucos dados.
 
 \subsection{K-Nearest Neighbors (KNN)}
 
-O algoritmo K-Nearest Neighbors (KNN) é um método simples e intuitivo para classificação. Ele funciona encontrando os \(k\) exemplos mais próximos (vizinhos) de um novo dado no conjunto de treinamento e atribuindo a classe mais comum entre eles. A distância, geralmente Euclidiana, é calculada como:
+O algoritmo K-Nearest Neighbors (KNN) é um método simples e intuitivo para classificação. Ele não aprende pesos: guarda os exemplos de treino e, para classificar um novo dado, encontra os \(k\) exemplos mais próximos (vizinhos) e atribui a classe mais comum entre eles. ``Próximo'' é medido, em geral, pela distância euclidiana, que em notação vetorial é a norma da diferença entre dois vetores de \textit{features}:
 \begin{equation}
-d(x, y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
+\operatorname{dist}(\mathbf{x}, \mathbf{x}') = \|\mathbf{x} - \mathbf{x}'\| = \sqrt{(\mathbf{x} - \mathbf{x}')^\top(\mathbf{x} - \mathbf{x}')} = \sqrt{\sum_{j=1}^{d} (x_j - x'_j)^2}
 \end{equation}
-onde \(x\) e \(y\) são pontos no espaço das características.
+onde \(\mathbf{x}\) é o novo exemplo, \(\mathbf{x}'\) é um exemplo de treino e \(\mathbf{x} - \mathbf{x}'\) é o vetor das diferenças, \textit{feature} a \textit{feature}. É a mesma norma usada na função de custo da regressão (Equação~\ref{eq:custo_mse}), agora aplicada à diferença entre dois pontos: o produto escalar desse vetor com ele mesmo soma as diferenças ao quadrado, e a raiz quadrada devolve o comprimento.
 
 Usando o mesmo exemplo de e-mails, suponha que queremos classificar um novo e-mail com 2 "grátis" e 1 "urgente". O KNN calcula a distância desse ponto aos exemplos de treinamento e escolhe, por exemplo, os 3 vizinhos mais próximos (\(k=3\)). Se dois forem "spam" e um "não spam", o e-mail é classificado como spam. Veja a implementação em Python:
 
@@ -921,20 +1295,41 @@ Saída:
     Classe prevista: Não spam
 \end{verbatim}
 
-Os três vizinhos mais próximos do novo e-mail são os pontos (2, 0), (3, 2) e (0, 1), a distâncias de 1, 1,41 e 2. Dois deles são "não spam" e um é "spam", então a classe prevista é "não spam".
+A Tabela~\ref{tab:knn_distancias} mostra a conta para o novo e-mail \(\mathbf{x} = (2;\ 1)\).
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cccc}
+\toprule
+\textbf{Exemplo de treino \(\mathbf{x}'\)} & \textbf{Classe} & \(\mathbf{x} - \mathbf{x}'\) & \(\|\mathbf{x} - \mathbf{x}'\|\) \\
+\midrule
+(2; 0) & não spam & (0; 1) & \(\sqrt{0^2 + 1^2} = 1\) \\
+(1; 3) & spam & (1; \(-2\)) & \(\sqrt{1^2 + 2^2} = \sqrt{5} \approx 2,24\) \\
+(0; 1) & não spam & (2; 0) & \(\sqrt{2^2 + 0^2} = 2\) \\
+(3; 2) & spam & (\(-1\); \(-1\)) & \(\sqrt{1^2 + 1^2} = \sqrt{2} \approx 1,41\) \\
+\bottomrule
+\end{tabular}
+\caption{Distâncias euclidianas do novo e-mail (2 ``grátis'', 1 ``urgente'') aos exemplos de treino.}
+\label{tab:knn_distancias}
+\end{table}
+
+Os três vizinhos mais próximos estão a distâncias 1, 1,41 e 2. Dois deles são ``não spam'' e um é ``spam'', então a classe prevista é ``não spam''. Em NumPy, todas as distâncias saem de uma vez:
+
+\begin{minted}{python}
+distancias = np.linalg.norm(X - novo_email, axis=1)
+print("Distâncias:", np.round(distancias, 2))
+print("Índices dos 3 vizinhos:", np.argsort(distancias)[:3])
+\end{minted}
+\begin{verbatim}
+Saída: Distâncias: [1.   2.24 2.   1.41]
+Índices dos 3 vizinhos: [0 3 2]
+\end{verbatim}
+
+A subtração \texttt{X - novo\_email} é feita linha a linha, e \texttt{np.linalg.norm(..., axis=1)} calcula a norma de cada linha. Como a distância soma as diferenças de todas as \textit{features}, uma \textit{feature} com valores grandes domina as demais. Se acrescentássemos o tamanho do e-mail em caracteres, com valores na casa das centenas, as contagens de ``grátis'' e ``urgente'' praticamente deixariam de influenciar a escolha dos vizinhos. Por isso o KNN pede \textit{features} padronizadas (Capítulo~\ref{cap:estatistica}).
 
 \section{Considerações Finais}
 
-A Regressão Logística é eficaz para problemas lineares e oferece interpretabilidade por meio de probabilidades, enquanto o KNN é flexível e não assume uma forma específica para os dados, mas é sensível a outliers, à escala das \textit{features} e ao valor de \(k\). Nos capítulos seguintes, exploraremos como avaliar esses modelos e aplicá-los em cenários mais complexos.
-
-A Figura~\ref{fig:fronteira_decisao} ilustra a fronteira de decisão gerada pelo modelo de Regressão Logística para os dados de exemplo. A região azul representa a classe "não spam", enquanto a região vermelha indica "spam", com os pontos de treinamento destacados.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.6\textwidth]{fronteira_decisao.png}
-\caption{Fronteira de decisão simples para classificação de e-mails como spam ou não spam, usando Regressão Logística.}
-\label{fig:fronteira_decisao}
-\end{figure}
+Os dois modelos usam a mesma notação de maneiras opostas. A regressão logística resume cada exemplo em um produto escalar \(\mathbf{w}^\top\mathbf{x} + b\), traça uma fronteira linear e tem pesos interpretáveis como efeitos sobre a chance da classe positiva. O KNN não aprende parâmetros: decide pela norma da diferença entre vetores, o que permite fronteiras de qualquer formato, mas o torna sensível a outliers, à escala das \textit{features} e ao valor de \(k\), além de lento com conjuntos de treino grandes, já que cada previsão calcula a distância a todos os exemplos guardados. O Capítulo~\ref{cap:avaliacao} mostra como avaliar esses modelos.
 
 \chapter{Clustering: Agrupamento de Dados}
 
@@ -952,9 +1347,9 @@ O K-Means é um dos algoritmos de clustering mais simples e amplamente utilizado
     \item \textbf{Inicialização}: Escolha \(k\) pontos aleatórios como centroides iniciais dos clusters.
     \item \textbf{Atribuição}: Associe cada ponto de dados ao centroide mais próximo, usando a distância Euclidiana:
     \begin{equation}
-    d(x, c) = \sqrt{\sum_{i=1}^{n} (x_i - c_i)^2}
+    \operatorname{dist}(\mathbf{x}, \mathbf{c}) = \|\mathbf{x} - \mathbf{c}\| = \sqrt{\sum_{j=1}^{d} (x_j - c_j)^2}
     \end{equation}
-    onde \(x\) é um ponto de dados e \(c\) é um centroide.
+    onde \(\mathbf{x}\) é o vetor de \textit{features} de um ponto, \(\mathbf{c}\) é o vetor do centroide e \(d\) é o número de \textit{features}. É a mesma distância usada pelo KNN no Capítulo~\ref{cap:classificacao}.
     \item \textbf{Atualização}: Recalcule os centroides como a média dos pontos atribuídos a cada cluster.
     \item \textbf{Iteração}: Repita os passos 2 e 3 até que os centroides não mudem significativamente ou um número máximo de iterações seja atingido.
 \end{enumerate}
@@ -1054,7 +1449,7 @@ Outro cuidado: as duas \textit{features} estão em escalas diferentes (1 a 6 com
 
 \newpage
 
-\chapter{Avaliação e Melhoria de Modelos}
+\chapter{Avaliação e Melhoria de Modelos}\label{cap:avaliacao}
 
 \section{Overfitting e Underfitting: Definições e Causas}
 

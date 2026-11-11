@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2026.8.10)  11 NOV 2026 20:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2026.8.10)  11 NOV 2026 20:40
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -320,6 +320,17 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
 LaTeX Info: Redefining \[ on input line 2859.
 LaTeX Info: Redefining \] on input line 2860.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
 (/usr/share/texlive/texmf-dist/tex/latex/was/icomma.sty
 Package: icomma 2002/03/10 v2.0 (WaS)
 )
@@ -501,22 +512,22 @@ File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 (./ebook.aux)
 \openout1 = `ebook.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -553,7 +564,7 @@ LaTeX Font Info:    ... okay on input line 23.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box59
-Package hyperref Info: Link coloring ON on input line 23.
+Package hyperref Info: Link coloring ON on input line 24.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -565,9 +576,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count314
 )
-LaTeX Info: Redefining \ref on input line 23.
-LaTeX Info: Redefining \pageref on input line 23.
-LaTeX Info: Redefining \nameref on input line 23.
+LaTeX Info: Redefining \ref on input line 24.
+LaTeX Info: Redefining \pageref on input line 24.
+LaTeX Info: Redefining \nameref on input line 24.
 
 (./ebook.out) (./ebook.out)
 \@outlinefile=\write5
@@ -600,7 +611,18 @@ e
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 )
 \c@lstlisting=\count321
- [1
+LaTeX Font Info:    Trying to load font information for U+msa on input line 26.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 26.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./ebook.toc [2
@@ -626,7 +648,7 @@ Cap\'{\i }tulo 1.
 Underfull \vbox (badness 2913) has occurred while \output is active []
 
  [10]
-Overfull \hbox (4.32336pt too wide) in paragraph at lines 110--114
+Overfull \hbox (4.32336pt too wide) in paragraph at lines 111--115
 \OT1/cmr/m/n/12 (An^^Salise de Com-po-nen-tes Prin-ci-pais) ana-li-sam as \OT1/
 cmr/m/it/12 fe-a-tu-res\OT1/cmr/m/n/12 , cal-cu-lam dist^ancias ou vari^ancias,
 
@@ -650,11 +672,11 @@ LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ))
-<images/curva_normal_temperaturas.png, id=525, 416.2752pt x 328.8285pt>
+<images/curva_normal_temperaturas.png, id=575, 416.2752pt x 328.8285pt>
 File: images/curva_normal_temperaturas.png Graphic file (type png)
 <use images/curva_normal_temperaturas.png>
 Package pdftex.def Info: images/curva_normal_temperaturas.png  used on input li
-ne 235.
+ne 236.
 (pdftex.def)             Requested size: 368.57838pt x 291.16624pt.
  [16]
 [17pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1
@@ -662,7 +684,7 @@ ne 235.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.245 \subsection
+l.246 \subsection
                  {Distribuição Normal e Sua Relevância} <./images/curva_norm
 al_temperaturas.png>]
 \openout3 = `ebook.pyg'.
@@ -673,36 +695,36 @@ FB.pygtex
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
  [18])
-<images/distribuição_de_alturas.png, id=552, 416.2752pt x 328.8285pt>
+<images/distribuição_de_alturas.png, id=602, 416.2752pt x 328.8285pt>
 File: images/distribuição_de_alturas.png Graphic file (type png)
 <use images/distribuição_de_alturas.png>
 Package pdftex.def Info: images/distribuição_de_alturas.png  used on input li
-ne 279.
+ne 280.
 (pdftex.def)             Requested size: 368.57838pt x 291.16624pt.
  [19pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
 2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.292 \]
+l.293 \]
          <./images/distribuição_de_alturas.png>] [20]
 \openout3 = `ebook.pyg'.
 
 
 (./_minted-ebook/7602E20266054CF81CBF1EE85382CBBA98ED819534FB1471F1B3AFC2A12306
 FB.pygtex) [21]
-<images/Correlação_de_Pearson.png, id=574, 570.933pt x 354.123pt>
+<images/Correlação_de_Pearson.png, id=625, 570.933pt x 354.123pt>
 File: images/Correlação_de_Pearson.png Graphic file (type png)
 <use images/Correlação_de_Pearson.png>
 Package pdftex.def Info: images/Correlação_de_Pearson.png  used on input line
- 397.
+ 398.
 (pdftex.def)             Requested size: 368.57838pt x 228.621pt.
  [22pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
 3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.415 
+l.416 
        <./images/Correlação_de_Pearson.png>]
 \openout3 = `ebook.pyg'.
 
@@ -739,10 +761,10 @@ FB.pygtex)
 
 (./_minted-ebook/77A73B5FA75FF7623869E4522122575D98ED819534FB1471F1B3AFC2A12306
 FB.pygtex [26])
-<images/outliers_detection.png, id=597, 409.7709pt x 328.8285pt>
+<images/outliers_detection.png, id=648, 409.7709pt x 328.8285pt>
 File: images/outliers_detection.png Graphic file (type png)
 <use images/outliers_detection.png>
-Package pdftex.def Info: images/outliers_detection.png  used on input line 585.
+Package pdftex.def Info: images/outliers_detection.png  used on input line 586.
 
 (pdftex.def)             Requested size: 368.57838pt x 295.78235pt.
  [27pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
@@ -750,177 +772,232 @@ Package pdftex.def Info: images/outliers_detection.png  used on input line 585.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.595   \end{verbatim}
+l.596   \end{verbatim}
                        <./images/outliers_detection.png>] [28]
 Cap\'{\i }tulo 3.
 [29
 
 ]
-<images/regressao_linear.png, id=616, 570.933pt x 354.123pt>
+<images/regressao_linear.png, id=666, 570.933pt x 354.123pt>
 File: images/regressao_linear.png Graphic file (type png)
 <use images/regressao_linear.png>
-Package pdftex.def Info: images/regressao_linear.png  used on input line 643.
+Package pdftex.def Info: images/regressao_linear.png  used on input line 644.
 (pdftex.def)             Requested size: 368.57838pt x 228.621pt.
-
-Underfull \vbox (badness 8151) has occurred while \output is active []
-
  [30pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.668 
+l.669 
        <./images/regressao_linear.png>]
 \openout3 = `ebook.pyg'.
 
 
-(./_minted-ebook/ECB627D3F0B71EFE16ED5F6B2067A38598ED819534FB1471F1B3AFC2A12306
+(./_minted-ebook/DBBE5CFE5A9CE8C8B838B394963AB5F698ED819534FB1471F1B3AFC2A12306
 FB.pygtex [31pdfTeX warning (ext4): destination with the same identifier (name{
 table.3.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.9 \PYG{c+c1}{\PYGZsh{} Cria e treina o modelo}
-                                                ]) [32]
+                                                ]) [32] [33pdfTeX warning (ext4
+): destination with the same identifier (name{table.3.2}) has been already used
+, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.777 \subsection
+                 {Vetores e Produto Escalar}] [34] [35] [36]
+\openout3 = `ebook.pyg'.
+
+
+(./_minted-ebook/C3E4C45305A34B097DB1808834301DD898ED819534FB1471F1B3AFC2A12306
+FB.pygtex)
+\openout3 = `ebook.pyg'.
+
+
+(./_minted-ebook/22101C56A7DDA62DEDED25EF2CCB643C98ED819534FB1471F1B3AFC2A12306
+FB.pygtex [37]) [38]
+Underfull \vbox (badness 1237) has occurred while \output is active []
+
+ [39]
 \openout3 = `ebook.pyg'.
 
 
 (./_minted-ebook/DA2B46419310FDCECEF97D3341E2251C98ED819534FB1471F1B3AFC2A12306
-FB.pygtex [33])
-<images/arvore_regressao.png, id=646, 966.4908pt x 450.483pt>
+FB.pygtex [40]) [41]
+<images/arvore_regressao.png, id=753, 966.4908pt x 450.483pt>
 File: images/arvore_regressao.png Graphic file (type png)
 <use images/arvore_regressao.png>
-Package pdftex.def Info: images/arvore_regressao.png  used on input line 802.
+Package pdftex.def Info: images/arvore_regressao.png  used on input line 1047.
 (pdftex.def)             Requested size: 460.72124pt x 214.74463pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 803--803
+Underfull \hbox (badness 10000) in paragraph at lines 1048--1048
 []\OT1/cmr/m/n/12 Figura 3.2: [][]Arvore de de-cis~ao trei-nada no exem-plo (ge
 -rada com
  []
 
-[34] [35pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.3.2}) has been already used, duplicate ignored
+[42pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.813 \newpage
-               <./images/arvore_regressao.png>]
-Overfull \hbox (0.5171pt too wide) in paragraph at lines 823--823
+l.1057 
+        <./images/arvore_regressao.png>] [43]
+Overfull \hbox (0.5171pt too wide) in paragraph at lines 1068--1068
 []\OT1/cmr/bx/n/12 M^^Setrica| 
  []
 
 
-Underfull \hbox (badness 2875) in paragraph at lines 825--825
+Underfull \hbox (badness 2875) in paragraph at lines 1070--1070
 []\OT1/cmr/m/n/12 M^^Sedia dos qua-
  []
 
 
-Underfull \hbox (badness 3780) in paragraph at lines 825--826
+Underfull \hbox (badness 3780) in paragraph at lines 1070--1071
 []\OT1/cmr/m/n/12 Valores me-no-res in-
  []
 
 
-Underfull \hbox (badness 3000) in paragraph at lines 827--828
+Underfull \hbox (badness 3000) in paragraph at lines 1072--1073
 []\OT1/cmr/m/n/12 Mesma uni-dade dos
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 827--828
+Underfull \hbox (badness 10000) in paragraph at lines 1072--1073
 \OT1/cmr/m/n/12 in-ter-pret^^Savel que o
  []
 
 
-Underfull \hbox (badness 1490) in paragraph at lines 829--829
+Underfull \hbox (badness 1490) in paragraph at lines 1074--1074
 []\OT1/cmr/m/n/12 M^^Sedia dos er-ros
  []
 
 
-Underfull \hbox (badness 3000) in paragraph at lines 829--830
+Underfull \hbox (badness 3000) in paragraph at lines 1074--1075
 []\OT1/cmr/m/n/12 Mesma uni-dade dos
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 831--831
+Underfull \hbox (badness 10000) in paragraph at lines 1076--1076
 []\OT1/cmr/m/n/12 Propor^^Xc~ao da
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 831--831
+Underfull \hbox (badness 10000) in paragraph at lines 1076--1076
 \OT1/cmr/m/n/12 vari^ancia de $\OML/cmm/m/it/12 y$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 831--831
+Underfull \hbox (badness 10000) in paragraph at lines 1076--1076
 \OT1/cmr/m/n/12 ex-pli-cada pelo
  []
 
-[36pdfTeX warning (ext4): destination with the same identifier (name{table.3.2}
+[44pdfTeX warning (ext4): destination with the same identifier (name{table.3.3}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.838 \chapter
-              {Classificação: Previsão de Categorias}\label{cap:classific...
+l.1083 \chapter
+               {Classificação: Previsão de Categorias}\label{cap:classifi...
 ]
 Cap\'{\i }tulo 4.
-[37
+[45
 
 ]
+<images/sigmoide.png, id=781, 502.0356pt x 311.7246pt>
+File: images/sigmoide.png Graphic file (type png)
+<use images/sigmoide.png>
+Package pdftex.def Info: images/sigmoide.png  used on input line 1113.
+(pdftex.def)             Requested size: 368.57838pt x 228.85559pt.
+ [46pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1130 
+        <./images/sigmoide.png>]
 \openout3 = `ebook.pyg'.
 
 
-(./_minted-ebook/89D12518DE90B660C817E9590EE2A93698ED819534FB1471F1B3AFC2A12306
-FB.pygtex) [38]
+(./_minted-ebook/41E9C6ACBD715497C5A399134CC5545A98ED819534FB1471F1B3AFC2A12306
+FB.pygtex) [47]
+\openout3 = `ebook.pyg'.
+
+
+(./_minted-ebook/BF99AAAADCE5707A922BEF12CF62779498ED819534FB1471F1B3AFC2A12306
+FB.pygtex)
+<images/fronteira_decisao.png, id=798, 409.0482pt x 329.5512pt>
+File: images/fronteira_decisao.png Graphic file (type png)
+<use images/fronteira_decisao.png>
+Package pdftex.def Info: images/fronteira_decisao.png  used on input line 1210.
+
+(pdftex.def)             Requested size: 276.43555pt x 222.71904pt.
+ [48] [49pdfTeX warning (ext4): destination with the same identifier (name{figu
+re.4.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1232 
+        <./images/fronteira_decisao.png>] [50pdfTeX warning (ext4): destination
+ with the same identifier (name{table.4.1}) has been already used, duplicate ig
+nored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1264 
+       ]
 \openout3 = `ebook.pyg'.
 
 
 (./_minted-ebook/C62E0C2229F8898835C584E12421B38398ED819534FB1471F1B3AFC2A12306
-FB.pygtex)
-<images/fronteira_decisao.png, id=677, 409.0482pt x 329.5512pt>
-File: images/fronteira_decisao.png Graphic file (type png)
-<use images/fronteira_decisao.png>
-Package pdftex.def Info: images/fronteira_decisao.png  used on input line 934.
-(pdftex.def)             Requested size: 276.43555pt x 222.71904pt.
- [39] [40pdfTeX warning (ext4): destination with the same identifier (name{figu
-re.4.1}) has been already used, duplicate ignored
+FB.pygtex) [51]
+\openout3 = `ebook.pyg'.
+
+
+(./_minted-ebook/A816E032AC5F1C41B4DA0C4A8023EEA198ED819534FB1471F1B3AFC2A12306
+FB.pygtex) [52pdfTeX warning (ext4): destination with the same identifier (name
+{table.4.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.939 \chapter
-              {Clustering: Agrupamento de Dados} <./images/fronteira_decisao.pn
-g>]
+l.1334 \chapter
+               {Clustering: Agrupamento de Dados}]
 Cap\'{\i }tulo 5.
-[41
+[53
 
 ]
 \openout3 = `ebook.pyg'.
 
 
 (./_minted-ebook/8C95EA422E865DACEB1E2B14A92B709198ED819534FB1471F1B3AFC2A12306
-FB.pygtex [42])
+FB.pygtex [54])
 \openout3 = `ebook.pyg'.
 
 
 (./_minted-ebook/33BEBD4A6EBEA17DF1AFA4CD3461F77498ED819534FB1471F1B3AFC2A12306
-FB.pygtex [43])
-<images/clusters_clientes.png, id=708, 413.3844pt x 328.8285pt>
+FB.pygtex [55])
+<images/clusters_clientes.png, id=859, 413.3844pt x 328.8285pt>
 File: images/clusters_clientes.png Graphic file (type png)
 <use images/clusters_clientes.png>
-Package pdftex.def Info: images/clusters_clientes.png  used on input line 1042.
+Package pdftex.def Info: images/clusters_clientes.png  used on input line 1437.
 
 (pdftex.def)             Requested size: 368.57838pt x 293.1883pt.
- [44pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+
+Underfull \vbox (badness 1824) has occurred while \output is active []
+
+ [56pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
 1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1052 
-        <./images/clusters_clientes.png>] [45]
+l.1447 
+        <./images/clusters_clientes.png>] [57]
 Cap\'{\i }tulo 6.
-[46
+[58
 
 ]
-Overfull \hbox (10.1846pt too wide) in paragraph at lines 1071--1071
+Overfull \hbox (10.1846pt too wide) in paragraph at lines 1466--1466
 []\OT1/cmr/bx/n/17.28 Exemplo Pr^^Satico: Ava-liar um Mo-delo de Re-gress~ao 
  []
 
@@ -928,48 +1005,48 @@ Overfull \hbox (10.1846pt too wide) in paragraph at lines 1071--1071
 
 
 (./_minted-ebook/82AA75C77CBC13FB62EFA79F451AC45A98ED819534FB1471F1B3AFC2A12306
-FB.pygtex) [47]
+FB.pygtex) [59]
 \openout3 = `ebook.pyg'.
 
 
 (./_minted-ebook/621E3009380B0004B557BB727B6C096598ED819534FB1471F1B3AFC2A12306
-FB.pygtex) [48pdfTeX warning (ext4): destination with the same identifier (name
+FB.pygtex) [60pdfTeX warning (ext4): destination with the same identifier (name
 {table.6.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1157 \section
-               {Matriz de Confusão}] [49]
+l.1552 \section
+               {Matriz de Confusão}] [61]
 \openout3 = `ebook.pyg'.
 
 
 (./_minted-ebook/076A2EE9D6E5456DC7F4351BAE70131898ED819534FB1471F1B3AFC2A12306
-FB.pygtex [50])
-<images/matriz de confusao.png, id=746, 380.8629pt x 284.0211pt>
+FB.pygtex [62])
+<images/matriz de confusao.png, id=896, 380.8629pt x 284.0211pt>
 File: images/matriz de confusao.png Graphic file (type png)
 <use images/matriz de confusao.png>
-Package pdftex.def Info: images/matriz de confusao.png  used on input line 1250
+Package pdftex.def Info: images/matriz de confusao.png  used on input line 1645
 .
 (pdftex.def)             Requested size: 368.57838pt x 274.87172pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [51]
-[52pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1
+ [63]
+[64pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1261 
-        <./images/matriz de confusao.png>] [53]
+l.1656 
+        <./images/matriz de confusao.png>] [65]
 Cap\'{\i }tulo 7.
 
 Underfull \vbox (badness 1983) has occurred while \output is active []
 
- [54
+ [66
 
 ]
-Overfull \hbox (20.76257pt too wide) in paragraph at lines 1280--1280
+Overfull \hbox (20.76257pt too wide) in paragraph at lines 1675--1675
 []\OT1/cmr/bx/n/17.28 Classificando Not^^S^^Pcias com Apren-di-zado de M^^Saqui
 na 
  []
@@ -983,7 +1060,7 @@ FB.pygtex)
 
 
 (./_minted-ebook/6765433CD68F37375899C3AD52682B1E98ED819534FB1471F1B3AFC2A12306
-FB.pygtex [55])
+FB.pygtex [67])
 \openout3 = `ebook.pyg'.
 
 
@@ -994,11 +1071,11 @@ FB.pygtex)
 
 (./_minted-ebook/4031F4C24C8CD5824E6C491A92A7C59898ED819534FB1471F1B3AFC2A12306
 FB.pygtex)
-Overfull \hbox (23.21033pt too wide) in paragraph at lines 1339--1350
+Overfull \hbox (23.21033pt too wide) in paragraph at lines 1734--1745
  [][] 
  []
 
-[56]
+[68]
 \openout3 = `ebook.pyg'.
 
 
@@ -1008,7 +1085,7 @@ FB.pygtex)
 
 
 (./_minted-ebook/DE9AAA8C0C7419EBC241DEB382A1EFF098ED819534FB1471F1B3AFC2A12306
-FB.pygtex [57pdfTeX warning (ext4): destination with the same identifier (name{
+FB.pygtex [69pdfTeX warning (ext4): destination with the same identifier (name{
 table.7.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1024,8 +1101,8 @@ FB.pygtex)
 
 
 (./_minted-ebook/08F743F6C7B3706882586CD9BE213BBD98ED819534FB1471F1B3AFC2A12306
-FB.pygtex [58])
-Overfull \hbox (0.2371pt too wide) in paragraph at lines 1430--1431
+FB.pygtex [70])
+Overfull \hbox (0.2371pt too wide) in paragraph at lines 1825--1826
 []\OT1/cmr/m/n/12 No c^^Sodigo abaixo, jun-ta-mos o ve-to-ri-za-dor e um SVM co
 m ker-nel li-near em um \OT1/cmtt/m/n/12 Pipeline\OT1/cmr/m/n/12 .
  []
@@ -1034,7 +1111,7 @@ m ker-nel li-near em um \OT1/cmtt/m/n/12 Pipeline\OT1/cmr/m/n/12 .
 
 
 (./_minted-ebook/4A1B5EE99757F5D96DF96FB579899B8B98ED819534FB1471F1B3AFC2A12306
-FB.pygtex) [59]
+FB.pygtex) [71]
 \openout3 = `ebook.pyg'.
 
 
@@ -1044,53 +1121,53 @@ FB.pygtex)
 
 
 (./_minted-ebook/51ECF4FDF6CE42305E0D4412835B3A4798ED819534FB1471F1B3AFC2A12306
-FB.pygtex [60]) [61] [62] [63
+FB.pygtex [72]) [73] [74] [75
 
 ]
 Cap\'{\i }tulo 8.
-[64
+[76
 
 ]
 Cap\'{\i }tulo 9.
-[65
+[77
 
 ]
 Cap\'{\i }tulo 10.
-[66
+[78
 
 ]
 Cap\'{\i }tulo 11.
 
-Overfull \hbox (9.36598pt too wide) in paragraph at lines 1561--1562
+Overfull \hbox (9.36598pt too wide) in paragraph at lines 1956--1957
 []\OT1/cmr/bx/n/12 Documenta^^Xc~ao\OT1/cmr/m/n/12 : A do-cu-menta^^Xc~ao ofi-c
 ial do \OT1/cmtt/m/n/12 scikit-learn \OT1/cmr/m/n/12 ([][]$\OT1/cmtt/m/n/12 htt
 ps : / / scikit-[]learn .
  []
 
-[67
+[79
 
-] [68]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1593.
- [69
+] [80]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1988.
+ [81
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1593.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1988.
  (./ebook.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1593.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1593.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1988.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1988.
 
 Package rerunfilecheck Info: File `ebook.out' has not changed.
-(rerunfilecheck)             Checksum: 9BC509C5467E18C7892FAD6231F0E3DC;7240.
+(rerunfilecheck)             Checksum: 51C11EE7704B0FD41F542A618BD781AC;8055.
 runsystem(rm ebook.pyg)...executed.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1593.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1988.
  ) 
 Here is how much of TeX's memory you used:
- 12667 strings out of 483163
- 213164 string characters out of 5965511
- 733889 words of memory out of 5000000
- 27125 multiletter control sequences out of 15000+600000
- 544379 words of font info for 67 fonts, out of 8000000 for 9000
+ 13294 strings out of 483163
+ 221511 string characters out of 5965511
+ 734385 words of memory out of 5000000
+ 27666 multiletter control sequences out of 15000+600000
+ 551433 words of font info for 95 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  40i,14n,40p,1139b,645s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/ronald/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcit1200.60
@@ -1099,27 +1176,30 @@ Here is how much of TeX's memory you used:
 0.600pk> </home/ronald/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1
 200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on ebook.pdf (69 pages, 696701 bytes).
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/symbols/msbm10.pfb>
+Output written on ebook.pdf (81 pages, 807175 bytes).
 PDF statistics:
- 991 PDF objects out of 1000 (max. 8388607)
- 861 compressed objects within 9 object streams
- 212 named destinations out of 1000 (max. 500000)
- 742 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1163 PDF objects out of 1200 (max. 8388607)
+ 1014 compressed objects within 11 object streams
+ 254 named destinations out of 1000 (max. 500000)
+ 827 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -40,57 +40,71 @@
 \contentsline {section}{\numberline {3.2}Regressão Linear}{29}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Exemplo Prático: Prever o Preço de Casas}{30}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Cálculo Manual Simplificado}{31}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Calculando com Python}{31}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Calculando com Python}{32}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Interpretação}{32}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Árvore de Decisão}{32}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Árvores de Decisão para Regressão}{32}{subsection.3.4.1}%
-\contentsline {subsubsection}{Exemplo Prático: Previsão de Preços de Casas}{33}{section*.13}%
-\contentsline {subsubsection}{Interpretação dos Resultados}{34}{section*.14}%
-\contentsline {section}{\numberline {3.5}Avaliação de Modelos de Regressão}{36}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Classificação: Previsão de Categorias}{37}{chapter.4}%
-\contentsline {section}{\numberline {4.1}O que é Classificação?}{37}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Modelos Básicos de Classificação}{37}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Regressão Logística}{37}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}K-Nearest Neighbors (KNN)}{38}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Considerações Finais}{39}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Clustering: Agrupamento de Dados}{41}{chapter.5}%
-\contentsline {section}{\numberline {5.1}O que é Aprendizado Não Supervisionado e Clustering?}{41}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Algoritmo K-Means}{41}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Exemplo Prático: Segmentar Clientes por Compras}{42}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Visualização dos Clusters}{43}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Interpretação e Limitações}{44}{section.5.5}%
-\contentsline {chapter}{\numberline {6}Avaliação e Melhoria de Modelos}{46}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Overfitting e Underfitting: Definições e Causas}{46}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Divisão Treino/Teste e Validação Cruzada}{46}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Exemplo Prático: Avaliar um Modelo de Regressão}{47}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Métricas de Avaliação}{48}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Matriz de Confusão}{49}{section.6.5}%
-\contentsline {subsection}{\numberline {6.5.1}Exemplo Prático: Detecção de Fraudes em Cartões de Crédito}{49}{subsection.6.5.1}%
-\contentsline {subsection}{\numberline {6.5.2}Interpretação dos Resultados}{52}{subsection.6.5.2}%
-\contentsline {section}{\numberline {6.6}Interpretação e Próximos Passos}{53}{section.6.6}%
-\contentsline {chapter}{\numberline {7}Aplicando o Aprendizado em Dados Reais}{54}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Ferramentas e Preparo}{54}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Python e sua Versão Atual}{54}{subsection.7.1.1}%
-\contentsline {subsection}{\numberline {7.1.2}Google Colab e Jupyter Notebook}{54}{subsection.7.1.2}%
-\contentsline {subsection}{\numberline {7.1.3}Scikit-learn}{55}{subsection.7.1.3}%
-\contentsline {section}{\numberline {7.2}Classificando Notícias com Aprendizado de Máquina}{55}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Conectando ao Google Drive}{55}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Download do arquivo para testes}{55}{subsection.7.2.2}%
-\contentsline {subsection}{\numberline {7.2.3}Carregando o Dataset}{56}{subsection.7.2.3}%
-\contentsline {subsection}{\numberline {7.2.4}Analisando o Dataset}{56}{subsection.7.2.4}%
-\contentsline {subsection}{\numberline {7.2.5}Preparando os Dados Classificados}{57}{subsection.7.2.5}%
-\contentsline {subsection}{\numberline {7.2.6}Transformando Texto em Números}{58}{subsection.7.2.6}%
-\contentsline {subsection}{\numberline {7.2.7}Treinando e Testando o Modelo}{58}{subsection.7.2.7}%
-\contentsline {subsection}{\numberline {7.2.8}Hora do Treinamento}{59}{subsection.7.2.8}%
-\contentsline {subsection}{\numberline {7.2.9}Testando com Novas Notícias}{60}{subsection.7.2.9}%
-\contentsline {subsection}{\numberline {7.2.10}(Opcional) Classificando Todas as Notícias}{60}{subsection.7.2.10}%
-\contentsline {section}{\numberline {7.3}Síntese Conceitual das Técnicas Utilizadas}{61}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Para ir mais além}{62}{section.7.4}%
-\contentsline {part}{II\hspace {1em}Deep Learning}{63}{part.2}%
-\contentsline {chapter}{\numberline {8}Do Neurônio às Redes Neurais}{64}{chapter.8}%
-\contentsline {chapter}{\numberline {9}Como uma Rede Aprende}{65}{chapter.9}%
-\contentsline {chapter}{\numberline {10}Treinando Redes Neurais na Prática}{66}{chapter.10}%
+\contentsline {section}{\numberline {3.4}Notação Algébrica e Vetorial}{32}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Convenções}{33}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Regressão Linear Múltipla}{33}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Vetores e Produto Escalar}{34}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}A Matriz de Dados}{34}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}A Função de Custo em Forma Vetorial}{35}{subsection.3.4.5}%
+\contentsline {subsection}{\numberline {3.4.6}A Equação Normal}{36}{subsection.3.4.6}%
+\contentsline {subsection}{\numberline {3.4.7}Equação Normal em Python}{37}{subsection.3.4.7}%
+\contentsline {subsection}{\numberline {3.4.8}Interpretando os Pesos}{38}{subsection.3.4.8}%
+\contentsline {subsection}{\numberline {3.4.9}Limitações da Solução Fechada}{39}{subsection.3.4.9}%
+\contentsline {section}{\numberline {3.5}Árvore de Decisão}{40}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Árvores de Decisão para Regressão}{40}{subsection.3.5.1}%
+\contentsline {subsubsection}{Exemplo Prático: Previsão de Preços de Casas}{40}{section*.13}%
+\contentsline {subsubsection}{Interpretação dos Resultados}{42}{section*.14}%
+\contentsline {section}{\numberline {3.6}Avaliação de Modelos de Regressão}{44}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Classificação: Previsão de Categorias}{45}{chapter.4}%
+\contentsline {section}{\numberline {4.1}O que é Classificação?}{45}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Modelos Básicos de Classificação}{45}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Regressão Logística}{45}{subsection.4.2.1}%
+\contentsline {subsubsection}{Conferindo a Conta à Mão}{48}{section*.15}%
+\contentsline {subsubsection}{A Fronteira de Decisão}{48}{section*.16}%
+\contentsline {subsubsection}{Interpretando os Pesos: Chances}{49}{section*.17}%
+\contentsline {subsubsection}{Como os Pesos São Ajustados: Entropia Cruzada}{50}{section*.18}%
+\contentsline {subsection}{\numberline {4.2.2}K-Nearest Neighbors (KNN)}{51}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Considerações Finais}{52}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Clustering: Agrupamento de Dados}{53}{chapter.5}%
+\contentsline {section}{\numberline {5.1}O que é Aprendizado Não Supervisionado e Clustering?}{53}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Algoritmo K-Means}{53}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Exemplo Prático: Segmentar Clientes por Compras}{54}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Visualização dos Clusters}{55}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Interpretação e Limitações}{57}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Avaliação e Melhoria de Modelos}{58}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Overfitting e Underfitting: Definições e Causas}{58}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Divisão Treino/Teste e Validação Cruzada}{58}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Exemplo Prático: Avaliar um Modelo de Regressão}{59}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Métricas de Avaliação}{60}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Matriz de Confusão}{61}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Exemplo Prático: Detecção de Fraudes em Cartões de Crédito}{61}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}Interpretação dos Resultados}{64}{subsection.6.5.2}%
+\contentsline {section}{\numberline {6.6}Interpretação e Próximos Passos}{65}{section.6.6}%
+\contentsline {chapter}{\numberline {7}Aplicando o Aprendizado em Dados Reais}{66}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Ferramentas e Preparo}{66}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Python e sua Versão Atual}{66}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Google Colab e Jupyter Notebook}{66}{subsection.7.1.2}%
+\contentsline {subsection}{\numberline {7.1.3}Scikit-learn}{67}{subsection.7.1.3}%
+\contentsline {section}{\numberline {7.2}Classificando Notícias com Aprendizado de Máquina}{67}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Conectando ao Google Drive}{67}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Download do arquivo para testes}{67}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Carregando o Dataset}{68}{subsection.7.2.3}%
+\contentsline {subsection}{\numberline {7.2.4}Analisando o Dataset}{68}{subsection.7.2.4}%
+\contentsline {subsection}{\numberline {7.2.5}Preparando os Dados Classificados}{69}{subsection.7.2.5}%
+\contentsline {subsection}{\numberline {7.2.6}Transformando Texto em Números}{70}{subsection.7.2.6}%
+\contentsline {subsection}{\numberline {7.2.7}Treinando e Testando o Modelo}{70}{subsection.7.2.7}%
+\contentsline {subsection}{\numberline {7.2.8}Hora do Treinamento}{71}{subsection.7.2.8}%
+\contentsline {subsection}{\numberline {7.2.9}Testando com Novas Notícias}{72}{subsection.7.2.9}%
+\contentsline {subsection}{\numberline {7.2.10}(Opcional) Classificando Todas as Notícias}{72}{subsection.7.2.10}%
+\contentsline {section}{\numberline {7.3}Síntese Conceitual das Técnicas Utilizadas}{73}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Para ir mais além}{74}{section.7.4}%
+\contentsline {part}{II\hspace {1em}Deep Learning}{75}{part.2}%
+\contentsline {chapter}{\numberline {8}Do Neurônio às Redes Neurais}{76}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Como uma Rede Aprende}{77}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Treinando Redes Neurais na Prática}{78}{chapter.10}%
 \addvspace {2em}
-\contentsline {chapter}{\numberline {11}Recursos e Considerações Finais}{67}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Recursos Recomendados}{67}{section.11.1}%
-\contentsline {section}{\numberline {11.2}Considerações Finais}{67}{section.11.2}%
+\contentsline {chapter}{\numberline {11}Recursos e Considerações Finais}{79}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Recursos Recomendados}{79}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Considerações Finais}{79}{section.11.2}%
