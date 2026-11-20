@@ -34,7 +34,7 @@ Em vez de tentar reescrever toda a obra de uma só vez, o trabalho editorial dev
 - [ ] Transferir/conectar o estudo de outliers diretamente ao comportamento das perdas quadráticas na regressão. (Parcial: o exemplo foi corrigido e virou seção própria, ainda no Capítulo 2.)
 
 ### Fase 3: Aprofundamento dos Algoritmos Existentes
-- [ ] Incluir exemplos numéricos calculados passo a passo (ex.: um ajuste de reta simples à mão; uma iteração de K-Means com 4 pontos).
+- [ ] Incluir exemplos numéricos calculados passo a passo. (Parcial: regressão à mão no Cap. 3 e K-Means à mão no Cap. 5, seção "K-Means à Mão: Duas Iterações", feito em 19/11/2026.)
 - [ ] Enriquecer as discussões de limitações e casos de borda em cada modelo.
 
 ### Fase 4: Padronização Didática

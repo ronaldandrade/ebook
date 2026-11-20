@@ -4,7 +4,7 @@
 - **Título:** Meu Aprendizado de Máquinas
 - **Autor:** Ronald A. Mendonça
 - **Ano:** ano corrente até o lançamento (`\date{\the\year}` no `ebook.tex`)
-- **Formato:** LaTeX (`ebook.tex`) -> PDF (`ebook.pdf`, 81 páginas)
+- **Formato:** LaTeX (`ebook.tex`) -> PDF (`ebook.pdf`, 82 páginas)
 - **Repositório Git:** `https://github.com/ronaldandrade/ebook.git`
 - **Público-alvo:** Estudantes, profissionais e entusiastas que desejam uma introdução prática e matematicamente intuitiva ao aprendizado de máquina com Python.
 

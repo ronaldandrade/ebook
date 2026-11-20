@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
 \usepackage[top=2.5cm, bottom=2.5cm, inner=2.5cm, outer=2cm]{geometry}
-\usepackage[colorlinks=true, linkcolor=black, urlcolor=blue]{hyperref}
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=blue, hypertexnames=false]{hyperref}
 \usepackage{a4wide}
 \usepackage{float}
 \usepackage{graphicx}
@@ -1398,6 +1398,56 @@ Centroides: [[  2.          46.66666667]
 Isso indica que os clientes 1, 3 e 4 (cluster 0) são "compradores ocasionais" (média de 2 compras, R\$46,67), enquanto os clientes 2, 5 e 6 (cluster 1) são "compradores frequentes" (média de 5 compras, R\$123,33).
 
 
+\section{K-Means à Mão: Duas Iterações}
+
+O \texttt{KMeans} entregou os grupos em uma linha, mas dá para reproduzir o que ele faz com lápis e papel nos mesmos seis clientes. Para a conta ser determinística, partimos de dois centroides escolhidos a dedo: o Cliente 1, \(\mathbf{c}_0 = (2;\,50)\), e o Cliente 2, \(\mathbf{c}_1 = (5;\,120)\). Cada ponto é um vetor \((\text{compras},\ \text{valor})\).
+
+\textbf{Atribuição.} Para cada cliente calculamos a distância euclidiana até os dois centroides. Para o Cliente 3, \(\mathbf{x} = (1;\,30)\):
+\begin{align}
+\operatorname{dist}(\mathbf{x}, \mathbf{c}_0) &= \sqrt{(1-2)^2 + (30-50)^2} = \sqrt{1 + 400} \approx 20{,}02 \\
+\operatorname{dist}(\mathbf{x}, \mathbf{c}_1) &= \sqrt{(1-5)^2 + (30-120)^2} = \sqrt{16 + 8100} \approx 90{,}09
+\end{align}
+Cada termo sob a raiz é a diferença em uma \textit{feature} elevada ao quadrado. Como \(20{,}02 < 90{,}09\), o Cliente 3 fica com \(\mathbf{c}_0\). Repetindo a conta para todos:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Cliente} & \textbf{Distância a \(\mathbf{c}_0\)} & \textbf{Distância a \(\mathbf{c}_1\)} & \textbf{Cluster} \\
+\midrule
+1 \((2;\,50)\)   & 0,00   & 70,06 & 0 \\
+2 \((5;\,120)\)  & 70,06  & 0,00  & 1 \\
+3 \((1;\,30)\)   & 20,02  & 90,09 & 0 \\
+4 \((3;\,60)\)   & 10,05  & 60,03 & 0 \\
+5 \((6;\,150)\)  & 100,08 & 30,02 & 1 \\
+6 \((4;\,100)\)  & 50,04  & 20,02 & 1 \\
+\bottomrule
+\end{tabular}
+\caption{Primeira atribuição do K-Means, com os clientes 1 e 2 como centroides iniciais.}
+\label{tab:kmeans_atribuicao}
+\end{table}
+
+\textbf{Atualização.} Cada centroide passa a ser a média dos pontos do seu cluster, \textit{feature} por \textit{feature}:
+\begin{align}
+\mathbf{c}_0 &= \left(\frac{2+1+3}{3};\ \frac{50+30+60}{3}\right) = (2;\ 46{,}67) \\
+\mathbf{c}_1 &= \left(\frac{5+6+4}{3};\ \frac{120+150+100}{3}\right) = (5;\ 123{,}33)
+\end{align}
+
+\textbf{Segunda iteração.} Com os centroides novos, as distâncias mudam um pouco (o Cliente 4, por exemplo, está agora a 13,37 de \(\mathbf{c}_0\) e a 63,36 de \(\mathbf{c}_1\)), mas nenhum cliente troca de cluster. Os centroides recalculados saem iguais aos anteriores, e o algoritmo para: convergiu em duas iterações.
+
+\textbf{Conferência com o código.} A saída do \texttt{KMeans} da seção anterior traz exatamente esses centroides, \((2;\ 46{,}67)\) e \((5;\ 123{,}33)\), e a mesma atribuição \texttt{[0 1 0 0 1 1]}. Para repetir a conta manual, basta fixar os centroides iniciais e uma única inicialização:
+\begin{minted}{python}
+inicio = np.array([[2, 50], [5, 120]])
+kmeans = KMeans(n_clusters=2, init=inicio, n_init=1).fit(X)
+print(kmeans.labels_, kmeans.n_iter_)
+\end{minted}
+\begin{verbatim}
+[0 1 0 0 1 1] 2
+\end{verbatim}
+O padrão do \texttt{KMeans} sorteia os centroides iniciais com o método \texttt{k-means++}, por isso o ponto de partida do código costuma ser diferente do nosso. Aqui os dados são tão bem separados que qualquer início razoável chega ao mesmo resultado, o que nem sempre acontece em dados reais.
+
+\textbf{O que a conta revela.} Repare nas distâncias da Tabela~\ref{tab:kmeans_atribuicao}: elas são quase todas a diferença de valor em reais. Uma diferença de 70 reais pesa muito mais na raiz do que uma diferença de 3 compras. O número de compras praticamente não participa da decisão, porque as duas \textit{features} estão em escalas muito diferentes. É o mesmo problema de escala do Capítulo~\ref{cap:estatistica}, e para o K-Means, que depende de distâncias, o escalonamento das \textit{features} é obrigatório em dados com unidades distintas.
+
 \section{Visualização dos Clusters}
 
 Para entender melhor os resultados, podemos visualizar os clusters em um gráfico de dispersão. O código Python a seguir gera essa visualização, destacando os pontos dos clientes e os centroides:
@@ -1729,7 +1779,8 @@ A saída de \texttt{df.head()} mostra uma tabela como a seguir (com URLs e conte
 
 \begin{table}[H]
 \centering
-\small
+\footnotesize
+\setlength{\tabcolsep}{3pt}
 \caption{Amostra do Dataset de Notícias (df.head())}
 \begin{tabular}{|c|l|l|l|l|l|c|}
 \hline
@@ -1882,12 +1933,12 @@ df.to_csv('/content/drive/MyDrive/noticias_classificadas.csv', index=False)
 Dado o desempenho medido no teste, esses rótulos automáticos devem ser tratados como um rascunho a revisar. Com isso, você percorreu o fluxo completo: carregar um dataset, preparar os rótulos, vetorizar o texto, treinar, avaliar e aplicar um modelo de classificação.
 
 \section{Síntese Conceitual das Técnicas Utilizadas}
-A análise de sentimentos, como explorada ao longo deste capítulo, representa uma interseção poderosa entre ciência de dados, aprendizado de máquina e processamento de linguagem natural, oferecendo ferramentas para interpretar e quantificar emoções em textos. Este capítulo teve como objetivo principal introduzir os leitores a um pipeline prático e replicável para classificar notícias como positivas ou negativas, utilizando um conjunto de dados real e técnicas amplamente reconhecidas no campo. A escolha do ambiente Google Colab proporcionou um espaço acessível e colaborativo para a execução do projeto, enquanto o dataset de notícias — com uma parte de exemplos rotulados manualmente — serviu como base para demonstrar cada etapa do processo, desde a aquisição dos dados até a avaliação e aplicação do modelo treinado.
+A análise de sentimentos reúne ciência de dados, aprendizado de máquina e processamento de linguagem natural para transformar textos em números que um modelo consegue comparar. Este capítulo mostrou um pipeline prático e replicável para classificar notícias como positivas ou negativas, com um conjunto de dados real e técnicas bastante usadas na área. A escolha do ambiente Google Colab proporcionou um espaço acessível e colaborativo para a execução do projeto, enquanto o dataset de notícias, em que parte dos exemplos foi rotulada manualmente, serviu de base para cada etapa do processo, da aquisição dos dados até a avaliação e a aplicação do modelo treinado.
 
 O crescente volume de informações textuais geradas diariamente, seja em notícias, redes sociais ou outras plataformas digitais, torna a análise de sentimentos uma competência cada vez mais relevante. Empresas utilizam essas técnicas para monitorar a percepção pública sobre produtos e serviços, enquanto pesquisadores as aplicam para compreender tendências sociais e comportamentais. Neste contexto, o conteúdo desta primeira parte do livro buscou não apenas ensinar um método específico, mas também estabelecer fundamentos que permitam aos leitores adaptar e expandir o que foi aprendido para diferentes cenários. A escolha de ferramentas como \texttt{pandas} para manipulação de dados, \texttt{TfidfVectorizer} para representação textual e o algoritmo Support Vector Machine (SVM) reflete um equilíbrio entre simplicidade e eficácia, adequado tanto para iniciantes quanto para aqueles que desejam aprofundar seus estudos.
 Além disso, o processo aqui apresentado destaca a importância de etapas críticas como o pré-processamento de dados e a validação de modelos, que são essenciais para garantir resultados confiáveis em projetos de aprendizado de máquina. Ao classificar automaticamente as notícias sem rótulo e testar o modelo com exemplos fictícios, foi possível ilustrar como os conceitos teóricos se traduzem em aplicações práticas. Os parágrafos a seguir consolidam esses aprendizados em uma síntese das técnicas empregadas.
 Para a representação numérica dos títulos das notícias, empregou-se o método TF-IDF (\textit{Term Frequency-Inverse Document Frequency}), implementado por meio do \texttt{TfidfVectorizer} da biblioteca \texttt{scikit-learn}. Esse método transformou os textos em vetores numéricos, eliminando palavras irrelevantes (\textit{stopwords}) e limitando o vocabulário a, no máximo, 1.000 termos. O algoritmo de classificação escolhido foi o Support Vector Machine (SVM) com kernel linear, configurado com pesos balanceados (\texttt{class\_weight='balanced'}) para compensar a pequena diferença entre as classes positiva (108 exemplos) e negativa (92). O vetorizador e o classificador foram reunidos em um \texttt{Pipeline}, evitando vazamento de dados do teste para o treino. O conjunto de notícias rotuladas foi dividido em 80\% para treinamento e 20\% para teste, utilizando a função \texttt{train\_test\_split}, e o desempenho foi avaliado por acurácia (0,60), precisão (0,58) e \textit{recall} (0,70), resultados modestos e esperados para um treino com apenas 160 exemplos.
-O modelo treinado foi aplicado tanto para prever o sentimento de notícias fictícias quanto para classificar automaticamente as 645 notícias sem rótulo do dataset, cujos resultados foram salvos em um novo arquivo CSV. Esse fluxo — desde a obtenção dos dados até a aplicação prática do modelo — exemplifica a integração de pré-processamento de texto, aprendizado supervisionado e validação de resultados em um contexto real.
+O modelo treinado foi aplicado tanto para prever o sentimento de notícias fictícias quanto para classificar automaticamente as 645 notícias sem rótulo do dataset, cujos resultados foram salvos em um novo arquivo CSV. Esse fluxo, da obtenção dos dados à aplicação do modelo, exemplifica a integração de pré-processamento de texto, aprendizado supervisionado e validação de resultados em um contexto real.
 
 \section{Para ir mais além}
 Para aqueles que desejam expandir os conhecimentos adquiridos, aprofundar-se em algum dos assuntos abordados neste livro ou mesmo aperfeiçoar o modelo reproduzido, deixo aqui algumas recomendações de conteúdos mais avançados:
