@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \graphicspath{{images/}}
 \usepackage{indentfirst}
+\setlength{\emergencystretch}{3em} % evita linhas estouradas além da margem
 \usepackage{listings}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -98,9 +99,9 @@ Os tipos de aprendizado de máquina podem ser classificados em quatro categorias
 supervisionado, não supervisionado, por reforço e semissupervisionado.
 
 \subsection{Aprendizado Supervisionado (Supervised Learning)}
-O aprendizado supervisionado é o tipo mais comum e intuitivo de ML, usado quando temos um conjunto de dados rotulados — ou seja, cada exemplo de entrada vem com uma resposta correta (o "supervisor"). O objetivo é treinar um modelo para mapear entradas (\textit{features}) para saídas (\textit{labels}), aprendendo uma função que generalize bem para dados novos. Ele se divide em duas categorias principais: \textbf{classificação}, quando a saída é uma categoria (ex.: "spam" ou "não spam"), e \textbf{regressão}, quando a saída é um valor contínuo (ex.: preço de uma casa).\\
+O aprendizado supervisionado é o tipo mais comum e intuitivo de ML, usado quando temos um conjunto de dados rotulados, ou seja, cada exemplo de entrada vem com uma resposta correta (o "supervisor"). O objetivo é treinar um modelo para mapear entradas (\textit{features}) para saídas (\textit{labels}), aprendendo uma função que generalize bem para dados novos. Ele se divide em duas categorias principais: \textbf{classificação}, quando a saída é uma categoria (ex.: "spam" ou "não spam"), e \textbf{regressão}, quando a saída é um valor contínuo (ex.: preço de uma casa).\\
 Imagine um banco que quer prever a possibilidade de um determinado cliente pagar um empréstimo tomado. O dataset tem \textit{features} como renda anual, histórico de crédito e idade, e um rótulo binário: "pago" (1) ou "não pago" (0). Um modelo de classificação (ex.: regressão logística) aprende a partir desses dados históricos e, ao receber um novo cliente, prevê a probabilidade de pagamento. Se o modelo acerta 85\% das vezes no teste, o banco pode usá-lo para aprovar ou negar empréstimos com mais confiança.\\
-A supervisão garante precisão alta quando os dados são bem rotulados, mas exige um grande esforço para coletar e anotar esses rótulos — pense em milhares de imagens marcadas manualmente ou registros financeiros validados. Dados enviesados ou rótulos errados também podem arruinar o modelo.
+A supervisão garante precisão alta quando os dados são bem rotulados, mas exige um grande esforço para coletar e anotar esses rótulos: pense em milhares de imagens marcadas manualmente ou registros financeiros validados. Dados enviesados ou rótulos errados também podem arruinar o modelo.
 \begin{itemize}
         \item Previsão de preços de imóveis
         \item Diagnóstico médico
@@ -108,10 +109,10 @@ A supervisão garante precisão alta quando os dados são bem rotulados, mas exi
 \end{itemize}
 
 \subsection{Aprendizado não Supervisionado (Unsupervised Learning)}
-O aprendizado não supervisionado deverá ser usado quando não temos rótulos — apenas dados brutos e a missão de encontrar padrões ou estruturas escondidas. Aqui, o modelo não é "ensinado" com respostas certas; ele explora os dados por conta própria, agrupando itens semelhantes ou reduzindo a complexidade. As duas tarefas principais são \textbf{clustering} (agrupamento, ex.: segmentar clientes) e \textbf{redução de dimensionalidade} (ex.: comprimir dados mantendo informações chave).\\
-O processo consiste numa investigação de pistas: algoritmos como K-Means ou PCA (Análise de Componentes Principais) analisam as \textit{features}, calculam distâncias ou variâncias, e organizam os dados em grupos ou representações simplificadas. Não há um "certo" ou "errado" explícito — a qualidade depende do quão útil é o padrão descoberto. \\
+O aprendizado não supervisionado deverá ser usado quando não temos rótulos, apenas dados brutos e a missão de encontrar padrões ou estruturas escondidas. Aqui, o modelo não é "ensinado" com respostas certas; ele explora os dados por conta própria, agrupando itens semelhantes ou reduzindo a complexidade. As duas tarefas principais são \textbf{clustering} (agrupamento, ex.: segmentar clientes) e \textbf{redução de dimensionalidade} (ex.: comprimir dados mantendo informações chave).\\
+O processo consiste numa investigação de pistas: algoritmos como K-Means ou PCA (Análise de Componentes Principais) analisam as \textit{features}, calculam distâncias ou variâncias, e organizam os dados em grupos ou representações simplificadas. Não há um "certo" ou "errado" explícito, e a qualidade depende do quão útil é o padrão descoberto. \\
 Uma loja online tem dados de compras dos clientes (ex.: itens comprados, frequência, valor gasto), mas sem categorias definidas. Usando K-Means, o modelo agrupa os clientes em clusters: "compradores casuais", "fanáticos por tecnologia", "caçadores de promoções". A loja usa isso pra personalizar campanhas de marketing, sem precisar rotular cada cliente manualmente.\\
-A ausência de rótulos economiza tempo e esforço, abrindo portas pra explorar dados novos ou caóticos. Mas avaliar o resultado é mais subjetivo — como saber se os clusters fazem sentido? — e exige ajustes manuais (ex.: escolher o número de grupos no K-Means).
+A ausência de rótulos economiza tempo e esforço, abrindo portas pra explorar dados novos ou caóticos. Mas avaliar o resultado é mais subjetivo (como saber se os clusters fazem sentido?) e exige ajustes manuais (ex.: escolher o número de grupos no K-Means).
     \begin{itemize}
         \item Segmentação de clientes
         \item Compressão de dados
@@ -119,10 +120,10 @@ A ausência de rótulos economiza tempo e esforço, abrindo portas pra explorar 
     \end{itemize}
 
 \subsection{Aprendizado por Reforço (Reinforcement Learning)}
-O aprendizado por reforço é o tipo mais "jogo" do ML, inspirado em como humanos aprendem por tentativa e erro. Aqui, não há um dataset fixo com entradas e saídas; em vez disso, um agente interage com um ambiente, tomando ações e recebendo recompensas (ou punições) com base nos resultados. O objetivo é maximizar a recompensa total ao longo do tempo, aprendendo uma política — um plano de ação — que guia as decisões.\\
+O aprendizado por reforço é o tipo mais "jogo" do ML, inspirado em como humanos aprendem por tentativa e erro. Aqui, não há um dataset fixo com entradas e saídas; em vez disso, um agente interage com um ambiente, tomando ações e recebendo recompensas (ou punições) com base nos resultados. O objetivo é maximizar a recompensa total ao longo do tempo, aprendendo uma política (um plano de ação) que guia as decisões.\\
 Funciona assim: o agente observa o estado do ambiente (ex.: posição num jogo), escolhe uma ação (ex.: mover pra direita), recebe uma recompensa (ex.: +10 pontos) e ajusta sua estratégia usando algoritmos como Q-Learning ou Deep Reinforcement Learning (DRL). É um ciclo contínuo de exploração e aprendizado. \\
 Pense num robô aspirador navegando numa casa. O ambiente é o mapa da casa, as ações são "virar à esquerda", "avançar", "parar", e a recompensa vem por limpar sujeira (+5), enquanto bater na parede gera uma punição (-2). Após várias tentativas, o robô aprende a trajetória ideal pra limpar tudo sem travar. A DeepMind usou essa abordagem pra treinar agentes que jogam videogames do Atari e, com o AlphaGo, o jogo de tabuleiro Go.
-É perfeito pra problemas dinâmicos e interativos (ex.: robótica, jogos), mas exige tempo e poder computacional proporcional para treinar — o agente pode demorar pra aperfeiçoar o treinamento. Definir as recompensas também é um desafio: se mal calibradas, o modelo pode aprender coisas inúteis.
+É perfeito pra problemas dinâmicos e interativos (ex.: robótica, jogos), mas exige tempo e poder computacional proporcional para treinar: o agente pode demorar pra aperfeiçoar o treinamento. Definir as recompensas também é um desafio: se mal calibradas, o modelo pode aprender coisas inúteis.
 \begin{itemize}
     \item Jogos (Atari, xadrez, Go)
     \item Controle de robôs
@@ -132,7 +133,7 @@ Pense num robô aspirador navegando numa casa. O ambiente é o mapa da casa, as 
 O aprendizado semissupervisionado é o meio-termo entre o supervisionado e o não supervisionado, usado quando temos poucos dados rotulados e muitos sem rótulos. A ideia é combinar o poder dos rótulos pra guiar o aprendizado com a quantidade dos dados não rotulados pra enriquecer o modelo. Ele mistura técnicas dos dois mundos: primeiro, usa os dados rotulados pra treinar um modelo básico, depois "propaga" esse conhecimento pros dados sem rótulos, refinando as previsões.\\
 O processo pode envolver \textbf{pseudo-rotulação} (o modelo prevê rótulos pros dados não rotulados e os inclui no treino) ou \textbf{co-treinamento} (dois modelos colaboram, cada um rotulando dados pro outro). É uma solução prática pra cenários reais, onde rotular tudo é caro ou impossível.\\
 Uma empresa de saúde tem 100 imagens médicas rotuladas como "normal" ou "tumor" e 10.000 imagens sem rótulos. Um modelo supervisionado treina nos 100 exemplos, prevê rótulos pras 10.000, e depois retreina com o conjunto expandido. Isso melhora a detecção de tumores em exames futuros, aproveitando os dados não rotulados que seriam ignorados num aprendizado puramente supervisionado.\\
-Economiza esforço de rotulação e aumenta a robustez com mais dados, mas depende da qualidade dos rótulos iniciais — se tiverem erros, a propagação pode amplificar o problema. Também exige algoritmos mais complexos pra balancear as duas fontes de informação.
+Economiza esforço de rotulação e aumenta a robustez com mais dados, mas depende da qualidade dos rótulos iniciais: se tiverem erros, a propagação pode amplificar o problema. Também exige algoritmos mais complexos pra balancear as duas fontes de informação.
 \begin{itemize}
     \item Análise de documentos jurídicos (grande volume de textos sem rótulo).
     \item Sistemas de recomendação (mistura de interações explícitas e implícitas).
@@ -2004,7 +2005,7 @@ Os seguintes recursos são indicados para aprofundamento no estudo de aprendizad
 \begin{itemize}
     \item \textbf{Livros}: \textit{Python Machine Learning} de Sebastian Raschka e Vahid Mirjalili oferece uma base sólida em algoritmos de aprendizado de máquina, enquanto \textit{Deep Learning with Python} de François Chollet introduz redes neurais de forma prática. E não poderia faltar \textit{Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow}, de Aurélien Géron, que traz extenso conteúdo sobre o assunto.
     \item \textbf{Cursos}: O curso \textit{Machine Learning} de Andrew Ng na Coursera é uma referência em fundamentos teóricos, e o curso \textit{Data Science com Python} da DataCamp foca em aplicações práticas.
-    \item \textbf{Documentação}: A documentação oficial do \texttt{scikit-learn} (\url{https://scikit-learn.org}) detalha as funcionalidades de pré-processamento e modelagem usadas neste livro.
+    \item \textbf{Documentação}: Em \url{https://scikit-learn.org}, a documentação oficial do \texttt{scikit-learn} detalha as funcionalidades de pré-processamento e modelagem usadas neste livro.
     \item \textbf{Comunidades}: Fóruns como o subreddit \textit{r/MachineLearning} (\url{https://reddit.com/r/MachineLearning}) e comunidades de ciência de dados no Discord são espaços para discussão e troca de experiências.
     \item \textbf{Conjuntos de dados}: Plataformas como Kaggle (\url{https://kaggle.com}) e o UCI Machine Learning Repository (\url{https://archive.ics.uci.edu}) disponibilizam datasets variados para experimentação.
 \end{itemize}
